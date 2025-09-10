@@ -5,6 +5,7 @@ import pe.edu.upc.backendgrupo1.entities.User;
 import java.util.List;
 
 public interface IUserService {
+    //hola
     public List<User> list();
     public void insert(User user);
     public void delete(int id);
