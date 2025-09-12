@@ -3,7 +3,6 @@ package pe.edu.upc.backendgrupo1.servicesimplements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pe.edu.upc.backendgrupo1.entities.User;
-import pe.edu.upc.backendgrupo1.repositories.IUserRepository;
 import pe.edu.upc.backendgrupo1.servicesinterfaces.IUserService;
 
 import java.util.List;
