@@ -11,7 +11,7 @@ import pe.edu.upc.backendgrupo1.servicesinterfaces.IAlertaService;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
+//h
 @RestController
 @RequestMapping("/alertas")
 public class AlertaController {
