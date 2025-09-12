@@ -11,7 +11,7 @@ import pe.edu.upc.backendgrupo1.servicesinterfaces.IAlertaService;
 
 import java.util.List;
 import java.util.stream.Collectors;
-//h
+
 @RestController
 @RequestMapping("/alertas")
 public class AlertaController {
@@ -38,7 +38,7 @@ public class AlertaController {
     public ResponseEntity<String> eliminar(@PathVariable("id") Integer id) {
         Alerta alerta = aS.listId(id);
         if(alerta == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("El usuario con el id " + id + " no existe");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("La alerta con el id " + id + " no existe");
         }
         aS.delete(id);
         return ResponseEntity.ok("La alerta con el id " + id+ " ha sido eliminado correctamente");

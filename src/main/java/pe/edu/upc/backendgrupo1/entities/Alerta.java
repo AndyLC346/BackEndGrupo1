@@ -1,10 +1,8 @@
 package pe.edu.upc.backendgrupo1.entities;
 
 import jakarta.persistence.*;
-import org.springframework.cglib.core.Local;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 @Table(name="alertas")
@@ -78,7 +76,9 @@ public class Alerta {
     @Column(name="emailUser", nullable=false, length=50)
     private LocalDate fechagenerada;
 
+
     public Alerta() {
+
     }
 
 
