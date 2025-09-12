@@ -25,44 +25,6 @@ public class LogAcceso {
     private User user;
 
 */
-    public Long getIdLogAcceso() {
-        return idLogAcceso;
-    }
 
-    public void setIdLogAcceso(Long idLogAcceso) {
-        this.idLogAcceso = idLogAcceso;
-    }
-
-    public LocalDate getFechaAcceso() {
-        return fechaAcceso;
-    }
-
-    public void setFechaAcceso(LocalDate fechaAcceso) {
-        this.fechaAcceso = fechaAcceso;
-    }
-
-    public String getIp() {
-        return ip;
-    }
-
-    public void setIp(String ip) {
-        this.ip = ip;
-    }
-
-    public String getNavegador() {
-        return navegador;
-    }
-
-    public void setNavegador(String navegador) {
-        this.navegador = navegador;
-    }
-
-    public String getSistemaOperativo() {
-        return sistemaOperativo;
-    }
-
-    public void setSistemaOperativo(String sistemaOperativo) {
-        this.sistemaOperativo = sistemaOperativo;
-    }
     
 }
