@@ -1,5 +1,7 @@
 package pe.edu.upc.backendgrupo1.dtos;
-
+/*hola
+*
+* */
 public class UserDTO {
     private int idUser;
 
@@ -81,3 +83,4 @@ public class UserDTO {
         this.telefonoUser = telefonoUser;
     }
 }
+
