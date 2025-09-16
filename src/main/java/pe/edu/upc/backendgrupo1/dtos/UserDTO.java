@@ -1,20 +1,14 @@
 package pe.edu.upc.backendgrupo1.dtos;
 
 public class UserDTO {
+
     private int idUser;
-
     private String username;
-
     private String password;
-
     private boolean enabled;
-
     private String nombres;
-
     private String apellidos;
-
     private String emailUser;
-
     private String telefonoUser;
 
     public int getIdUser() {
