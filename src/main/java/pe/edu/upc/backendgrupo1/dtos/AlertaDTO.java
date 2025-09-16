@@ -4,26 +4,18 @@ import java.time.LocalDate;
 
 public class AlertaDTO {
 
-    private int idUser;
-    private String alertaid;
+    private int alertaid;
     private String tipo;
     private String mensaje;
     private boolean estado;
     private LocalDate fechagenerada;
 
-    public int getIdUser() {
-        return idUser;
-    }
 
-    public void setIdUser(int idUser) {
-        this.idUser = idUser;
-    }
-
-    public String getAlertaid() {
+    public int getAlertaid() {
         return alertaid;
     }
 
-    public void setAlertaid(String alertaid) {
+    public void setAlertaid(int alertaid) {
         this.alertaid = alertaid;
     }
 
