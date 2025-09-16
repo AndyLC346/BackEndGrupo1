@@ -11,7 +11,6 @@ public class LogAccesoDTO {
     private String sistemaOperativo;
     private User user;
 
-    // Getters y Setters
     public Long getIdLogAcceso() {
         return idLogAcceso;
     }

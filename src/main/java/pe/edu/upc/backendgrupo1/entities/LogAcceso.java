@@ -64,5 +64,5 @@ public class LogAcceso {
     public void setSistemaOperativo(String sistemaOperativo) {
         this.sistemaOperativo = sistemaOperativo;
     }
-    
+
 }
