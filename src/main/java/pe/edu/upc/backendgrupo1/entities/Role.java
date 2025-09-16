@@ -17,7 +17,6 @@ public class Role implements Serializable {
     @Column(length = 50, nullable = false)
     private String rol;
 
-    // 🔹 Cada rol pertenece a un usuario
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
