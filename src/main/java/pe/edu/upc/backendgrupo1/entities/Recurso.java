@@ -21,7 +21,7 @@ public class Recurso {
 
     @Column(name="nivelRecurso", nullable=false, length=50)
     private String nivelRecurso;
- 
+
     @Column(name="urlRecurso", nullable=false, length=100)
     private String urlRecurso;
 
