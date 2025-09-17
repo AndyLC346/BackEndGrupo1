@@ -24,19 +24,22 @@ public class Recurso {
     @Column(name="urlRecurso", nullable=false, length=100)
     private String urlRecurso;
 
+    @ManyToOne
+    @JoinColumn(name="idUser")
+    private User usuario;
 
     public Recurso() {
     }
 
-    public Recurso(int idRecurso, String tituloRecurso, String descripcionRecurso, String tipoRecurso, String nivelRecurso, String urlRecurso) {
+    public Recurso(int idRecurso, String tituloRecurso, String descripcionRecurso, String tipoRecurso, String nivelRecurso, String urlRecurso, User usuario) {
         this.idRecurso = idRecurso;
         this.tituloRecurso = tituloRecurso;
         this.descripcionRecurso = descripcionRecurso;
         this.tipoRecurso = tipoRecurso;
         this.nivelRecurso = nivelRecurso;
         this.urlRecurso = urlRecurso;
+        this.usuario = usuario;
     }
-
 
     public int getIdRecurso() {
         return idRecurso;
@@ -84,5 +87,13 @@ public class Recurso {
 
     public void setUrlRecurso(String urlRecurso) {
         this.urlRecurso = urlRecurso;
+    }
+
+    public User getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(User usuario) {
+        this.usuario = usuario;
     }
 }

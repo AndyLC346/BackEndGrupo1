@@ -7,20 +7,43 @@ import java.time.LocalDate;
 @Entity
 @Table(name="alertas")
 public class Alerta {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int alertaid;
 
-    public int getIdAlerta() {
-        return idUser;
+    @Column(name="tipo", nullable=false, length=50)
+    private String tipo;
+
+    @Column(name="mensaje", nullable=false, length=50)
+    private String mensaje;
+
+    @Column(name="estado", nullable=false)
+    private boolean estado;
+
+    @Column(name="emailUser", nullable=false, length=50)
+    private LocalDate fechagenerada;
+
+    @ManyToOne
+    @JoinColumn(name="idUser")
+    private User usuario;
+
+    public Alerta() {
     }
 
-    public void setIdUser(int idUser) {
-        this.idUser = idUser;
+    public Alerta(int alertaid, String tipo, String mensaje, boolean estado, LocalDate fechagenerada, User usuario) {
+        this.alertaid = alertaid;
+        this.tipo = tipo;
+        this.mensaje = mensaje;
+        this.estado = estado;
+        this.fechagenerada = fechagenerada;
+        this.usuario = usuario;
     }
 
-    public String getAlertaid() {
+    public int getAlertaid() {
         return alertaid;
     }
 
-    public void setAlertaid(String alertaid) {
+    public void setAlertaid(int alertaid) {
         this.alertaid = alertaid;
     }
 
@@ -56,30 +79,11 @@ public class Alerta {
         this.fechagenerada = fechagenerada;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idUser;
-
-    @Column(name="alertaid", nullable=false, length=30, unique = true)
-    private String alertaid;
-
-
-    @Column(name="tipo", nullable=false, length=50)
-    private String tipo;
-
-    @Column(name="mensaje", nullable=false, length=50)
-    private String mensaje;
-
-    @Column(name="estado", nullable=false)
-    private boolean estado;
-
-    @Column(name="emailUser", nullable=false, length=50)
-    private LocalDate fechagenerada;
-
-
-    public Alerta() {
-
+    public User getUsuario() {
+        return usuario;
     }
 
-
+    public void setUsuario(User usuario) {
+        this.usuario = usuario;
+    }
 }

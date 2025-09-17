@@ -1,5 +1,7 @@
 package pe.edu.upc.backendgrupo1.dtos;
 
+import pe.edu.upc.backendgrupo1.entities.User;
+
 import java.time.LocalDate;
 
 public class AlertaDTO {
@@ -9,7 +11,7 @@ public class AlertaDTO {
     private String mensaje;
     private boolean estado;
     private LocalDate fechagenerada;
-
+    private User usuario;
 
     public int getAlertaid() {
         return alertaid;
@@ -49,5 +51,13 @@ public class AlertaDTO {
 
     public void setFechagenerada(LocalDate fechagenerada) {
         this.fechagenerada = fechagenerada;
+    }
+
+    public User getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(User usuario) {
+        this.usuario = usuario;
     }
 }

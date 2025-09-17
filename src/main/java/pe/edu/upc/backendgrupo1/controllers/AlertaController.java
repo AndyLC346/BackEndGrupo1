@@ -1,5 +1,4 @@
 package pe.edu.upc.backendgrupo1.controllers;
-
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -8,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.backendgrupo1.dtos.AlertaDTO;
 import pe.edu.upc.backendgrupo1.entities.Alerta;
 import pe.edu.upc.backendgrupo1.servicesinterfaces.IAlertaService;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -48,7 +46,7 @@ public class AlertaController {
     public ResponseEntity<String> modificar(@RequestBody AlertaDTO dto) {
         ModelMapper m = new ModelMapper();
         Alerta alerta = m.map(dto, Alerta.class);
-        if (aS.listId(alerta.getIdAlerta()) == null) {
+        if (aS.listId(alerta.getAlertaid()) == null) {
             return ResponseEntity
                     .status(HttpStatus.NOT_FOUND)
                     .body("La alerta con el ID: " + alerta.getAlertaid() + " no existe");
