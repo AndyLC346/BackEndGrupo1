@@ -1,7 +1,7 @@
 package pe.edu.upc.backendgrupo1.entities;
 
 import jakarta.persistence.*;
-//validar merge
+
 @Entity
 @Table(name="users")
 public class User {
@@ -30,6 +30,7 @@ public class User {
 
     @Column(name="telefonoUser", nullable=false, length=9)
     private String telefonoUser;
+
 
     public User() {
     }
