@@ -1,5 +1,4 @@
 package pe.edu.upc.backendgrupo1.dtos;
-//validar merge
 public class UserDTO {
     private int idUser;
 
