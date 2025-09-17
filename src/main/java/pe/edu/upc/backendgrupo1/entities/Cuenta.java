@@ -27,7 +27,7 @@ public class Cuenta {
     @JoinColumn(name="idUser")
     private User usuario;
 
-    // Getters y Setters
+
 
     public int getIdCuenta() {
         return idCuenta;

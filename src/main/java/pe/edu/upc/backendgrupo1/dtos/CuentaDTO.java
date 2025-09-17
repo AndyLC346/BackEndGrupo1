@@ -13,7 +13,7 @@ public class CuentaDTO {
     private LocalDate fecharegistroCuenta;
     private User usuario;
 
-    // Getters y Setters
+
 
     public int getIdCuenta() {
         return idCuenta;

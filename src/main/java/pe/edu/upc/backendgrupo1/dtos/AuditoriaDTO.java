@@ -12,7 +12,7 @@ public class AuditoriaDTO {
     private String descripcion;
     private User usuario;
 
-    // Getters y Setters
+
 
     public int getIdAuditoria() {
         return idAuditoria;

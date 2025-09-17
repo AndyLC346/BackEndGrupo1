@@ -24,7 +24,7 @@ public class Auditoria {
     @JoinColumn(name="idUser")
     private User usuario;
 
-    // Getters y Setters
+
 
     public Auditoria() {
     }
