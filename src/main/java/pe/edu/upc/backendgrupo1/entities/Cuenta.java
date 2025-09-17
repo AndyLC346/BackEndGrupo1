@@ -23,10 +23,12 @@ public class Cuenta {
     @Column(name = "fecharegistroCuenta")
     private LocalDate fecharegistroCuenta;
 
-    @Column(name = "idUsuario", nullable = false)
-    private int idUsuario;
+    @ManyToOne
+    @JoinColumn(name="idUser")
+    private User usuario;
 
     // Getters y Setters
+
     public int getIdCuenta() {
         return idCuenta;
     }
@@ -67,11 +69,23 @@ public class Cuenta {
         this.fecharegistroCuenta = fecharegistroCuenta;
     }
 
-    public int getIdUsuario() {
-        return idUsuario;
+    public User getUsuario() {
+        return usuario;
     }
 
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setUsuario(User usuario) {
+        this.usuario = usuario;
+    }
+
+    public Cuenta() {
+    }
+
+    public Cuenta(int idCuenta, String servicioCuenta, String nombreCuenta, String estadoCuenta, LocalDate fecharegistroCuenta, User usuario) {
+        this.idCuenta = idCuenta;
+        this.servicioCuenta = servicioCuenta;
+        this.nombreCuenta = nombreCuenta;
+        this.estadoCuenta = estadoCuenta;
+        this.fecharegistroCuenta = fecharegistroCuenta;
+        this.usuario = usuario;
     }
 }

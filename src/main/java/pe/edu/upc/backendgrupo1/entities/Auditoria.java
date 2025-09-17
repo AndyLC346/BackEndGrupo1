@@ -20,10 +20,23 @@ public class Auditoria {
     @Column(name = "descripcion", length = 50)
     private String descripcion;
 
-    @Column(name = "idUsuario", nullable = false)
-    private int idUsuario;
+    @ManyToOne
+    @JoinColumn(name="idUser")
+    private User usuario;
 
     // Getters y Setters
+
+    public Auditoria() {
+    }
+
+    public Auditoria(int idAuditoria, LocalDateTime fechaAuditoria, String tipoAuditoria, String descripcion, User usuario) {
+        this.idAuditoria = idAuditoria;
+        this.fechaAuditoria = fechaAuditoria;
+        this.tipoAuditoria = tipoAuditoria;
+        this.descripcion = descripcion;
+        this.usuario = usuario;
+    }
+
     public int getIdAuditoria() {
         return idAuditoria;
     }
@@ -56,11 +69,11 @@ public class Auditoria {
         this.descripcion = descripcion;
     }
 
-    public int getIdUsuario() {
-        return idUsuario;
+    public User getUsuario() {
+        return usuario;
     }
 
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setUsuario(User usuario) {
+        this.usuario = usuario;
     }
 }
