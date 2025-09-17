@@ -47,11 +47,13 @@ public class RespuestaSoporteController {
         public ResponseEntity<String>modificar(@RequestBody RespuestaSoporteDTO dto) {
             ModelMapper m = new ModelMapper();
             RespuestaSoporte rs = m.map(dto, RespuestaSoporte.class);
-            RespuestaSoporte existe = rsS.listId(rs.getIdSoporte());
+            RespuestaSoporte existe = rsS.listId(rs.getIdRespuestaSoporte());
             if (existe == null) {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se puede modificar");
             }
             rsS.update(rs);
             return ResponseEntity.ok("Se modifico correctamente");
         }
+
+
 }

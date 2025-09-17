@@ -10,18 +10,25 @@ public class RespuestaSoporte {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int idRespuestaSoporte;
+
     @Column(name="tipoSoporte",nullable = false,length = 200)
     private String mensajeRespuestaSoporte;
+
     @Column(name="fechacreacionSoporte",nullable = false)
     private LocalDate fechacierreRespuestaSoporte;
-    @Column(name="idUsuario",nullable=false)
-    private int idSoporte;
 
-    public RespuestaSoporte(int idRespuestaSoporte, String mensajeRespuestaSoporte, LocalDate fechacierreRespuestaSoporte, int idSoporte) {
+    @ManyToOne
+    @JoinColumn(name="idSoporte")
+    private TicketReporte  treporte;
+
+    public RespuestaSoporte() {
+    }
+
+    public RespuestaSoporte(int idRespuestaSoporte, String mensajeRespuestaSoporte, LocalDate fechacierreRespuestaSoporte, TicketReporte treporte) {
         this.idRespuestaSoporte = idRespuestaSoporte;
         this.mensajeRespuestaSoporte = mensajeRespuestaSoporte;
         this.fechacierreRespuestaSoporte = fechacierreRespuestaSoporte;
-        this.idSoporte = idSoporte;
+        this.treporte = treporte;
     }
 
     public int getIdRespuestaSoporte() {
@@ -48,11 +55,11 @@ public class RespuestaSoporte {
         this.fechacierreRespuestaSoporte = fechacierreRespuestaSoporte;
     }
 
-    public int getIdSoporte() {
-        return idSoporte;
+    public TicketReporte getTreporte() {
+        return treporte;
     }
 
-    public void setIdSoporte(int idSoporte) {
-        this.idSoporte = idSoporte;
+    public void setTreporte(TicketReporte treporte) {
+        this.treporte = treporte;
     }
 }

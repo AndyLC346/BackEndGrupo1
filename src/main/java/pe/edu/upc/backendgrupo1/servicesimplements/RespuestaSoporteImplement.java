@@ -14,12 +14,18 @@ import java.util.List;
 public class RespuestaSoporteImplement implements IRespuestaSoporteService {
     @Autowired
     private IRespuestaSoporteRepository rsR;
+
     @Override
     public List<RespuestaSoporte> list(){return rsR.findAll();}
+
     @Override
-    public void insert(RespuestaSoporte respuestaSoporte){rsR.save(respuestaSoporte);}
+    public void insert(RespuestaSoporte respuestaSoporte){
+        rsR.save(respuestaSoporte);
+    }
+
     @Override
     public RespuestaSoporte listId(int id) {return rsR.findById(id).orElse(null);}
+
     @Override
     public void delete(int id) {rsR.deleteById(id);}
     @Override

@@ -1,12 +1,18 @@
 package pe.edu.upc.backendgrupo1.dtos;
 
+import pe.edu.upc.backendgrupo1.entities.TicketReporte;
+
 import java.time.LocalDate;
 
 public class RespuestaSoporteDTO {
+
     private int idRespuestaSoporte;
+
     private String mensajeRespuestaSoporte;
+
     private LocalDate fechacierreRespuestaSoporte;
-    private int idSoporte;
+
+    private TicketReporte treporte;
 
     public int getIdRespuestaSoporte() {
         return idRespuestaSoporte;
@@ -32,11 +38,11 @@ public class RespuestaSoporteDTO {
         this.fechacierreRespuestaSoporte = fechacierreRespuestaSoporte;
     }
 
-    public int getIdSoporte() {
-        return idSoporte;
+    public TicketReporte getTreporte() {
+        return treporte;
     }
 
-    public void setIdSoporte(int idSoporte) {
-        this.idSoporte = idSoporte;
+    public void setTreporte(TicketReporte treporte) {
+        this.treporte = treporte;
     }
 }

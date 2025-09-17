@@ -1,5 +1,7 @@
 package pe.edu.upc.backendgrupo1.dtos;
 
+import pe.edu.upc.backendgrupo1.entities.User;
+
 import java.time.LocalDate;
 
 public class TicketReporteDTO {
@@ -9,7 +11,7 @@ public class TicketReporteDTO {
     private String descripcionSoporte;
     private String estadoSoporte;
     private LocalDate fechacreacionSoporte;
-    private int idUsuario;
+    private User usuario;
 
     public int getIdSoporte() {
         return idSoporte;
@@ -19,36 +21,12 @@ public class TicketReporteDTO {
         this.idSoporte = idSoporte;
     }
 
-    public int getIdUsuario() {
-        return idUsuario;
+    public String getTipoSoporte() {
+        return tipoSoporte;
     }
 
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
-    }
-
-    public LocalDate getFechacreacionSoporte() {
-        return fechacreacionSoporte;
-    }
-
-    public void setFechacreacionSoporte(LocalDate fechacreacionSoporte) {
-        this.fechacreacionSoporte = fechacreacionSoporte;
-    }
-
-    public String getEstadoSoporte() {
-        return estadoSoporte;
-    }
-
-    public void setEstadoSoporte(String estadoSoporte) {
-        this.estadoSoporte = estadoSoporte;
-    }
-
-    public String getDescripcionSoporte() {
-        return descripcionSoporte;
-    }
-
-    public void setDescripcionSoporte(String descripcionSoporte) {
-        this.descripcionSoporte = descripcionSoporte;
+    public void setTipoSoporte(String tipoSoporte) {
+        this.tipoSoporte = tipoSoporte;
     }
 
     public String getAsuntoSoporte() {
@@ -59,11 +37,35 @@ public class TicketReporteDTO {
         this.asuntoSoporte = asuntoSoporte;
     }
 
-    public String getTipoSoporte() {
-        return tipoSoporte;
+    public String getDescripcionSoporte() {
+        return descripcionSoporte;
     }
 
-    public void setTipoSoporte(String tipoSoporte) {
-        this.tipoSoporte = tipoSoporte;
+    public void setDescripcionSoporte(String descripcionSoporte) {
+        this.descripcionSoporte = descripcionSoporte;
+    }
+
+    public String getEstadoSoporte() {
+        return estadoSoporte;
+    }
+
+    public void setEstadoSoporte(String estadoSoporte) {
+        this.estadoSoporte = estadoSoporte;
+    }
+
+    public LocalDate getFechacreacionSoporte() {
+        return fechacreacionSoporte;
+    }
+
+    public void setFechacreacionSoporte(LocalDate fechacreacionSoporte) {
+        this.fechacreacionSoporte = fechacreacionSoporte;
+    }
+
+    public User getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(User usuario) {
+        this.usuario = usuario;
     }
 }
