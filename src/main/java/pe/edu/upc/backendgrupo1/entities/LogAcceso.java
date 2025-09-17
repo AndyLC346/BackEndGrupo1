@@ -19,12 +19,10 @@ public class LogAcceso {
 
     private String sistemaOperativo;
 
-   /*
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-*/
     public Long getIdLogAcceso() {
         return idLogAcceso;
     }
@@ -65,4 +63,11 @@ public class LogAcceso {
         this.sistemaOperativo = sistemaOperativo;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

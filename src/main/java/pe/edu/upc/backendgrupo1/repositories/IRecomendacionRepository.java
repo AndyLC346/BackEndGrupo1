@@ -6,6 +6,4 @@ import pe.edu.upc.backendgrupo1.entities.Recomendacion;
 
 @Repository
 public interface IRecomendacionRepository extends JpaRepository<Recomendacion, Long> {
-
-
 }

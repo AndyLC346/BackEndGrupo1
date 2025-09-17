@@ -10,7 +10,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idUser;
+    private Integer idUser;
 
     @Column(name="username", nullable=false, length=30, unique = true)
     private String username;
@@ -33,14 +33,13 @@ public class User {
     @Column(name="telefonoUser", nullable=false, length=9)
     private String telefonoUser;
 
-    // 🔹 Relación con Roles: Un usuario tiene muchos roles
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Role> roles = new HashSet<>();
 
     public User() {
     }
 
-    public User(int idUser, String username, String password, boolean enabled,
+    public User(Integer idUser, String username, String password, boolean enabled,
                 String nombres, String apellidos, String emailUser, String telefonoUser) {
         this.idUser = idUser;
         this.username = username;
@@ -52,11 +51,11 @@ public class User {
         this.telefonoUser = telefonoUser;
     }
 
-    public int getIdUser() {
+    public Integer getIdUser() {
         return idUser;
     }
 
-    public void setIdUser(int idUser) {
+    public void setIdUser(Integer idUser) {
         this.idUser = idUser;
     }
 
