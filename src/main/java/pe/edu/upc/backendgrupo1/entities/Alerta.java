@@ -9,19 +9,19 @@ import java.time.LocalDate;
 public class Alerta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int alertaid;
+    private int idAlerta;
 
-    @Column(name="tipo", nullable=false, length=50)
-    private String tipo;
+    @Column(name="mensajeAlerta", nullable=false, length=50)
+    private String mensajeAlerta;
 
-    @Column(name="mensaje", nullable=false, length=50)
-    private String mensaje;
+    @Column(name="tipoAlerta", nullable=false, length=10)
+    private String tipoAlerta;
 
-    @Column(name="estado", nullable=false)
-    private boolean estado;
+    @Column(name="fechayhoraAlerta", nullable=false)
+    private LocalDate fechayhoraAlerta;
 
-    @Column(name="emailUser", nullable=false, length=50)
-    private LocalDate fechagenerada;
+    @Column(name="vistoAlerta", nullable=false)
+    private boolean vistoAlerta;
 
     @ManyToOne
     @JoinColumn(name="idUser")
@@ -30,53 +30,53 @@ public class Alerta {
     public Alerta() {
     }
 
-    public Alerta(int alertaid, String tipo, String mensaje, boolean estado, LocalDate fechagenerada, User usuario) {
-        this.alertaid = alertaid;
-        this.tipo = tipo;
-        this.mensaje = mensaje;
-        this.estado = estado;
-        this.fechagenerada = fechagenerada;
+    public Alerta(int idAlerta, String mensajeAlerta, String tipoAlerta, LocalDate fechayhoraAlerta, boolean vistoAlerta, User usuario) {
+        this.idAlerta = idAlerta;
+        this.mensajeAlerta = mensajeAlerta;
+        this.tipoAlerta = tipoAlerta;
+        this.fechayhoraAlerta = fechayhoraAlerta;
+        this.vistoAlerta = vistoAlerta;
         this.usuario = usuario;
     }
 
-    public int getAlertaid() {
-        return alertaid;
+    public int getIdAlerta() {
+        return idAlerta;
     }
 
-    public void setAlertaid(int alertaid) {
-        this.alertaid = alertaid;
+    public void setIdAlerta(int idAlerta) {
+        this.idAlerta = idAlerta;
     }
 
-    public String getTipo() {
-        return tipo;
+    public String getMensajeAlerta() {
+        return mensajeAlerta;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setMensajeAlerta(String mensajeAlerta) {
+        this.mensajeAlerta = mensajeAlerta;
     }
 
-    public String getMensaje() {
-        return mensaje;
+    public String getTipoAlerta() {
+        return tipoAlerta;
     }
 
-    public void setMensaje(String mensaje) {
-        this.mensaje = mensaje;
+    public void setTipoAlerta(String tipoAlerta) {
+        this.tipoAlerta = tipoAlerta;
     }
 
-    public boolean isEstado() {
-        return estado;
+    public LocalDate getFechayhoraAlerta() {
+        return fechayhoraAlerta;
     }
 
-    public void setEstado(boolean estado) {
-        this.estado = estado;
+    public void setFechayhoraAlerta(LocalDate fechayhoraAlerta) {
+        this.fechayhoraAlerta = fechayhoraAlerta;
     }
 
-    public LocalDate getFechagenerada() {
-        return fechagenerada;
+    public boolean isVistoAlerta() {
+        return vistoAlerta;
     }
 
-    public void setFechagenerada(LocalDate fechagenerada) {
-        this.fechagenerada = fechagenerada;
+    public void setVistoAlerta(boolean vistoAlerta) {
+        this.vistoAlerta = vistoAlerta;
     }
 
     public User getUsuario() {

@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 @Entity
 @Table(name="recursoseducativos")
 public class Recurso {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idRecurso;
@@ -20,7 +21,7 @@ public class Recurso {
 
     @Column(name="nivelRecurso", nullable=false, length=50)
     private String nivelRecurso;
-
+ 
     @Column(name="urlRecurso", nullable=false, length=100)
     private String urlRecurso;
 

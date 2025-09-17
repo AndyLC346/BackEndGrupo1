@@ -6,51 +6,57 @@ import java.time.LocalDate;
 
 public class AlertaDTO {
 
-    private int alertaid;
-    private String tipo;
-    private String mensaje;
-    private boolean estado;
-    private LocalDate fechagenerada;
+    private int idAlerta;
+
+    private String mensajeAlerta;
+
+    private String tipoAlerta;
+
+    private LocalDate fechayhoraAlerta;
+
+    private boolean vistoAlerta;
+
     private User usuario;
 
-    public int getAlertaid() {
-        return alertaid;
+
+    public int getIdAlerta() {
+        return idAlerta;
     }
 
-    public void setAlertaid(int alertaid) {
-        this.alertaid = alertaid;
+    public void setIdAlerta(int idAlerta) {
+        this.idAlerta = idAlerta;
     }
 
-    public String getTipo() {
-        return tipo;
+    public String getMensajeAlerta() {
+        return mensajeAlerta;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setMensajeAlerta(String mensajeAlerta) {
+        this.mensajeAlerta = mensajeAlerta;
     }
 
-    public String getMensaje() {
-        return mensaje;
+    public String getTipoAlerta() {
+        return tipoAlerta;
     }
 
-    public void setMensaje(String mensaje) {
-        this.mensaje = mensaje;
+    public void setTipoAlerta(String tipoAlerta) {
+        this.tipoAlerta = tipoAlerta;
     }
 
-    public boolean isEstado() {
-        return estado;
+    public LocalDate getFechayhoraAlerta() {
+        return fechayhoraAlerta;
     }
 
-    public void setEstado(boolean estado) {
-        this.estado = estado;
+    public void setFechayhoraAlerta(LocalDate fechayhoraAlerta) {
+        this.fechayhoraAlerta = fechayhoraAlerta;
     }
 
-    public LocalDate getFechagenerada() {
-        return fechagenerada;
+    public boolean isVistoAlerta() {
+        return vistoAlerta;
     }
 
-    public void setFechagenerada(LocalDate fechagenerada) {
-        this.fechagenerada = fechagenerada;
+    public void setVistoAlerta(boolean vistoAlerta) {
+        this.vistoAlerta = vistoAlerta;
     }
 
     public User getUsuario() {

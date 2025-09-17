@@ -46,10 +46,10 @@ public class AlertaController {
     public ResponseEntity<String> modificar(@RequestBody AlertaDTO dto) {
         ModelMapper m = new ModelMapper();
         Alerta alerta = m.map(dto, Alerta.class);
-        if (aS.listId(alerta.getAlertaid()) == null) {
+        if (aS.listId(alerta.getIdAlerta()) == null) {
             return ResponseEntity
                     .status(HttpStatus.NOT_FOUND)
-                    .body("La alerta con el ID: " + alerta.getAlertaid() + " no existe");
+                    .body("La alerta con el ID: " + alerta.getIdAlerta() + " no existe");
         }
         aS.update(alerta);
         return ResponseEntity.ok("Alerta actualizada correctamente");
