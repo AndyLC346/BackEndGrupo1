@@ -23,6 +23,18 @@ public class LogAcceso {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
+    public LogAcceso() {
+    }
+
+    public LogAcceso(Long idLogAcceso, LocalDate fechaAcceso, String ip, String navegador, String sistemaOperativo, User user) {
+        this.idLogAcceso = idLogAcceso;
+        this.fechaAcceso = fechaAcceso;
+        this.ip = ip;
+        this.navegador = navegador;
+        this.sistemaOperativo = sistemaOperativo;
+        this.user = user;
+    }
+
     public Long getIdLogAcceso() {
         return idLogAcceso;
     }
