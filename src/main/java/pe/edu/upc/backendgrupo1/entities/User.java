@@ -33,14 +33,14 @@ public class User {
     @Column(name="telefonoUser", nullable=false, length=9)
     private String telefonoUser;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Role> roles = new HashSet<>();
+    @ManyToOne
+    @JoinColumn(name = "idRol")
+    private Rol rol;
 
     public User() {
     }
 
-    public User(Integer idUser, String username, String password, boolean enabled,
-                String nombres, String apellidos, String emailUser, String telefonoUser) {
+    public User(Integer idUser, String username, String password, boolean enabled, String nombres, String apellidos, String emailUser, String telefonoUser, Rol rol) {
         this.idUser = idUser;
         this.username = username;
         this.password = password;
@@ -49,6 +49,7 @@ public class User {
         this.apellidos = apellidos;
         this.emailUser = emailUser;
         this.telefonoUser = telefonoUser;
+        this.rol = rol;
     }
 
     public Integer getIdUser() {
@@ -115,11 +116,11 @@ public class User {
         this.telefonoUser = telefonoUser;
     }
 
-    public Set<Role> getRoles() {
-        return roles;
+    public Rol getRol() {
+        return rol;
     }
 
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
+    public void setRol(Rol rol) {
+        this.rol = rol;
     }
 }
