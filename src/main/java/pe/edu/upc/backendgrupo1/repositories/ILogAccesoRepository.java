@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import pe.edu.upc.backendgrupo1.entities.LogAcceso;
 
 @Repository
-public interface ILogAccesoRepository extends JpaRepository<LogAcceso, Long> {
+public interface ILogAccesoRepository extends JpaRepository<LogAcceso, Integer> {
 }
