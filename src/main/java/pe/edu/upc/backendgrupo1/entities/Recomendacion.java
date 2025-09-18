@@ -8,7 +8,7 @@ public class Recomendacion {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idRecomendacion;
+    private int idRecomendacion;
 
     @Column(length = 40, nullable = false)
     private String tituloRecomendacion;
@@ -19,16 +19,26 @@ public class Recomendacion {
     @Column(length = 50)
     private String categoriaRecomendacion;
 
-
     @ManyToOne
     @JoinColumn(name = "idUsuario")
     private User user;
 
-    public Long getIdRecomendacion() {
+    public Recomendacion() {
+    }
+
+    public Recomendacion(int idRecomendacion, String tituloRecomendacion, String descripcionRecomendacion, String categoriaRecomendacion, User user) {
+        this.idRecomendacion = idRecomendacion;
+        this.tituloRecomendacion = tituloRecomendacion;
+        this.descripcionRecomendacion = descripcionRecomendacion;
+        this.categoriaRecomendacion = categoriaRecomendacion;
+        this.user = user;
+    }
+
+    public int getIdRecomendacion() {
         return idRecomendacion;
     }
 
-    public void setIdRecomendacion(Long idRecomendacion) {
+    public void setIdRecomendacion(int idRecomendacion) {
         this.idRecomendacion = idRecomendacion;
     }
 

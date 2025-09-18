@@ -1,32 +1,59 @@
 package pe.edu.upc.backendgrupo1.dtos;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import pe.edu.upc.backendgrupo1.entities.User;
+
 public class RecomendacionDTO {
 
-    private Long idRecomendacion;
-    private String titulo;
-    private String descripcion;
+    private int idRecomendacion;
 
-    public Long getIdRecomendacion() {
+    private String tituloRecomendacion;
+
+    private String descripcionRecomendacion;
+
+    private String categoriaRecomendacion;
+
+    private User user;
+
+    public int getIdRecomendacion() {
         return idRecomendacion;
     }
 
-    public void setIdRecomendacion(Long idRecomendacion) {
+    public void setIdRecomendacion(int idRecomendacion) {
         this.idRecomendacion = idRecomendacion;
     }
 
-    public String getTitulo() {
-        return titulo;
+    public String getTituloRecomendacion() {
+        return tituloRecomendacion;
     }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
+    public void setTituloRecomendacion(String tituloRecomendacion) {
+        this.tituloRecomendacion = tituloRecomendacion;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public String getDescripcionRecomendacion() {
+        return descripcionRecomendacion;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setDescripcionRecomendacion(String descripcionRecomendacion) {
+        this.descripcionRecomendacion = descripcionRecomendacion;
+    }
+
+    public String getCategoriaRecomendacion() {
+        return categoriaRecomendacion;
+    }
+
+    public void setCategoriaRecomendacion(String categoriaRecomendacion) {
+        this.categoriaRecomendacion = categoriaRecomendacion;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
