@@ -4,18 +4,18 @@ import pe.edu.upc.backendgrupo1.entities.User;
 import java.time.LocalDate;
 
 public class LogAccesoDTO {
-    private Long idLogAcceso;
+    private int idLogAcceso;
     private LocalDate fechaAcceso;
-    private String ip;
-    private String navegador;
-    private String sistemaOperativo;
+    private String ipAcceso;
+    private String navegadorAcceso;
+    private String sistemaoperativoAcceso;
     private User user;
 
-    public Long getIdLogAcceso() {
+    public int getIdLogAcceso() {
         return idLogAcceso;
     }
 
-    public void setIdLogAcceso(Long idLogAcceso) {
+    public void setIdLogAcceso(int idLogAcceso) {
         this.idLogAcceso = idLogAcceso;
     }
 
@@ -27,28 +27,28 @@ public class LogAccesoDTO {
         this.fechaAcceso = fechaAcceso;
     }
 
-    public String getIp() {
-        return ip;
+    public String getIpAcceso() {
+        return ipAcceso;
     }
 
-    public void setIp(String ip) {
-        this.ip = ip;
+    public void setIpAcceso(String ipAcceso) {
+        this.ipAcceso = ipAcceso;
     }
 
-    public String getNavegador() {
-        return navegador;
+    public String getNavegadorAcceso() {
+        return navegadorAcceso;
     }
 
-    public void setNavegador(String navegador) {
-        this.navegador = navegador;
+    public void setNavegadorAcceso(String navegadorAcceso) {
+        this.navegadorAcceso = navegadorAcceso;
     }
 
-    public String getSistemaOperativo() {
-        return sistemaOperativo;
+    public String getSistemaoperativoAcceso() {
+        return sistemaoperativoAcceso;
     }
 
-    public void setSistemaOperativo(String sistemaOperativo) {
-        this.sistemaOperativo = sistemaOperativo;
+    public void setSistemaoperativoAcceso(String sistemaoperativoAcceso) {
+        this.sistemaoperativoAcceso = sistemaoperativoAcceso;
     }
 
     public User getUser() {
