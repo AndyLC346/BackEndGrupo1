@@ -1,6 +1,5 @@
 package pe.edu.upc.backendgrupo1.dtos;
 
-
 public class RolDTO {
     private int idRol;
     private String nombreRol;

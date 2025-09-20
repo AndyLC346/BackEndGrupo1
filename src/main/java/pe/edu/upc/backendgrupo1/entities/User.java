@@ -10,7 +10,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idUser;
+    private int idUser;
 
     @Column(name="username", nullable=false, length=30, unique = true)
     private String username;
@@ -40,7 +40,7 @@ public class User {
     public User() {
     }
 
-    public User(Integer idUser, String username, String password, boolean enabled, String nombres, String apellidos, String emailUser, String telefonoUser, Rol rol) {
+    public User(int idUser, String username, String password, boolean enabled, String nombres, String apellidos, String emailUser, String telefonoUser, Rol rol) {
         this.idUser = idUser;
         this.username = username;
         this.password = password;
@@ -52,11 +52,11 @@ public class User {
         this.rol = rol;
     }
 
-    public Integer getIdUser() {
+    public int getIdUser() {
         return idUser;
     }
 
-    public void setIdUser(Integer idUser) {
+    public void setIdUser(int idUser) {
         this.idUser = idUser;
     }
 

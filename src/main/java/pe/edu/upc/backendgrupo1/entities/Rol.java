@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name="rol")
+@Table(name="roles")
 public class Rol {
 
     @Id
