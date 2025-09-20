@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping(name = "/recomendaciones")
+@RequestMapping("/recomendaciones")
 public class RecomendacionController {
 
     @Autowired

@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping(name = "/roles")
+@RequestMapping("/roles")
 public class RolController {
     @Autowired
     private IRolService roS;
@@ -31,17 +31,17 @@ public class RolController {
         ModelMapper m = new ModelMapper();
         Rol r = m.map(dto, Rol.class);
         roS.insert(r);
-        return ResponseEntity.status(HttpStatus.CREATED).body("Recomendacion registrada correctamente");
+        return ResponseEntity.status(HttpStatus.CREATED).body("Rol registrado correctamente");
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> eliminar(@PathVariable("id") Integer id) {
         Rol rol = roS.listId(id);
         if (rol == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("La recomendacion con el id " + id + " no existe");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("El Rol con el id " + id + " no existe");
         }
         roS.delete(id);
-        return ResponseEntity.ok("La recomendacion con el id " + id + " ha sido eliminado correctamente");
+        return ResponseEntity.ok("El rol con el id " + id + " ha sido eliminado correctamente");
     }
 
     @PutMapping
@@ -51,10 +51,10 @@ public class RolController {
         if (roS.listId(rol.getIdRol()) == null) {
             return ResponseEntity
                     .status(HttpStatus.NOT_FOUND)
-                    .body("La recomendacion con el ID: " + rol.getIdRol() + " no existe");
+                    .body("El rol con el ID: " + rol.getIdRol() + " no existe");
         }
         roS.update(rol);
-        return ResponseEntity.ok("Recomendacion actualizada correctamente");
+        return ResponseEntity.ok("Rol actualizada correctamente");
     }
 
     @GetMapping("/{id}")
@@ -63,7 +63,7 @@ public class RolController {
         if (rol == null) {
             return ResponseEntity
                     .status(HttpStatus.NOT_FOUND)
-                    .body("No existe el registro de la recomendacion con el ID: " + id);
+                    .body("No existe el registro del rol con el ID: " + id);
         }
         ModelMapper m = new ModelMapper();
         RolDTO dto = m.map(rol, RolDTO.class);
