@@ -1,8 +1,5 @@
 package pe.edu.upc.backendgrupo1.dtos;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import pe.edu.upc.backendgrupo1.entities.User;
 
 public class RecomendacionDTO {
@@ -15,7 +12,7 @@ public class RecomendacionDTO {
 
     private String categoriaRecomendacion;
 
-    private User user;
+    private User usuario;
 
     public int getIdRecomendacion() {
         return idRecomendacion;
@@ -49,11 +46,11 @@ public class RecomendacionDTO {
         this.categoriaRecomendacion = categoriaRecomendacion;
     }
 
-    public User getUser() {
-        return user;
+    public User getUsuario() {
+        return usuario;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUsuario(User usuario) {
+        this.usuario = usuario;
     }
 }

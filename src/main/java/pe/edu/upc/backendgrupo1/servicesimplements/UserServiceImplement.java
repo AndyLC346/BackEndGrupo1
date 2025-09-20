@@ -30,13 +30,7 @@ public class UserServiceImplement implements IUserService {
     }
 
     @Override
-    public void update(User user) {
-        if (uR.existsById(user.getIdUser())) {
-            uR.save(user);
-        } else {
-            throw new RuntimeException("El usuario con el ID " + user.getIdUser() + " no existe");
-        }
-    }
+    public void update(User user) {uR.save(user);}
 
     @Override
     public User listId(int id) {

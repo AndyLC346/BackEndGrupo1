@@ -13,10 +13,10 @@ public class Recomendacion {
     @Column(length = 40, nullable = false)
     private String tituloRecomendacion;
 
-    @Column(length = 200)
+    @Column(length = 200, nullable = false)
     private String descripcionRecomendacion;
 
-    @Column(length = 50)
+    @Column(length = 50, nullable = false)
     private String categoriaRecomendacion;
 
     @ManyToOne

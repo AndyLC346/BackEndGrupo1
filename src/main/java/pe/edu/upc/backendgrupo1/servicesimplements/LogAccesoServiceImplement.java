@@ -12,35 +12,27 @@ import java.util.List;
 public class LogAccesoServiceImplement implements ILogAccesoService {
 
     @Autowired
-    private ILogAccesoRepository laR;
+    private ILogAccesoRepository loR;
 
     @Override
     public List<LogAcceso> list() {
-        return laR.findAll();
+        return loR.findAll();
     }
 
     @Override
-    public void insert(LogAcceso la) {
-        laR.save(la);
+    public void insert(LogAcceso logAcceso) {
+        loR.save(logAcceso);
     }
 
     @Override
-    public void update(LogAcceso la) {
-        if (laR.existsById(la.getIdLogAcceso())) {
-            laR.save(la);
-        } else {
-            throw new RuntimeException("El logacceso con el ID " + la.getIdLogAcceso() + " no existe");
-        }
+    public void delete(int id) {
+        loR.deleteById(id);
     }
 
     @Override
-    public void delete(Long id) {
-        laR.deleteById(id);
-    }
+    public void update(LogAcceso logAcceso) {loR.save(logAcceso);}
 
     @Override
-    public LogAcceso searchId(Long id) {
-        return laR.findById(id).orElse(null);
-    }
+    public LogAcceso listId(int id) {return loR.findById(id).orElse(null);}
 
 }

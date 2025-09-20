@@ -9,7 +9,7 @@ public class LogAccesoDTO {
     private String ipAcceso;
     private String navegadorAcceso;
     private String sistemaoperativoAcceso;
-    private User user;
+    private User usuario;
 
     public int getIdLogAcceso() {
         return idLogAcceso;
@@ -52,10 +52,10 @@ public class LogAccesoDTO {
     }
 
     public User getUser() {
-        return user;
+        return usuario;
     }
 
     public void setUser(User user) {
-        this.user = user;
+        this.usuario = user;
     }
 }

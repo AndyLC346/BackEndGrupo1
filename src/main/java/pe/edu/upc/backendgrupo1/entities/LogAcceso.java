@@ -4,42 +4,46 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "log_acceso")
+@Table(name = "logacceso")
 public class LogAcceso {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idLogAcceso;
+    private int idLogAcceso;
 
+    @Column(nullable = false)
     private LocalDate fechaAcceso;
 
-    private String ip;
+    @Column(length = 40, nullable = false)
+    private String ipAcceso;
 
-    private String navegador;
+    @Column(length = 50, nullable = false)
+    private String navegadorAcceso;
 
-    private String sistemaOperativo;
+    @Column(length = 50, nullable = false)
+    private String sistemaoperativoAcesso;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    @JoinColumn(name = "idUsuario", nullable = false)
+    private User usuario;
 
     public LogAcceso() {
     }
 
-    public LogAcceso(Long idLogAcceso, LocalDate fechaAcceso, String ip, String navegador, String sistemaOperativo, User user) {
+    public LogAcceso(int idLogAcceso, LocalDate fechaAcceso, String ipAcceso, String navegadorAcceso, String sistemaoperativoAcesso, User usuario) {
         this.idLogAcceso = idLogAcceso;
         this.fechaAcceso = fechaAcceso;
-        this.ip = ip;
-        this.navegador = navegador;
-        this.sistemaOperativo = sistemaOperativo;
-        this.user = user;
+        this.ipAcceso = ipAcceso;
+        this.navegadorAcceso = navegadorAcceso;
+        this.sistemaoperativoAcesso = sistemaoperativoAcesso;
+        this.usuario = usuario;
     }
 
-    public Long getIdLogAcceso() {
+    public int getIdLogAcceso() {
         return idLogAcceso;
     }
 
-    public void setIdLogAcceso(Long idLogAcceso) {
+    public void setIdLogAcceso(int idLogAcceso) {
         this.idLogAcceso = idLogAcceso;
     }
 
@@ -51,35 +55,35 @@ public class LogAcceso {
         this.fechaAcceso = fechaAcceso;
     }
 
-    public String getIp() {
-        return ip;
+    public String getIpAcceso() {
+        return ipAcceso;
     }
 
-    public void setIp(String ip) {
-        this.ip = ip;
+    public void setIpAcceso(String ipAcceso) {
+        this.ipAcceso = ipAcceso;
     }
 
-    public String getNavegador() {
-        return navegador;
+    public String getNavegadorAcceso() {
+        return navegadorAcceso;
     }
 
-    public void setNavegador(String navegador) {
-        this.navegador = navegador;
+    public void setNavegadorAcceso(String navegadorAcceso) {
+        this.navegadorAcceso = navegadorAcceso;
     }
 
-    public String getSistemaOperativo() {
-        return sistemaOperativo;
+    public String getSistemaoperativoAcesso() {
+        return sistemaoperativoAcesso;
     }
 
-    public void setSistemaOperativo(String sistemaOperativo) {
-        this.sistemaOperativo = sistemaOperativo;
+    public void setSistemaoperativoAcesso(String sistemaoperativoAcesso) {
+        this.sistemaoperativoAcesso = sistemaoperativoAcesso;
     }
 
-    public User getUser() {
-        return user;
+    public User getUsuario() {
+        return usuario;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUsuario(User usuario) {
+        this.usuario = usuario;
     }
 }

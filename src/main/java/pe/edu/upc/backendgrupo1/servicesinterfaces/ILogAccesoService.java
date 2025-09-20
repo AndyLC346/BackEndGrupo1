@@ -5,8 +5,8 @@ import java.util.List;
 
 public interface ILogAccesoService {
     public List<LogAcceso> list();
-    public void insert(LogAcceso la);
-    public void update(LogAcceso la);
-    public void delete(Long id);
-    public LogAcceso searchId(Long id);
+    public void insert(LogAcceso logAcceso);
+    public void delete(int id);
+    public void update(LogAcceso logAcceso);
+    public LogAcceso listId(int id);
 }
