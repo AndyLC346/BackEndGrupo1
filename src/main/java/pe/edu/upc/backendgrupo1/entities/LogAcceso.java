@@ -4,23 +4,23 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "logacceso")
+@Table(name = "logaccesos")
 public class LogAcceso {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idLogAcceso;
 
-    @Column(nullable = false)
+    @Column(name="fechaAcceso", nullable = false)
     private LocalDate fechaAcceso;
 
-    @Column(length = 40, nullable = false)
+    @Column(name="ipAcceso", length = 40, nullable = false)
     private String ipAcceso;
 
-    @Column(length = 50, nullable = false)
+    @Column(name="navegadorAcceso", length = 50, nullable = false)
     private String navegadorAcceso;
 
-    @Column(length = 50, nullable = false)
+    @Column(name="sistemaoperativoAcesso", length = 50, nullable = false)
     private String sistemaoperativoAcesso;
 
     @ManyToOne

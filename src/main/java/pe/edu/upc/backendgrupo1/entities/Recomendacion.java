@@ -10,13 +10,13 @@ public class Recomendacion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idRecomendacion;
 
-    @Column(length = 40, nullable = false)
+    @Column(name="tituloRecomendacion",length = 40, nullable = false)
     private String tituloRecomendacion;
 
-    @Column(length = 200, nullable = false)
+    @Column(name="descripcionRecomendacion",length = 200, nullable = false)
     private String descripcionRecomendacion;
 
-    @Column(length = 50, nullable = false)
+    @Column(name="categoriaRecomendacion",length = 50, nullable = false)
     private String categoriaRecomendacion;
 
     @ManyToOne

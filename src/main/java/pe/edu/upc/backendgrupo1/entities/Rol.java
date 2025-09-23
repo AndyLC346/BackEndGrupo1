@@ -10,10 +10,10 @@ public class Rol {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idRol;
 
-    @Column(length = 50, nullable = false)
+    @Column(name="nombreRol",length = 50, nullable = false)
     private String nombreRol;
 
-    @Column(length = 100, nullable = false)
+    @Column(name="descripcionRol",length = 100, nullable = false)
     private String descripcionRol;
 
     public Rol() {
