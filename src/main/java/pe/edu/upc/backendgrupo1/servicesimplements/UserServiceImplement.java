@@ -28,12 +28,8 @@ public class UserServiceImplement implements IUserService {
     }
 
     @Override
-    public void update(User user) {
-        uR.save(user);
-    }
+    public void update(User user) {uR.save(user);}
 
     @Override
-    public User listId(int id) {
-        return uR.findById(id).orElse(null);
-    }
+    public User listId(int id) { return uR.findById(id).orElse(null); }
 }

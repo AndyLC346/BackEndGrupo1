@@ -1,20 +1,18 @@
 package pe.edu.upc.backendgrupo1.dtos;
+
+import pe.edu.upc.backendgrupo1.entities.Rol;
+
 public class UserDTO {
+
     private int idUser;
-
     private String username;
-
     private String password;
-
     private boolean enabled;
-
     private String nombres;
-
     private String apellidos;
-
     private String emailUser;
-
     private String telefonoUser;
+    public Rol rol;
 
     public int getIdUser() {
         return idUser;
@@ -78,5 +76,13 @@ public class UserDTO {
 
     public void setTelefonoUser(String telefonoUser) {
         this.telefonoUser = telefonoUser;
+    }
+
+    public Rol getRol() {
+        return rol;
+    }
+
+    public void setRol(Rol rol) {
+        this.rol = rol;
     }
 }
