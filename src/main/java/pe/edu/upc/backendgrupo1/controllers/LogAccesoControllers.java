@@ -46,7 +46,7 @@ public class LogAccesoControllers {
     }
 
     @PutMapping
-    public ResponseEntity<String> modificar(@RequestBody UserDTO dto) {
+    public ResponseEntity<String> modificar(@RequestBody LogAccesoDTO dto) {
         ModelMapper m = new ModelMapper();
         LogAcceso logAcceso = m.map(dto, LogAcceso.class);
         if (loS.listId(logAcceso.getIdLogAcceso()) == null) {
