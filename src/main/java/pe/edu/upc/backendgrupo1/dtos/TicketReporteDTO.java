@@ -1,6 +1,6 @@
 package pe.edu.upc.backendgrupo1.dtos;
 
-import pe.edu.upc.backendgrupo1.entities.User;
+import pe.edu.upc.backendgrupo1.entities.Users;
 
 import java.time.LocalDate;
 
@@ -11,7 +11,7 @@ public class TicketReporteDTO {
     private String descripcionSoporte;
     private String estadoSoporte;
     private LocalDate fechacreacionSoporte;
-    private User usuario;
+    private Users usuario;
 
     public int getIdSoporte() {
         return idSoporte;
@@ -61,11 +61,11 @@ public class TicketReporteDTO {
         this.fechacreacionSoporte = fechacreacionSoporte;
     }
 
-    public User getUsuario() {
+    public Users getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(User usuario) {
+    public void setUsuario(Users usuario) {
         this.usuario = usuario;
     }
 }

@@ -1,6 +1,6 @@
 package pe.edu.upc.backendgrupo1.dtos;
 
-import pe.edu.upc.backendgrupo1.entities.User;
+import pe.edu.upc.backendgrupo1.entities.Users;
 import java.time.LocalDate;
 
 public class LogAccesoDTO {
@@ -9,7 +9,7 @@ public class LogAccesoDTO {
     private String ipAcceso;
     private String navegadorAcceso;
     private String sistemaoperativoAcceso;
-    private User usuario;
+    private Users usuario;
 
     public int getIdLogAcceso() {
         return idLogAcceso;
@@ -51,11 +51,11 @@ public class LogAccesoDTO {
         this.sistemaoperativoAcceso = sistemaoperativoAcceso;
     }
 
-    public User getUser() {
+    public Users getUser() {
         return usuario;
     }
 
-    public void setUser(User user) {
+    public void setUser(Users user) {
         this.usuario = user;
     }
 }

@@ -23,12 +23,12 @@ public class Archivos {
 
     @ManyToOne
     @JoinColumn(name="idUser")
-    private User usuario;
+    private Users usuario;
 
     public Archivos() {
     }
 
-    public Archivos(int idArchivos, String nombreArchivo, String tipoArchivo, LocalDate fechaArchivo, User usuario) {
+    public Archivos(int idArchivos, String nombreArchivo, String tipoArchivo, LocalDate fechaArchivo, Users usuario) {
         this.idArchivos = idArchivos;
         this.nombreArchivo = nombreArchivo;
         this.tipoArchivo = tipoArchivo;
@@ -68,11 +68,11 @@ public class Archivos {
         this.fechaArchivo = fechaArchivo;
     }
 
-    public User getUsuario() {
+    public Users getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(User usuario) {
+    public void setUsuario(Users usuario) {
         this.usuario = usuario;
     }
 }

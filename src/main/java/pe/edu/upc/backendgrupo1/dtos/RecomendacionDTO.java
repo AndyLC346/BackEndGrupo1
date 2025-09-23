@@ -1,6 +1,6 @@
 package pe.edu.upc.backendgrupo1.dtos;
 
-import pe.edu.upc.backendgrupo1.entities.User;
+import pe.edu.upc.backendgrupo1.entities.Users;
 
 public class RecomendacionDTO {
 
@@ -12,7 +12,7 @@ public class RecomendacionDTO {
 
     private String categoriaRecomendacion;
 
-    private User usuario;
+    private Users usuario;
 
     public int getIdRecomendacion() {
         return idRecomendacion;
@@ -46,11 +46,11 @@ public class RecomendacionDTO {
         this.categoriaRecomendacion = categoriaRecomendacion;
     }
 
-    public User getUsuario() {
+    public Users getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(User usuario) {
+    public void setUsuario(Users usuario) {
         this.usuario = usuario;
     }
 }

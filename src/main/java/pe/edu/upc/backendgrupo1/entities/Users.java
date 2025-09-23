@@ -2,13 +2,16 @@ package pe.edu.upc.backendgrupo1.entities;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
+import java.util.List;
+
 @Entity
 @Table(name="users")
-public class User {
+public class Users implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idUser;
+    private Long idUser;
 
     @Column(name="username", nullable=false, length=30, unique = true)
     private String username;
@@ -17,7 +20,7 @@ public class User {
     private String password;
 
     @Column(name="enabled", nullable=false)
-    private boolean enabled;
+    private Boolean enabled;
 
     @Column(name="nombres", nullable=false, length=50)
     private String nombres;
@@ -31,14 +34,14 @@ public class User {
     @Column(name="telefonoUser", nullable=false, length=9)
     private String telefonoUser;
 
-    @ManyToOne
-    @JoinColumn(name = "idRol")
-    private Rol rol;
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private List<Role> roles;
 
-    public User() {
+    public Users() {
     }
 
-    public User(int idUser, String username, String password, boolean enabled, String nombres, String apellidos, String emailUser, String telefonoUser, Rol rol) {
+    public Users(Long idUser, String username, String password, Boolean enabled, String nombres, String apellidos, String emailUser, String telefonoUser, List<Role> roles) {
         this.idUser = idUser;
         this.username = username;
         this.password = password;
@@ -47,14 +50,14 @@ public class User {
         this.apellidos = apellidos;
         this.emailUser = emailUser;
         this.telefonoUser = telefonoUser;
-        this.rol = rol;
+        this.roles = roles;
     }
 
-    public int getIdUser() {
+    public Long getIdUser() {
         return idUser;
     }
 
-    public void setIdUser(int idUser) {
+    public void setIdUser(Long idUser) {
         this.idUser = idUser;
     }
 
@@ -74,11 +77,11 @@ public class User {
         this.password = password;
     }
 
-    public boolean isEnabled() {
+    public Boolean getEnabled() {
         return enabled;
     }
 
-    public void setEnabled(boolean enabled) {
+    public void setEnabled(Boolean enabled) {
         this.enabled = enabled;
     }
 
@@ -114,11 +117,11 @@ public class User {
         this.telefonoUser = telefonoUser;
     }
 
-    public Rol getRol() {
-        return rol;
+    public List<Role> getRoles() {
+        return roles;
     }
 
-    public void setRol(Rol rol) {
-        this.rol = rol;
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 }

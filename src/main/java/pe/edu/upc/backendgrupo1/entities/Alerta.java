@@ -25,12 +25,12 @@ public class Alerta {
 
     @ManyToOne
     @JoinColumn(name="idUser")
-    private User usuario;
+    private Users usuario;
 
     public Alerta() {
     }
 
-    public Alerta(int idAlerta, String mensajeAlerta, String tipoAlerta, LocalDate fechayhoraAlerta, boolean vistoAlerta, User usuario) {
+    public Alerta(int idAlerta, String mensajeAlerta, String tipoAlerta, LocalDate fechayhoraAlerta, boolean vistoAlerta, Users usuario) {
         this.idAlerta = idAlerta;
         this.mensajeAlerta = mensajeAlerta;
         this.tipoAlerta = tipoAlerta;
@@ -79,11 +79,11 @@ public class Alerta {
         this.vistoAlerta = vistoAlerta;
     }
 
-    public User getUsuario() {
+    public Users getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(User usuario) {
+    public void setUsuario(Users usuario) {
         this.usuario = usuario;
     }
 }

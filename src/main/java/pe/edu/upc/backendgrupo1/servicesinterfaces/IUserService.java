@@ -1,14 +1,14 @@
 package pe.edu.upc.backendgrupo1.servicesinterfaces;
 
-import pe.edu.upc.backendgrupo1.entities.User;
+import pe.edu.upc.backendgrupo1.entities.Users;
 
 import java.util.List;
 
 public interface IUserService {
 
-    public List<User> list();
-    public void insert(User user);
-    public void delete(int id);
-    public void update(User user);
-    public User listId(int id);
+    public List<Users> list();
+    public void insert(Users user);
+    public void delete(long id);
+    public void update(Users user);
+    public Users listId(long id);
 }

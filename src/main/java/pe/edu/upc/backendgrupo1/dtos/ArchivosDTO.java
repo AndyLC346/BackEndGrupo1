@@ -1,6 +1,6 @@
 package pe.edu.upc.backendgrupo1.dtos;
 
-import pe.edu.upc.backendgrupo1.entities.User;
+import pe.edu.upc.backendgrupo1.entities.Users;
 
 import java.time.LocalDate;
 
@@ -10,7 +10,7 @@ public class ArchivosDTO {
     private String nombreArchivo;
     private String tipoArchivo;
     private LocalDate fechaArchivo;
-    private User usuario;
+    private Users usuario;
 
     public int getIdArchivos() {
         return idArchivos;
@@ -44,11 +44,11 @@ public class ArchivosDTO {
         this.fechaArchivo = fechaArchivo;
     }
 
-    public User getUsuario() {
+    public Users getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(User usuario) {
+    public void setUsuario(Users usuario) {
         this.usuario = usuario;
     }
 }

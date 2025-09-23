@@ -23,13 +23,13 @@ public class TicketReporte {
 
     @ManyToOne
     @JoinColumn(name="idUser")
-    private User usuario;
+    private Users usuario;
 
 
     public TicketReporte() {
     }
 
-    public TicketReporte(int idSoporte, String tipoSoporte, String asuntoSoporte, String descripcionSoporte, String estadoSoporte, LocalDate fechacreacionSoporte, User usuario) {
+    public TicketReporte(int idSoporte, String tipoSoporte, String asuntoSoporte, String descripcionSoporte, String estadoSoporte, LocalDate fechacreacionSoporte, Users usuario) {
         this.idSoporte = idSoporte;
         this.tipoSoporte = tipoSoporte;
         this.asuntoSoporte = asuntoSoporte;
@@ -87,11 +87,11 @@ public class TicketReporte {
         this.fechacreacionSoporte = fechacreacionSoporte;
     }
 
-    public User getUsuario() {
+    public Users getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(User usuario) {
+    public void setUsuario(Users usuario) {
         this.usuario = usuario;
     }
 }

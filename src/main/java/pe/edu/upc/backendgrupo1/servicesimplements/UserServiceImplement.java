@@ -2,7 +2,7 @@ package pe.edu.upc.backendgrupo1.servicesimplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pe.edu.upc.backendgrupo1.entities.User;
+import pe.edu.upc.backendgrupo1.entities.Users;
 import pe.edu.upc.backendgrupo1.repositories.IUserRepository;
 import pe.edu.upc.backendgrupo1.servicesinterfaces.IUserService;
 import java.util.List;
@@ -13,23 +13,23 @@ public class UserServiceImplement implements IUserService {
     private IUserRepository uR;
 
     @Override
-    public List<User> list() {
+    public List<Users> list() {
         return uR.findAll();
     }
 
     @Override
-    public void insert(User user) {
+    public void insert(Users user) {
         uR.save(user);
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(long id) {
         uR.deleteById(id);
     }
 
     @Override
-    public void update(User user) {uR.save(user);}
+    public void update(Users user) {uR.save(user);}
 
     @Override
-    public User listId(int id) { return uR.findById(id).orElse(null); }
+    public Users listId(long id) { return uR.findById(id).orElse(null); }
 }

@@ -21,12 +21,12 @@ public class Recomendacion {
 
     @ManyToOne
     @JoinColumn(name = "idUsuario")
-    private User usuario;
+    private Users usuario;
 
     public Recomendacion() {
     }
 
-    public Recomendacion(int idRecomendacion, String tituloRecomendacion, String descripcionRecomendacion, String categoriaRecomendacion, User usuario) {
+    public Recomendacion(int idRecomendacion, String tituloRecomendacion, String descripcionRecomendacion, String categoriaRecomendacion, Users usuario) {
         this.idRecomendacion = idRecomendacion;
         this.tituloRecomendacion = tituloRecomendacion;
         this.descripcionRecomendacion = descripcionRecomendacion;
@@ -66,11 +66,11 @@ public class Recomendacion {
         this.categoriaRecomendacion = categoriaRecomendacion;
     }
 
-    public User getUsuario() {
+    public Users getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(User usuario) {
+    public void setUsuario(Users usuario) {
         this.usuario = usuario;
     }
 }

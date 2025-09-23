@@ -5,7 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.backendgrupo1.dtos.UserDTO;
-import pe.edu.upc.backendgrupo1.entities.User;
+import pe.edu.upc.backendgrupo1.dtos.UserDTO2;
+import pe.edu.upc.backendgrupo1.entities.Users;
 import pe.edu.upc.backendgrupo1.servicesinterfaces.IUserService;
 
 import java.util.List;
@@ -18,24 +19,24 @@ public class UserController {
     private IUserService uS;
 
     @GetMapping
-    public List<UserDTO> listar() {
+    public List<UserDTO2> listar() {
         return uS.list().stream().map(x -> {
             ModelMapper m = new ModelMapper();
-            return m.map(x, UserDTO.class);
+            return m.map(x, UserDTO2.class);
         }).collect(Collectors.toList());
     }
 
     @PostMapping
     public ResponseEntity<String> insertar(@RequestBody UserDTO dto) {
         ModelMapper m = new ModelMapper();
-        User u = m.map(dto, User.class);
+        Users u = m.map(dto, Users.class);
         uS.insert(u);
         return ResponseEntity.status(HttpStatus.CREATED).body("Usuario registrado correctamente");
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> eliminar(@PathVariable("id") Integer id) {
-        User user = uS.listId(id);
+    public ResponseEntity<String> eliminar(@PathVariable("id") Long id) {
+        Users user = uS.listId(id);
         if(user == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("El usuario con el id " + id + " no existe");
         }
@@ -46,7 +47,7 @@ public class UserController {
     @PutMapping
     public ResponseEntity<String> modificar(@RequestBody UserDTO dto) {
         ModelMapper m = new ModelMapper();
-        User user = m.map(dto, User.class);
+        Users user = m.map(dto, Users.class);
         if (uS.listId(user.getIdUser()) == null) {
             return ResponseEntity
                     .status(HttpStatus.NOT_FOUND)
@@ -57,15 +58,15 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> listarID(@PathVariable("id") Integer id) {
-        User user = uS.listId(id);
+    public ResponseEntity<?> listarID(@PathVariable("id") Long id) {
+        Users user = uS.listId(id);
         if(user == null) {
             return ResponseEntity
                     .status(HttpStatus.NOT_FOUND)
                     .body("No existe el registro del usuario con el ID: " + id);
         }
         ModelMapper m=new ModelMapper();
-        UserDTO dto = m.map(user, UserDTO.class);
+        UserDTO2 dto = m.map(user, UserDTO2.class);
         return ResponseEntity.ok(dto);
     }
 

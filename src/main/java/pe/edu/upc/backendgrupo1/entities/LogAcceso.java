@@ -25,12 +25,12 @@ public class LogAcceso {
 
     @ManyToOne
     @JoinColumn(name = "idUsuario", nullable = false)
-    private User usuario;
+    private Users usuario;
 
     public LogAcceso() {
     }
 
-    public LogAcceso(int idLogAcceso, LocalDate fechaAcceso, String ipAcceso, String navegadorAcceso, String sistemaoperativoAcesso, User usuario) {
+    public LogAcceso(int idLogAcceso, LocalDate fechaAcceso, String ipAcceso, String navegadorAcceso, String sistemaoperativoAcesso, Users usuario) {
         this.idLogAcceso = idLogAcceso;
         this.fechaAcceso = fechaAcceso;
         this.ipAcceso = ipAcceso;
@@ -79,11 +79,11 @@ public class LogAcceso {
         this.sistemaoperativoAcesso = sistemaoperativoAcesso;
     }
 
-    public User getUsuario() {
+    public Users getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(User usuario) {
+    public void setUsuario(Users usuario) {
         this.usuario = usuario;
     }
 }

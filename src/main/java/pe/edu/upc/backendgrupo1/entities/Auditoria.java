@@ -22,14 +22,14 @@ public class Auditoria {
 
     @ManyToOne
     @JoinColumn(name="idUser")
-    private User usuario;
+    private Users usuario;
 
 
 
     public Auditoria() {
     }
 
-    public Auditoria(int idAuditoria, LocalDateTime fechaAuditoria, String tipoAuditoria, String descripcion, User usuario) {
+    public Auditoria(int idAuditoria, LocalDateTime fechaAuditoria, String tipoAuditoria, String descripcion, Users usuario) {
         this.idAuditoria = idAuditoria;
         this.fechaAuditoria = fechaAuditoria;
         this.tipoAuditoria = tipoAuditoria;
@@ -69,11 +69,11 @@ public class Auditoria {
         this.descripcion = descripcion;
     }
 
-    public User getUsuario() {
+    public Users getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(User usuario) {
+    public void setUsuario(Users usuario) {
         this.usuario = usuario;
     }
 }

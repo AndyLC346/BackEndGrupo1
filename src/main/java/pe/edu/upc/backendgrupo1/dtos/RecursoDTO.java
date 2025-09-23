@@ -1,6 +1,6 @@
 package pe.edu.upc.backendgrupo1.dtos;
 
-import pe.edu.upc.backendgrupo1.entities.User;
+import pe.edu.upc.backendgrupo1.entities.Users;
 
 public class RecursoDTO {
     private int idRecurso;
@@ -9,7 +9,7 @@ public class RecursoDTO {
     private String tipoRecurso;
     private String nivelRecurso;
     private String urlRecurso;
-    private User usuario;
+    private Users usuario;
 
     public int getIdRecurso() {
         return idRecurso;
@@ -59,11 +59,11 @@ public class RecursoDTO {
         this.urlRecurso = urlRecurso;
     }
 
-    public User getUsuario() {
+    public Users getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(User usuario) {
+    public void setUsuario(Users usuario) {
         this.usuario = usuario;
     }
 }

@@ -1,6 +1,6 @@
 package pe.edu.upc.backendgrupo1.dtos;
 
-import pe.edu.upc.backendgrupo1.entities.User;
+import pe.edu.upc.backendgrupo1.entities.Users;
 
 import java.time.LocalDate;
 
@@ -11,7 +11,7 @@ public class CuentaDTO {
     private String nombreCuenta;
     private String estadoCuenta;
     private LocalDate fecharegistroCuenta;
-    private User usuario;
+    private Users usuario;
 
 
 
@@ -55,11 +55,11 @@ public class CuentaDTO {
         this.fecharegistroCuenta = fecharegistroCuenta;
     }
 
-    public User getUsuario() {
+    public Users getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(User usuario) {
+    public void setUsuario(Users usuario) {
         this.usuario = usuario;
     }
 }

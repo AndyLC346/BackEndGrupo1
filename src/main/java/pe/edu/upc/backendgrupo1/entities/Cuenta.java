@@ -25,7 +25,7 @@ public class Cuenta {
 
     @ManyToOne
     @JoinColumn(name="idUser")
-    private User usuario;
+    private Users usuario;
 
 
 
@@ -69,18 +69,18 @@ public class Cuenta {
         this.fecharegistroCuenta = fecharegistroCuenta;
     }
 
-    public User getUsuario() {
+    public Users getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(User usuario) {
+    public void setUsuario(Users usuario) {
         this.usuario = usuario;
     }
 
     public Cuenta() {
     }
 
-    public Cuenta(int idCuenta, String servicioCuenta, String nombreCuenta, String estadoCuenta, LocalDate fecharegistroCuenta, User usuario) {
+    public Cuenta(int idCuenta, String servicioCuenta, String nombreCuenta, String estadoCuenta, LocalDate fecharegistroCuenta, Users usuario) {
         this.idCuenta = idCuenta;
         this.servicioCuenta = servicioCuenta;
         this.nombreCuenta = nombreCuenta;
