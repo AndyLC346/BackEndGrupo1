@@ -6,12 +6,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.backendgrupo1.dtos.RespuestaSoporteDTO;
-import pe.edu.upc.backendgrupo1.dtos.TicketReporteDTO;
 import pe.edu.upc.backendgrupo1.entities.RespuestaSoporte;
-import pe.edu.upc.backendgrupo1.entities.TicketReporte;
-import pe.edu.upc.backendgrupo1.repositories.IRespuestaSoporteRepository;
 import pe.edu.upc.backendgrupo1.servicesinterfaces.IRespuestaSoporteService;
-import pe.edu.upc.backendgrupo1.servicesinterfaces.ITicketReporteService;
 
 import java.util.List;
 import java.util.stream.Collectors;

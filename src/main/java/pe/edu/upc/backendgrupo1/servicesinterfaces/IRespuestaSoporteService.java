@@ -2,7 +2,6 @@ package pe.edu.upc.backendgrupo1.servicesinterfaces;
 
 import pe.edu.upc.backendgrupo1.entities.RespuestaSoporte;
 
-import java.util.Collection;
 import java.util.List;
 
 public interface IRespuestaSoporteService {

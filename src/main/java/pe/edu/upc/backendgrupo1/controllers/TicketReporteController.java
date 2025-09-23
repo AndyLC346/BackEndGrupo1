@@ -10,7 +10,6 @@ import pe.edu.upc.backendgrupo1.entities.TicketReporte;
 import pe.edu.upc.backendgrupo1.servicesinterfaces.ITicketReporteService;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 @RestController
