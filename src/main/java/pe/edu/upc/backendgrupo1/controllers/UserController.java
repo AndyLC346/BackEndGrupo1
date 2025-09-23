@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/usuarios")
 public class UserController {
     @Autowired
     private IUserService uS;
