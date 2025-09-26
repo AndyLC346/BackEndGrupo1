@@ -2,8 +2,6 @@ package pe.edu.upc.backendgrupo1.dtos;
 
 public class UserDTO {
 
-    private Long idUser;
-
     private String username;
 
     private String password;
@@ -18,13 +16,7 @@ public class UserDTO {
 
     private String telefonoUser;
 
-    public Long getIdUser() {
-        return idUser;
-    }
 
-    public void setIdUser(Long idUser) {
-        this.idUser = idUser;
-    }
 
     public String getUsername() {
         return username;
