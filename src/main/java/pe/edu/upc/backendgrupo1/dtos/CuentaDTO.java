@@ -5,7 +5,7 @@ import pe.edu.upc.backendgrupo1.entities.Users;
 import java.time.LocalDate;
 
 public class CuentaDTO {
-
+  //
     private int idCuenta;
     private String servicioCuenta;
     private String nombreCuenta;
