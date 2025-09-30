@@ -88,7 +88,6 @@ public class CuentaController {
                 dto.setNombreCuenta((String) x[2]);
                 dto.setEstadoCuenta((String) x[3]);
                 dto.setFecharegistroCuenta(java.sql.Date.valueOf(x[4].toString()).toLocalDate());
-                // dto.setUsuario((Users) x[5]); // Opcional: mapear usuario
                 return dto;
             }).collect(Collectors.toList());
 
