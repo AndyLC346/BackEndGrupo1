@@ -6,6 +6,7 @@ import pe.edu.upc.backendgrupo1.entities.Alerta;
 import pe.edu.upc.backendgrupo1.repositories.IAlertaRepository;
 import pe.edu.upc.backendgrupo1.servicesinterfaces.IAlertaService;
 
+import javax.swing.text.StyledEditorKit;
 import java.util.List;
 
 @Service
@@ -37,5 +38,10 @@ public class AlertaServiceImplement implements IAlertaService {
     @Override
     public Alerta listId(int id) {
         return aR.findById(id).orElse(null);
+    }
+
+    @Override
+    public List<Alerta> search(String name) {
+        return aR.buscar(name);
     }
 }

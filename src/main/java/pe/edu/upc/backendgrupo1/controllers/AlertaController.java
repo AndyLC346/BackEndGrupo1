@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.backendgrupo1.dtos.AlertaDTO;
+import pe.edu.upc.backendgrupo1.dtos.AlertaQuery1DTO;
 import pe.edu.upc.backendgrupo1.entities.Alerta;
 import pe.edu.upc.backendgrupo1.servicesinterfaces.IAlertaService;
 import java.util.List;
@@ -68,4 +69,11 @@ public class AlertaController {
         return ResponseEntity.ok(dto);
     }
 
+
+    @GetMapping("/busquedasnombre")
+    public List<AlertaQuery1DTO> buscarNombre(@RequestParam("nombre") String nom) {
+        return aS.search(nom).stream()
+                .map(p -> new ModelMapper().map(p, AlertaQuery1DTO.class))
+                .collect(Collectors.toList());
+    }
 }
