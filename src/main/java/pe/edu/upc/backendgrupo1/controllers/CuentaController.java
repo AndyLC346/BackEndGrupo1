@@ -72,14 +72,13 @@ public class CuentaController {
         CuentaDTO dto = m.map(cuenta, CuentaDTO.class);
         return ResponseEntity.ok(dto);
     }
-    @GetMapping("/activas-usuario")
-    public ResponseEntity<?> filtrarCuentas(
+    @GetMapping("/activas-usuario-fecha")
+    public ResponseEntity<?> cuentasActivasPorUsuario(
             @RequestParam int idUser,
-            @RequestParam String nombre,
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fecha) {
 
         try {
-            List<Object[]> resultados = cS.buscarCuentasFiltradas(idUser, nombre, fecha);
+            List<Object[]> resultados = cS.buscarCuentasPorUsuarioYFecha(idUser, fecha);
 
             List<CuentaDTO> lista = resultados.stream().map(x -> {
                 CuentaDTO dto = new CuentaDTO();
@@ -93,7 +92,7 @@ public class CuentaController {
 
             if (lista.isEmpty()) {
                 return ResponseEntity.status(HttpStatus.OK)
-                        .body("No se encontraron cuentas para los parámetros indicados.");
+                        .body("No se encontraron cuentas activas para este usuario desde la fecha indicada.");
             }
 
             return ResponseEntity.ok(lista);

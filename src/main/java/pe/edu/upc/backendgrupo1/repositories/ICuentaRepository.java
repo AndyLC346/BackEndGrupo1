@@ -15,10 +15,8 @@ public interface ICuentaRepository extends JpaRepository<Cuenta, Integer> {
             "FROM cuentas " +
             "WHERE estado_cuenta = 'ACTIVO' " +
             "AND id_user = :idUser " +
-            "AND LOWER(nombre_cuenta) LIKE CONCAT('%', LOWER(:nombre), '%') " +
-            "AND fecharegistro_cuenta >= :fecha", nativeQuery = true)
-    List<Object[]> buscarCuentasFiltradas(@Param("idUser") int idUser,
-                                          @Param("nombre") String nombre,
-                                          @Param("fecha") LocalDate fecha);
-
+            "AND fecharegistro_cuenta >= :fecha",
+            nativeQuery = true)
+    List<Object[]> buscarCuentasPorUsuarioYFecha(@Param("idUser") int idUser,
+                                                 @Param("fecha") LocalDate fecha);
 }
