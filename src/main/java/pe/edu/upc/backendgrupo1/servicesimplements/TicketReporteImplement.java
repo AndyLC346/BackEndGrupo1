@@ -29,4 +29,8 @@ public class TicketReporteImplement implements ITicketReporteService {
     public List<String[]> TotalTicketsPorUsuario() { return tR.contarTicketsPorUsuario();}
     @Override
     public List<String[]> CantidadRespuestaTicket() { return tR.cantidadRespuestaPorTicket();}
+    @Override
+    public List<TicketReporte> listEstado(String estado) {
+        return tR.findByEstadoSoporte(estado);
+    }
 }

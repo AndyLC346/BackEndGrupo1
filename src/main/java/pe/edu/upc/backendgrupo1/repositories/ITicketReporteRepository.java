@@ -21,5 +21,5 @@ public interface ITicketReporteRepository extends JpaRepository <TicketReporte, 
             "GROUP BY tr.id_soporte, tr.asunto_soporte, tr.estado_soporte, u.username\n" +
             "ORDER BY tr.fechacreacion_soporte DESC;",nativeQuery = true)
     List<String[]>cantidadRespuestaPorTicket();
-    List<TicketReporte> findByEstadoSoporte(String estadoSoporte);
+    List<TicketReporte> findByEstadoSoporte(String estado);
 }

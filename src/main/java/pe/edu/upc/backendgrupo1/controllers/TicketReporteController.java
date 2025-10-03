@@ -95,5 +95,18 @@ public class TicketReporteController {
         TicketReporteDTO dto = m.map(ticketReporte, TicketReporteDTO.class);
         return ResponseEntity.ok(dto);
     }
-
+    @GetMapping("/{estado}")
+    public ResponseEntity<?> listarEstados(@PathVariable("estado") String estado) {
+        List<TicketReporte> ticketReporte = trS.listEstado(estado);
+        if (ticketReporte.isEmpty()) {
+            return ResponseEntity
+                    .status(HttpStatus.NOT_FOUND)
+                    .body("No existe estado registrado");
+        }
+        ModelMapper m = new ModelMapper();
+        List<TicketReporteDTO> dtos = ticketReporte.stream()
+                .map(ticket -> m.map(ticket, TicketReporteDTO.class))
+                .collect(Collectors.toList());
+        return ResponseEntity.ok(dtos);
+    }
 }
