@@ -7,4 +7,6 @@ import pe.edu.upc.backendgrupo1.entities.Users;
 @Repository
 public interface IUserRepository extends JpaRepository<Users, Long> {
     Users findOneByUsername(String username);
+
+
 }

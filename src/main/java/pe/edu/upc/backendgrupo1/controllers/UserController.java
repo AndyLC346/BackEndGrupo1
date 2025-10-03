@@ -3,6 +3,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.backendgrupo1.dtos.UserDTO;
 import pe.edu.upc.backendgrupo1.dtos.UserDTO2;
@@ -12,6 +13,8 @@ import pe.edu.upc.backendgrupo1.servicesinterfaces.IUserService;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static org.springframework.security.authorization.AuthorityReactiveAuthorizationManager.hasAuthority;
+
 @RestController
 @RequestMapping("/usuarios")
 public class UserController {
@@ -19,13 +22,15 @@ public class UserController {
     private IUserService uS;
 
     @GetMapping
+    @PreAuthorize("hasAuthority('ADMIN')")
     public List<UserDTO2> listar() {
         return uS.list().stream().map(x -> {
             ModelMapper m = new ModelMapper();
             return m.map(x, UserDTO2.class);
         }).collect(Collectors.toList());
     }
-    //implementar encriptado e ID
+
+
     @PostMapping
     public ResponseEntity<String> insertar(@RequestBody UserDTO dto) {
         ModelMapper m = new ModelMapper();
@@ -35,6 +40,7 @@ public class UserController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<String> eliminar(@PathVariable("id") Long id) {
         Users user = uS.listId(id);
         if(user == null) {
@@ -45,6 +51,7 @@ public class UserController {
     }
 
     @PutMapping
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<String> modificar(@RequestBody UserDTO dto) {
         ModelMapper m = new ModelMapper();
         Users user = m.map(dto, Users.class);
@@ -57,7 +64,9 @@ public class UserController {
         return ResponseEntity.ok("Usuario actualizado correctamente");
     }
 
+
     @GetMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<?> listarID(@PathVariable("id") Long id) {
         Users user = uS.listId(id);
         if(user == null) {
@@ -69,5 +78,9 @@ public class UserController {
         UserDTO2 dto = m.map(user, UserDTO2.class);
         return ResponseEntity.ok(dto);
     }
+
+
+
+
 
 }
