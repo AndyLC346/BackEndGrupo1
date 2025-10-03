@@ -2,7 +2,7 @@ package pe.edu.upc.backendgrupo1.dtos;
 
 public class UserDTO2 {
 
-    private Long idUser;
+    private Long id;
 
     private String username;
 
@@ -16,12 +16,12 @@ public class UserDTO2 {
 
     private String telefonoUser;
 
-    public Long getIdUser() {
-        return idUser;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdUser(Long idUser) {
-        this.idUser = idUser;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getUsername() {

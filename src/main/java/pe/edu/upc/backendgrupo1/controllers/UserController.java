@@ -25,7 +25,7 @@ public class UserController {
             return m.map(x, UserDTO2.class);
         }).collect(Collectors.toList());
     }
-
+    //implementar encriptado e ID
     @PostMapping
     public ResponseEntity<String> insertar(@RequestBody UserDTO dto) {
         ModelMapper m = new ModelMapper();
@@ -48,10 +48,10 @@ public class UserController {
     public ResponseEntity<String> modificar(@RequestBody UserDTO dto) {
         ModelMapper m = new ModelMapper();
         Users user = m.map(dto, Users.class);
-        if (uS.listId(user.getIdUser()) == null) {
+        if (uS.listId(user.getId()) == null) {
             return ResponseEntity
                     .status(HttpStatus.NOT_FOUND)
-                    .body("El usuario con el ID: " + user.getIdUser() + " no existe");
+                    .body("El usuario con el ID: " + user.getId() + " no existe");
         }
         uS.update(user);
         return ResponseEntity.ok("Usuario actualizado correctamente");
