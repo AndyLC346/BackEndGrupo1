@@ -73,10 +73,10 @@ public class RecursoController {
     }
     @GetMapping("/bsuquedatipoynivel")
     public ResponseEntity<?> buscar(@RequestParam String tipo, @RequestParam String nivel) {
-        List<Recurso> recursos = rS.buscarRecursoxtipoynivel(tipo,nivel);
+        List<Recurso> recursos = rS.buscarRecursoxTipoynivel(tipo,nivel);
         if (recursos.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body("No se encontraron recursos de ese nivel y tipo");
+                    .body("No se encontraron recursos de ese tipo y/o nivel");
         }
         List<RecursoDTO> listaDTO = recursos.stream().map(x -> {
             ModelMapper m = new ModelMapper();
@@ -84,7 +84,7 @@ public class RecursoController {
         }).collect(Collectors.toList());
         return ResponseEntity.ok(listaDTO);
     }
-
+    //
 }
 
 

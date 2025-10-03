@@ -8,7 +8,7 @@ import java.util.List;
 
 @Service
 public class RecursoEducativoServiceImplement implements IRecursoEducativoService {
-
+    //
     @Autowired
     private IRecursoEducativoRepository rR;
 
@@ -38,5 +38,5 @@ public class RecursoEducativoServiceImplement implements IRecursoEducativoServic
     }
 
     @Override
-    public List<Recurso> buscarRecursoxtipoynivel(String tipo, String nivel) {return rR.buscarRecursoxtipoynivel(tipo,nivel);}
+    public List<Recurso> buscarRecursoxTipoynivel(String tipo, String nivel) {return rR.buscarRecursoxTipoynivel(tipo,nivel);}
 }
