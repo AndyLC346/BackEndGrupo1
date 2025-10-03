@@ -7,6 +7,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.backendgrupo1.dtos.UserDTO;
 import pe.edu.upc.backendgrupo1.dtos.UserDTO2;
+import pe.edu.upc.backendgrupo1.dtos.UserDTO3;
 import pe.edu.upc.backendgrupo1.entities.Users;
 import pe.edu.upc.backendgrupo1.servicesinterfaces.IUserService;
 
@@ -52,7 +53,7 @@ public class UserController {
 
     @PutMapping
     @PreAuthorize("hasAuthority('ADMIN')")
-    public ResponseEntity<String> modificar(@RequestBody UserDTO dto) {
+    public ResponseEntity<String> modificar(@RequestBody UserDTO3 dto) {
         ModelMapper m = new ModelMapper();
         Users user = m.map(dto, Users.class);
         if (uS.listId(user.getId()) == null) {
