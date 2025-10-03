@@ -55,15 +55,13 @@ public class RespuestaSoporteController {
         @GetMapping("/{id}")
         public ResponseEntity<?> listarID(@PathVariable("id") Integer id) {
             RespuestaSoporte respuestaSoporte = rsS.listId(id);
-            if(respuestaSoporte == null) {
+            if (respuestaSoporte == null) {
                 return ResponseEntity
                         .status(HttpStatus.NOT_FOUND)
                         .body("No existe el registro del usuario con el ID: " + id);
             }
-            ModelMapper m=new ModelMapper();
+            ModelMapper m = new ModelMapper();
             RespuestaSoporteDTO dto = m.map(respuestaSoporte, RespuestaSoporteDTO.class);
             return ResponseEntity.ok(dto);
         }
-
-
 }

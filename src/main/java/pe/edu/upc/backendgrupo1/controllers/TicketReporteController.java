@@ -109,4 +109,18 @@ public class TicketReporteController {
                 .collect(Collectors.toList());
         return ResponseEntity.ok(dtos);
     }
+    @GetMapping("/{tipo}")
+    public ResponseEntity<?> listarTipo(@PathVariable("tipo") String tipo) {
+        List<TicketReporte> ticketReporte = trS.listTipo(tipo);
+        if (ticketReporte.isEmpty()) {
+            return ResponseEntity
+                    .status(HttpStatus.NOT_FOUND)
+                    .body("No existe el tipo de reporte registrado");
+        }
+        ModelMapper m = new ModelMapper();
+        List<TicketReporteDTO> dtos = ticketReporte.stream()
+                .map(ticket -> m.map(ticket, TicketReporteDTO.class))
+                .collect(Collectors.toList());
+        return ResponseEntity.ok(dtos);
+    }
 }

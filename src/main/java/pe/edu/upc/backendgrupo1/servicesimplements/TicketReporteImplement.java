@@ -30,7 +30,7 @@ public class TicketReporteImplement implements ITicketReporteService {
     @Override
     public List<String[]> CantidadRespuestaTicket() { return tR.cantidadRespuestaPorTicket();}
     @Override
-    public List<TicketReporte> listEstado(String estado) {
-        return tR.findByEstadoSoporte(estado);
-    }
+    public List<TicketReporte> listEstado(String estado){return tR.findByEstadoSoporte(estado);}
+    @Override
+    public List<TicketReporte> listTipo(String tipo) {return tR.findByTipoSoporte(tipo);}
 }

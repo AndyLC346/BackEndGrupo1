@@ -1,5 +1,6 @@
 package pe.edu.upc.backendgrupo1.servicesinterfaces;
 
+import pe.edu.upc.backendgrupo1.dtos.RespuestaSoporteDTO;
 import pe.edu.upc.backendgrupo1.entities.RespuestaSoporte;
 
 import java.util.List;

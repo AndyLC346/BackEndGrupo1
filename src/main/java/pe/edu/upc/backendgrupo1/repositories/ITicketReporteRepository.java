@@ -22,4 +22,5 @@ public interface ITicketReporteRepository extends JpaRepository <TicketReporte, 
             "ORDER BY tr.fechacreacion_soporte DESC;",nativeQuery = true)
     List<String[]>cantidadRespuestaPorTicket();
     List<TicketReporte> findByEstadoSoporte(String estado);
+    List<TicketReporte>findByTipoSoporte(String tipo);
 }
