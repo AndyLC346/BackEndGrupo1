@@ -12,7 +12,10 @@ import java.util.List;
 public interface IAlertaRepository extends JpaRepository<Alerta, Integer> {
     @Query(value = "SELECT id_user, COUNT(*) as alertas_pendientes\n" +
             "FROM alertas\n" +
-            "WHERE :nombre = FALSE \n" +
+            "WHERE visto_alerta = FALSE\n" +
             "GROUP BY id_user", nativeQuery = true)
-    List<Alerta> buscar(@Param("nombre") String nombre);
+    public List<String[]> searchByType();
+
+
+
 }

@@ -41,7 +41,5 @@ public class AlertaServiceImplement implements IAlertaService {
     }
 
     @Override
-    public List<Alerta> search(String name) {
-        return aR.buscar(name);
-    }
+    public List<String[]> searchByType() {return aR.searchByType();}
 }
