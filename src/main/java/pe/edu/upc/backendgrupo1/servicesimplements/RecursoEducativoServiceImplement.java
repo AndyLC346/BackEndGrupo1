@@ -36,4 +36,7 @@ public class RecursoEducativoServiceImplement implements IRecursoEducativoServic
     public Recurso listId(int id) {
         return rR.findById(id).orElse(null);
     }
+
+    @Override
+    public List<Recurso> buscarRecursoxtipoynivel(String tipo, String nivel) {return rR.buscarRecursoxtipoynivel(tipo,nivel);}
 }

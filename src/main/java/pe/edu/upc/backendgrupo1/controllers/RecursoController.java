@@ -9,6 +9,9 @@ import pe.edu.upc.backendgrupo1.dtos.RecursoDTO;
 import pe.edu.upc.backendgrupo1.entities.Recurso;
 import pe.edu.upc.backendgrupo1.servicesinterfaces.IRecursoEducativoService;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -68,6 +71,20 @@ public class RecursoController {
         RecursoDTO dto = m.map(recurso, RecursoDTO.class);
         return ResponseEntity.ok(dto);
     }
+    @GetMapping("/bsuquedatipoynivel")
+    public ResponseEntity<?> buscar(@RequestParam String tipo, @RequestParam String nivel) {
+        List<Recurso> recursos = rS.buscarRecursoxtipoynivel(tipo,nivel);
+        if (recursos.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("No se encontraron recursos de ese nivel y tipo");
+        }
+        List<RecursoDTO> listaDTO = recursos.stream().map(x -> {
+            ModelMapper m = new ModelMapper();
+            return m.map(x, RecursoDTO.class);
+        }).collect(Collectors.toList());
+        return ResponseEntity.ok(listaDTO);
+    }
+
 }
 
 
