@@ -24,4 +24,6 @@ public class TicketReporteImplement implements ITicketReporteService {
     public void update(TicketReporte t) {tR.save(t);}
     @Override
     public List<String[]> TotalTicketsPorUsuario() { return tR.contarTicketsPorUsuario();}
+    @Override
+    public List<String[]> CantidadRespuestaTicket() { return tR.cantidadRespuestaPorTicket();}
 }

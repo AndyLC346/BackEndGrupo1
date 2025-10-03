@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.backendgrupo1.dtos.CantidadRespuestaTicketDTO;
 import pe.edu.upc.backendgrupo1.dtos.TicketReporteDTO;
 import pe.edu.upc.backendgrupo1.dtos.TotalTicketsUsuarioDTO;
 import pe.edu.upc.backendgrupo1.entities.TicketReporte;
@@ -60,6 +61,21 @@ public class TicketReporteController {
             dto.setIdUusuario(Integer.parseInt(x[0].toString()));
             dto.setUsername(x[1]);
             dto.setTotal_Tickets(Integer.parseInt(x[2].toString()));
+            dtos.add(dto);
+        }
+        return ResponseEntity.ok(dtos);
+    }
+    @GetMapping
+    public ResponseEntity<?>cantidadRespuesasPorTicket(){
+        List<CantidadRespuestaTicketDTO>dtos=new ArrayList<>();
+        List<String[]>resultados=trS.CantidadRespuestaTicket();
+        for(String[] x:resultados){
+            CantidadRespuestaTicketDTO dto=new CantidadRespuestaTicketDTO();
+            dto.setIdTicket(Integer.parseInt(x[0].toString()));
+            dto.setAsunto(x[1]);
+            dto.setEstado(x[2]);
+            dto.setCreador(x[3]);
+            dto.setIdRespuestaSoporte(Integer.parseInt(x[4].toString()));
             dtos.add(dto);
         }
         return ResponseEntity.ok(dtos);

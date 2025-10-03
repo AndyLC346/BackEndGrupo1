@@ -10,4 +10,5 @@ public interface ITicketReporteService {
     void delete(int id);
     void update(TicketReporte t);
     List<String[]> TotalTicketsPorUsuario();
+    List<String[]> CantidadRespuestaTicket();
 }
