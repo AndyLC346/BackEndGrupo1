@@ -1,5 +1,6 @@
 package pe.edu.upc.backendgrupo1.servicesinterfaces;
 
+import pe.edu.upc.backendgrupo1.dtos.TicketReporteDTO;
 import pe.edu.upc.backendgrupo1.entities.TicketReporte;
 import java.util.List;
 

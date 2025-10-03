@@ -8,10 +8,13 @@ import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.backendgrupo1.dtos.CantidadRespuestaTicketDTO;
 import pe.edu.upc.backendgrupo1.dtos.TicketReporteDTO;
 import pe.edu.upc.backendgrupo1.dtos.TotalTicketsUsuarioDTO;
+import pe.edu.upc.backendgrupo1.dtos.UserDTO2;
 import pe.edu.upc.backendgrupo1.entities.TicketReporte;
+import pe.edu.upc.backendgrupo1.entities.Users;
 import pe.edu.upc.backendgrupo1.servicesinterfaces.ITicketReporteService;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -65,7 +68,7 @@ public class TicketReporteController {
         }
         return ResponseEntity.ok(dtos);
     }
-    @GetMapping
+    @GetMapping("/CantidadRespuestas")
     public ResponseEntity<?>cantidadRespuesasPorTicket(){
         List<CantidadRespuestaTicketDTO>dtos=new ArrayList<>();
         List<String[]>resultados=trS.CantidadRespuestaTicket();
@@ -80,4 +83,17 @@ public class TicketReporteController {
         }
         return ResponseEntity.ok(dtos);
     }
+    @GetMapping("/{id}")
+    public ResponseEntity<?> listarID(@PathVariable("id") Integer id) {
+        TicketReporte ticketReporte = trS.listId(id);
+        if(ticketReporte == null) {
+            return ResponseEntity
+                    .status(HttpStatus.NOT_FOUND)
+                    .body("No existe el registro del usuario con el ID: " + id);
+        }
+        ModelMapper m=new ModelMapper();
+        TicketReporteDTO dto = m.map(ticketReporte, TicketReporteDTO.class);
+        return ResponseEntity.ok(dto);
+    }
+
 }
