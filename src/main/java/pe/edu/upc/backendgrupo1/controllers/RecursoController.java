@@ -71,6 +71,8 @@ public class RecursoController {
         RecursoDTO dto = m.map(recurso, RecursoDTO.class);
         return ResponseEntity.ok(dto);
     }
+
+
     @GetMapping("/bsuquedatipoynivel")
     public ResponseEntity<?> buscar(@RequestParam String tipo, @RequestParam String nivel) {
         List<Recurso> recursos = rS.buscarRecursoxTipoynivel(tipo,nivel);
