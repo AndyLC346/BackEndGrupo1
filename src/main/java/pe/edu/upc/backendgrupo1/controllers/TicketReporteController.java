@@ -6,9 +6,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.backendgrupo1.dtos.TicketReporteDTO;
+import pe.edu.upc.backendgrupo1.dtos.TotalTicketsUsuarioDTO;
 import pe.edu.upc.backendgrupo1.entities.TicketReporte;
 import pe.edu.upc.backendgrupo1.servicesinterfaces.ITicketReporteService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -48,5 +50,18 @@ public class TicketReporteController {
         }
         trS.update(t);
         return ResponseEntity.ok("Se modifico correctamente");
+    }
+    @GetMapping("/ContarTicktesPorUsuario")
+    public ResponseEntity<?> contarTicketsPorUsuario() {
+        List<TotalTicketsUsuarioDTO>dtos=new ArrayList<>();
+        List<String[]>resultados=trS.TotalTicketsPorUsuario();
+        for(String[] x:resultados){
+            TotalTicketsUsuarioDTO dto=new TotalTicketsUsuarioDTO();
+            dto.setIdUusuario(Integer.parseInt(x[0].toString()));
+            dto.setUsername(x[1]);
+            dto.setTotal_Tickets(Integer.parseInt(x[2].toString()));
+            dtos.add(dto);
+        }
+        return ResponseEntity.ok(dtos);
     }
 }

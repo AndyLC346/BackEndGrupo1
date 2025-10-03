@@ -22,4 +22,6 @@ public class TicketReporteImplement implements ITicketReporteService {
     public void delete(int id) {tR.deleteById(id);}
     @Override
     public void update(TicketReporte t) {tR.save(t);}
+    @Override
+    public List<String[]> TotalTicketsPorUsuario() { return tR.contarTicketsPorUsuario();}
 }
