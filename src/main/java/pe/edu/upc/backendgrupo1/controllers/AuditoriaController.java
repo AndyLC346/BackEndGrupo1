@@ -10,6 +10,7 @@ import pe.edu.upc.backendgrupo1.dtos.AuditoriaDTO;
 import pe.edu.upc.backendgrupo1.entities.Auditoria;
 import pe.edu.upc.backendgrupo1.servicesinterfaces.IAuditoriaService;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -83,7 +84,7 @@ public class AuditoriaController {
         List<AuditoriaDTO> lista = resultados.stream().map(x -> {
             AuditoriaDTO dto = new AuditoriaDTO();
             dto.setIdAuditoria(((Number) x[0]).intValue());
-            dto.setFechaAuditoria((LocalDateTime) x[1]);
+            dto.setFechaAuditoria((LocalDate) x[1]);
             dto.setTipoAuditoria((String) x[2]);
             dto.setDescripcion((String) x[3]);
             // Usuario
