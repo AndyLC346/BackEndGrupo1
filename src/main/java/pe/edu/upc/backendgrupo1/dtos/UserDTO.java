@@ -16,6 +16,8 @@ public class UserDTO {
 
     private String telefonoUser;
 
+
+
     public String getUsername() {
         return username;
     }
