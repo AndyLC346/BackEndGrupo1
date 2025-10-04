@@ -2,14 +2,17 @@ package pe.edu.upc.backendgrupo1.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.backendgrupo1.dtos.UserDTO;
 import pe.edu.upc.backendgrupo1.entities.LogAcceso;
 import pe.edu.upc.backendgrupo1.dtos.LogAccesoDTO;
+import pe.edu.upc.backendgrupo1.entities.Users;
 import pe.edu.upc.backendgrupo1.servicesinterfaces.ILogAccesoService;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -70,4 +73,43 @@ public class LogAccesoControllers {
         UserDTO dto = m.map(logAcceso, UserDTO.class);
         return ResponseEntity.ok(dto);
     }
+
+    @GetMapping("/buscar")
+    public ResponseEntity<?> buscarPorFiltros(
+            @RequestParam(required = false) Integer idUsuario,
+            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fecha,
+            @RequestParam(required = false) String ip) {
+
+        try {
+            List<Object[]> resultados = loS.buscarLogsPorFiltros(idUsuario, fecha, ip);
+
+            List<LogAccesoDTO> lista = resultados.stream().map(x -> {
+                LogAccesoDTO dto = new LogAccesoDTO();
+                dto.setIdLogAcceso(((Number) x[0]).intValue());
+                dto.setFechaAcceso(((java.sql.Date) x[1]).toLocalDate());
+                dto.setIpAcceso((String) x[2]);
+                dto.setNavegadorAcceso((String) x[3]);
+                dto.setSistemaoperativoAcceso((String) x[4]);
+
+                Users u = new Users();
+                u.setIdUser(((Number) x[5]).longValue());
+                dto.setUser(u);
+
+                return dto;
+            }).collect(Collectors.toList());
+
+            if (lista.isEmpty()) {
+                return ResponseEntity.ok("No se encontraron logs con los parámetros indicados.");
+            }
+
+            return ResponseEntity.ok(lista);
+
+        } catch (Exception e)
+        {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Error al buscar logs: " + e.getMessage());
+
+        }
+    }
+
 }
