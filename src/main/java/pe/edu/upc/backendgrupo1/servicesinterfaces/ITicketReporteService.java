@@ -12,6 +12,6 @@ public interface ITicketReporteService {
     void update(TicketReporte t);
     List<String[]> TotalTicketsPorUsuario();
     List<String[]> CantidadRespuestaTicket();
-    List<TicketReporte> listEstado(String estado);
-    List<TicketReporte> listTipo(String tipo);
+    List<TicketReporte> listEstado(String estadoSoporte);
+    List<TicketReporte> listTipo(String tipoSoporte);
 }

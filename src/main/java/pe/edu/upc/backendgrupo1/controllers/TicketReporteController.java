@@ -95,9 +95,9 @@ public class TicketReporteController {
         TicketReporteDTO dto = m.map(ticketReporte, TicketReporteDTO.class);
         return ResponseEntity.ok(dto);
     }
-    @GetMapping("/{estado}")
-    public ResponseEntity<?> listarEstados(@PathVariable("estado") String estado) {
-        List<TicketReporte> ticketReporte = trS.listEstado(estado);
+    @GetMapping("/{estadoSoporte}")
+    public ResponseEntity<?> listarEstados(@PathVariable("estadoSoporte") String estadoSoporte) {
+        List<TicketReporte> ticketReporte = trS.listEstado(estadoSoporte);
         if (ticketReporte.isEmpty()) {
             return ResponseEntity
                     .status(HttpStatus.NOT_FOUND)
@@ -109,9 +109,9 @@ public class TicketReporteController {
                 .collect(Collectors.toList());
         return ResponseEntity.ok(dtos);
     }
-    @GetMapping("/{tipo}")
-    public ResponseEntity<?> listarTipo(@PathVariable("tipo") String tipo) {
-        List<TicketReporte> ticketReporte = trS.listTipo(tipo);
+    @GetMapping("/{tipoSoporte}")
+    public ResponseEntity<?> listarTipo(@PathVariable("tipoSoporte") String tipoSoporte) {
+        List<TicketReporte> ticketReporte = trS.listTipo(tipoSoporte);
         if (ticketReporte.isEmpty()) {
             return ResponseEntity
                     .status(HttpStatus.NOT_FOUND)
