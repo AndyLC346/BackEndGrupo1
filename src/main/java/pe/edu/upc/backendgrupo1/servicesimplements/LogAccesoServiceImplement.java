@@ -37,8 +37,8 @@ public class LogAccesoServiceImplement implements ILogAccesoService {
     public LogAcceso listId(int id) {return loR.findById(id).orElse(null);}
 
     @Override
-    public List<Object[]> buscarLogsPorFiltros(Integer idUsuario, LocalDate fecha, String ip) {
-        return loR.buscarLogsPorFiltros(idUsuario, fecha, ip);
+    public List<LogAcceso> buscarLogsPorusuarioyrangofechas(int idusuario, LocalDate fechainicial, LocalDate fechafinal) {
+        return loR.buscarLogsPorusuarioyrangofechas(idusuario, fechainicial, fechafinal);
     }
 
 }

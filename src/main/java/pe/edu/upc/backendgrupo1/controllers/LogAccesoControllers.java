@@ -74,42 +74,18 @@ public class LogAccesoControllers {
         return ResponseEntity.ok(dto);
     }
 
-    @GetMapping("/buscar")
-    public ResponseEntity<?> buscarPorFiltros(
-            @RequestParam(required = false) Integer idUsuario,
-            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fecha,
-            @RequestParam(required = false) String ip) {
-
-        try {
-            List<Object[]> resultados = loS.buscarLogsPorFiltros(idUsuario, fecha, ip);
-
-            List<LogAccesoDTO> lista = resultados.stream().map(x -> {
-                LogAccesoDTO dto = new LogAccesoDTO();
-                dto.setIdLogAcceso(((Number) x[0]).intValue());
-                dto.setFechaAcceso(((java.sql.Date) x[1]).toLocalDate());
-                dto.setIpAcceso((String) x[2]);
-                dto.setNavegadorAcceso((String) x[3]);
-                dto.setSistemaoperativoAcceso((String) x[4]);
-
-                Users u = new Users();
-                u.setIdUser(((Number) x[5]).longValue());
-                dto.setUser(u);
-
-                return dto;
-            }).collect(Collectors.toList());
-
-            if (lista.isEmpty()) {
-                return ResponseEntity.ok("No se encontraron logs con los parámetros indicados.");
-            }
-
-            return ResponseEntity.ok(lista);
-
-        } catch (Exception e)
-        {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("Error al buscar logs: " + e.getMessage());
-
+    @GetMapping("/buscarLogsPorusuarioyrangofechas")
+    public ResponseEntity<?> buscarLogsPorusuarioyrangofechas(@RequestParam int id, @RequestParam LocalDate fi, @RequestParam LocalDate ff) {
+        List<LogAcceso> logAccesos = loS.buscarLogsPorusuarioyrangofechas(id, fi, ff);
+        if (logAccesos.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("No se encontraron logs con ese usuario y/o rango de fecha: ");
         }
-    }
+        List<LogAccesoDTO> listaDTO = logAccesos.stream().map(x -> {
+            ModelMapper m = new ModelMapper();
+            return m.map(x, LogAccesoDTO.class);
+        }).collect(Collectors.toList());
 
+        return ResponseEntity.ok(listaDTO);
+    }
 }

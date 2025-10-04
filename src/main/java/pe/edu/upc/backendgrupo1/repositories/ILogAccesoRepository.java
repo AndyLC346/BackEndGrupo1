@@ -11,14 +11,7 @@ import java.util.List;
 
 @Repository
 public interface ILogAccesoRepository extends JpaRepository<LogAcceso, Integer> {
-    @Query(value = "SELECT l.id_log_acceso, l.fecha_acceso, l.ip_acceso, l.navegador_acceso, " +
-            "l.sistemaoperativo_accesso, l.id_usuario " +
-            "FROM logaccesos l " +
-            "WHERE (:idUsuario IS NULL OR l.id_usuario = :idUsuario) " +
-            "AND (:fecha IS NULL OR l.fecha_acceso = :fecha) " +
-            "AND (:ip IS NULL OR LOWER(l.ip_acceso) LIKE LOWER(CONCAT('%', :ip, '%')))",
-            nativeQuery = true)
-    List<Object[]> buscarLogsPorFiltros(@Param("idUsuario") Integer idUsuario,
-                                        @Param("fecha") LocalDate fecha,
-                                        @Param("ip") String ip);
+    @Query(value = "SELECT * FROM logaccesos \n" +
+            "WHERE id_usuario = :idusuario AND fecha_acceso BETWEEN :fechainicial AND :fechafinal",nativeQuery = true)
+    List<LogAcceso> buscarLogsPorusuarioyrangofechas(@Param("idusuario") int idusuario, @Param("fechainicial") LocalDate fechainicial, @Param("fechafinal") LocalDate fechafinal);
 }
