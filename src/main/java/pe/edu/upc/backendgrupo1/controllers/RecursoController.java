@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.backendgrupo1.dtos.RecursoDTO;
+import pe.edu.upc.backendgrupo1.dtos.RecursoQuery2DTO;
 import pe.edu.upc.backendgrupo1.entities.Recurso;
 import pe.edu.upc.backendgrupo1.servicesinterfaces.IRecursoEducativoService;
 
@@ -84,7 +85,10 @@ public class RecursoController {
         }).collect(Collectors.toList());
         return ResponseEntity.ok(listaDTO);
     }
-    //
+
+
+
+
 }
 
 

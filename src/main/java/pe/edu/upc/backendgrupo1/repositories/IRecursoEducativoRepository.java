@@ -13,6 +13,9 @@ import java.util.List;
 public interface IRecursoEducativoRepository extends JpaRepository<Recurso, Integer> {
     //
     @Query(value = "SELECT * FROM RecursoEducativo \n" +
-            "WHERE tipoRecurso = :tipo AND nivelRecurso = :nivel",nativeQuery = true )
-    public List<Recurso> buscarRecursoxTipoynivel(@Param("tipo") String tipo, @Param("nivel") String nivel );
+            "WHERE tipoRecurso = :tipo AND nivelRecurso = :nivel", nativeQuery = true)
+    public List<Recurso> buscarRecursoxTipoynivel(@Param("tipo") String tipo, @Param("nivel") String nivel);
+
+
+
 }
