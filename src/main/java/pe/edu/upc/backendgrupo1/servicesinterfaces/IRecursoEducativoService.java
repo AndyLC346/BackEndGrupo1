@@ -13,5 +13,5 @@ public interface IRecursoEducativoService {
     public void update(Recurso recurso);
     public Recurso listId(int id);
     public List<Recurso> buscarRecursoxTipoynivel( String tipo,String nivel);
-
+    public List<String[]> cantidadRecursoxusername( String username);
 }

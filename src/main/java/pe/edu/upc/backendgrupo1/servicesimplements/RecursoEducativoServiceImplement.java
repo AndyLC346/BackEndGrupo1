@@ -1,5 +1,6 @@
 package pe.edu.upc.backendgrupo1.servicesimplements;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 import pe.edu.upc.backendgrupo1.entities.Recurso;
 import pe.edu.upc.backendgrupo1.repositories.IRecursoEducativoRepository;
@@ -39,4 +40,8 @@ public class RecursoEducativoServiceImplement implements IRecursoEducativoServic
 
     @Override
     public List<Recurso> buscarRecursoxTipoynivel(String tipo, String nivel) {return rR.buscarRecursoxTipoynivel(tipo,nivel);}
+
+    @Override
+    public List<String[]> cantidadRecursoxusername( String username) {return rR.cantidadRecursoxusername(username);};
+
 }

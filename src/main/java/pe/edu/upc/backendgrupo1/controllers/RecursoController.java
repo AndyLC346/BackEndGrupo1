@@ -88,7 +88,23 @@ public class RecursoController {
         return ResponseEntity.ok(listaDTO);
     }
 
+    @GetMapping("/cantidadrecursoxusername")
+    public ResponseEntity<?> cantidadRecursoxusername(@RequestParam String username) {
+        List<String[]> fila = rS.cantidadRecursoxusername(username);
+        List<RecursoQuery2DTO> listaDTO = new ArrayList<>();
+        if (fila.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("No se encontraron recursos relaciones con ese usurname");
+        }
 
+        for (String[] x : fila) {
+            RecursoQuery2DTO dto = new RecursoQuery2DTO();
+            dto.setUsername(x[0]);
+            dto.setCantidadRecuursos(Integer.parseInt(x[1]));
+            listaDTO.add(dto);
+        }
+        return ResponseEntity.ok(listaDTO);
+    }
 
 
 }
