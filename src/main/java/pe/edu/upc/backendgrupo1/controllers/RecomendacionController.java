@@ -70,4 +70,24 @@ public class RecomendacionController {
         RecomendacionDTO dto = m.map(recomendacion, RecomendacionDTO.class);
         return ResponseEntity.ok(dto);
     }
+
+    @GetMapping("/buscar")
+    public ResponseEntity<List<RecomendacionDTO>> buscar(
+            @RequestParam(required = false) Integer idUsuario,
+            @RequestParam(required = false) String categoria,
+            @RequestParam(required = false) String titulo) {
+
+        List<Recomendacion> recomendaciones = reS.buscarRecomendacionesPorFiltros(idUsuario, categoria, titulo);
+
+        if (recomendaciones.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+
+        ModelMapper m = new ModelMapper();
+        List<RecomendacionDTO> listaDTO = recomendaciones.stream()
+                .map(r -> m.map(r, RecomendacionDTO.class))
+                .collect(Collectors.toList());
+
+        return ResponseEntity.ok(listaDTO);
+    }
 }
