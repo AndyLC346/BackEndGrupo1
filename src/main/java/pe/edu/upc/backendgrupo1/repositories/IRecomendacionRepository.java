@@ -10,13 +10,14 @@ import java.util.List;
 
 @Repository
 public interface IRecomendacionRepository extends JpaRepository<Recomendacion, Integer> {
-    @Query("SELECT r FROM Recomendacion r " +
-            "WHERE (:idUsuario IS NULL OR r.usuario.idUser = :idUsuario) " +
-            "AND (:categoria IS NULL OR LOWER(r.categoriaRecomendacion) LIKE LOWER(CONCAT('%', :categoria, '%'))) " +
-            "AND (:titulo IS NULL OR LOWER(r.tituloRecomendacion) LIKE LOWER(CONCAT('%', :titulo, '%')))")
-    List<Recomendacion> buscarRecomendacionesPorFiltros(
-            @Param("idUsuario") Integer idUsuario,
-            @Param("categoria") String categoria,
-            @Param("titulo") String titulo
-    );
+    @Query(value = "SELECT \n" +
+            "    u.username,\n" +
+            "    r.categoria_recomendacion,\n" +
+            "    COUNT(r.id_recomendacion) as cantidad\n" +
+            "FROM Recomendaciones r\n" +
+            "INNER JOIN users u ON r.id_usuario = u.id_user\n" +
+            "WHERE r.categoria_recomendacion = :categoria \n" +
+            "GROUP BY u.username, r.categoria_recomendacion\n" +
+            "ORDER BY cantidad DESC;",nativeQuery = true)
+    List<String[]> buscarRecomendacionesporcategoria(@Param("categoria") String categoria);
 }

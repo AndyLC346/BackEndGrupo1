@@ -39,7 +39,9 @@ public class RecomendacionServiceImplement implements IRecomendacionService {
     }
 
     @Override
-    public List<Recomendacion> buscarRecomendacionesPorFiltros(Integer idUsuario, String categoria, String titulo) {
-        return reR.buscarRecomendacionesPorFiltros(idUsuario, categoria, titulo);
+    public List<String[]> buscarRecomendacionesporcategoria(String categoria) {
+        return reR.buscarRecomendacionesporcategoria( categoria);
     }
+
+
 }
