@@ -6,6 +6,7 @@ import pe.edu.upc.backendgrupo1.entities.LogAcceso;
 import pe.edu.upc.backendgrupo1.repositories.ILogAccesoRepository;
 import pe.edu.upc.backendgrupo1.servicesinterfaces.ILogAccesoService;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -34,5 +35,10 @@ public class LogAccesoServiceImplement implements ILogAccesoService {
 
     @Override
     public LogAcceso listId(int id) {return loR.findById(id).orElse(null);}
+
+    @Override
+    public List<Object[]> buscarLogsPorFiltros(Integer idUsuario, LocalDate fecha, String ip) {
+        return loR.buscarLogsPorFiltros(idUsuario, fecha, ip);
+    }
 
 }
