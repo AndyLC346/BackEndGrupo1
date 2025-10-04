@@ -9,4 +9,6 @@ public interface IRecomendacionService {
     public void delete(int id);
     public void update(Recomendacion recomendacion);
     public Recomendacion listId(int id);
+
+    List<Recomendacion> buscarRecomendacionesPorFiltros(Integer idUsuario, String categoria, String titulo);
 }
