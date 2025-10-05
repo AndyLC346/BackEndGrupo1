@@ -85,7 +85,7 @@ public class CuentaController {
                 dto.setIdCuenta(((Number) x[0]).intValue());
                 dto.setServicioCuenta((String) x[1]);
                 dto.setNombreCuenta((String) x[2]);
-                dto.setEstadoCuenta((String) x[3]);
+                dto.setEstadoCuenta((boolean) x[3]);
                 dto.setFecharegistroCuenta(java.sql.Date.valueOf(x[4].toString()).toLocalDate());
                 return dto;
             }).collect(Collectors.toList());

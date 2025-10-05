@@ -13,7 +13,7 @@ import java.util.List;
 public interface ICuentaRepository extends JpaRepository<Cuenta, Integer> {
     @Query(value = "SELECT id_cuenta, servicio_cuenta, nombre_cuenta, estado_cuenta, fecharegistro_cuenta, id_user " +
             "FROM cuentas " +
-            "WHERE estado_cuenta = 'ACTIVO' " +
+            "WHERE estado_cuenta = true " +
             "AND id_user = :idUser " +
             "AND fecharegistro_cuenta >= :fecha",
             nativeQuery = true)
