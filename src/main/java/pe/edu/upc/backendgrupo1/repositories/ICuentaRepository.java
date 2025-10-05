@@ -11,12 +11,12 @@ import java.util.List;
 
 @Repository
 public interface ICuentaRepository extends JpaRepository<Cuenta, Integer> {
-    @Query(value = "SELECT id_cuenta, servicio_cuenta, nombre_cuenta, estado_cuenta, fecharegistro_cuenta, id_user " +
+    @Query(value = "SELECT * " +
             "FROM cuentas " +
             "WHERE estado_cuenta = true " +
             "AND id_user = :idUser " +
             "AND fecharegistro_cuenta >= :fecha",
             nativeQuery = true)
-    List<Object[]> buscarCuentasPorUsuarioYFecha(@Param("idUser") int idUser,
+    List<Cuenta> buscarCuentasPorUsuarioYFecha(@Param("idUser") int idUser,
                                                  @Param("fecha") LocalDate fecha);
 }

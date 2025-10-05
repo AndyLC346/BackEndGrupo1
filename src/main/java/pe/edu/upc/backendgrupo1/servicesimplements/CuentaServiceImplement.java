@@ -41,6 +41,6 @@ public class CuentaServiceImplement implements ICuentaService {
     }
 
     @Override
-    public List<Object[]> buscarCuentasPorUsuarioYFecha(int idUser, LocalDate fecha) {
+    public List<Cuenta> buscarCuentasPorUsuarioYFecha(int idUser, LocalDate fecha) {
         return cR.buscarCuentasPorUsuarioYFecha(idUser, fecha);}
 }

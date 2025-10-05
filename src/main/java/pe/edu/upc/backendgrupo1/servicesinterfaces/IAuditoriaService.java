@@ -12,7 +12,5 @@ public interface IAuditoriaService {
     void delete(int id);
     void update(Auditoria auditoria);
     Auditoria listId(int id);
-    List<Auditoria> buscarAuditoriasPorFechaYTipo(LocalDate fechaInicio,
-                                                 LocalDate fechaFin,
-                                                 String tipoAuditoria);
+    List<Auditoria> buscarAuditoriasPorFechaYTipo(LocalDate fechaInicio, LocalDate fechaFin, String tipoAuditoria);
 }

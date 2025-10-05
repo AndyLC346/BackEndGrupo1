@@ -11,6 +11,6 @@ public interface ICuentaService {
     void delete(int id);
     void update(Cuenta cuenta);
     Cuenta listId(int id);
-    List<Object[]> buscarCuentasPorUsuarioYFecha(int idUser, LocalDate fecha);
+    List<Cuenta> buscarCuentasPorUsuarioYFecha(int idUser, LocalDate fecha);
 
 }

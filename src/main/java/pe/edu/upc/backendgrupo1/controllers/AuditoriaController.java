@@ -9,6 +9,7 @@ import pe.edu.upc.backendgrupo1.dtos.AuditoriaDTO;
 import pe.edu.upc.backendgrupo1.entities.Auditoria;
 import pe.edu.upc.backendgrupo1.servicesinterfaces.IAuditoriaService;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -59,4 +60,21 @@ public class AuditoriaController {
     }
 
 
+    @GetMapping("/filtrar-entreFechas-tipoAuditoria")
+    public ResponseEntity<?> buscarLogsPorusuarioyrangofechas(@RequestParam LocalDate fechaInicio, @RequestParam LocalDate fechaFin, @RequestParam  String tipoAuditoria) {
+        List<Auditoria> logAccesos = aS.buscarAuditoriasPorFechaYTipo(fechaInicio, fechaFin, tipoAuditoria);
+        if (logAccesos.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("No se encontraron auditorias en ese ango de fecha y/o tipo: ");
+        }
+        List<Auditoria> listaDTO = logAccesos.stream().map(x -> {
+            ModelMapper m = new ModelMapper();
+            return m.map(x, Auditoria.class);
+        }).collect(Collectors.toList());
+
+        return ResponseEntity.ok(listaDTO);
+    }
 }
+
+
+

@@ -6,11 +6,13 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.backendgrupo1.dtos.AlertaQuery1DTO;
 import pe.edu.upc.backendgrupo1.dtos.CuentaDTO;
 import pe.edu.upc.backendgrupo1.entities.Cuenta;
 import pe.edu.upc.backendgrupo1.servicesinterfaces.ICuentaService;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -73,33 +75,13 @@ public class CuentaController {
         return ResponseEntity.ok(dto);
     }
     @GetMapping("/activas-usuario-fecha")
-    public ResponseEntity<?> cuentasActivasPorUsuario(
+    public List<CuentaDTO> cuentasActivasPorUsuario(
             @RequestParam int idUser,
-            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fecha) {
+            @RequestParam LocalDate fecha) {
+        return cS.list().stream().map(x -> {
+            ModelMapper m = new ModelMapper();
+            return m.map(x, CuentaDTO.class);
+        }).collect(Collectors.toList());
 
-        try {
-            List<Object[]> resultados = cS.buscarCuentasPorUsuarioYFecha(idUser, fecha);
-
-            List<CuentaDTO> lista = resultados.stream().map(x -> {
-                CuentaDTO dto = new CuentaDTO();
-                dto.setIdCuenta(((Number) x[0]).intValue());
-                dto.setServicioCuenta((String) x[1]);
-                dto.setNombreCuenta((String) x[2]);
-                dto.setEstadoCuenta((boolean) x[3]);
-                dto.setFecharegistroCuenta(java.sql.Date.valueOf(x[4].toString()).toLocalDate());
-                return dto;
-            }).collect(Collectors.toList());
-
-            if (lista.isEmpty()) {
-                return ResponseEntity.status(HttpStatus.OK)
-                        .body("No se encontraron cuentas activas para este usuario desde la fecha indicada.");
-            }
-
-            return ResponseEntity.ok(lista);
-
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("Error al buscar cuentas: " + e.getMessage());
-        }
     }
 }
