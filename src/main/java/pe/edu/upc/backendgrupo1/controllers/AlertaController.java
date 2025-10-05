@@ -72,13 +72,13 @@ public class AlertaController {
     }
 
 
-    @GetMapping("/cantidadataquessinverporusuario")
-    public ResponseEntity<?> cantidadataques() {
+    @GetMapping("/cantidadalertaspendientesporusuario")
+    public ResponseEntity<?> cantidadalertaspendientesxusuario() {
         List<AlertaQuery1DTO> listaDto=new ArrayList<AlertaQuery1DTO>();
         List<String[]>fila=aS.cantidadalertaspendientesxusuario();
         if (fila.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body("No se encontraron ataques");
+                    .body("No se encontraron alertas ");
         }
         for(String[] x:fila) {
             AlertaQuery1DTO dto=new AlertaQuery1DTO();
