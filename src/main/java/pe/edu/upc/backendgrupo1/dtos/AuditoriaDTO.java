@@ -3,7 +3,6 @@ package pe.edu.upc.backendgrupo1.dtos;
 import pe.edu.upc.backendgrupo1.entities.Users;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 public class AuditoriaDTO {
 

@@ -11,7 +11,6 @@ import pe.edu.upc.backendgrupo1.entities.Auditoria;
 import pe.edu.upc.backendgrupo1.servicesinterfaces.IAuditoriaService;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -74,28 +73,17 @@ public class AuditoriaController {
         return ResponseEntity.ok(dto);
     }
     @GetMapping("/filtrar-entreFechas-tipoAuditoria")
-    public ResponseEntity<?> filtrarAuditorias(
-            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDate fechaInicio,
-            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDate fechaFin,
-            @RequestParam(required = false) String tipoAuditoria) {
-
-        List<Object[]> resultados = aS.buscarAuditoriasPorFechaYTipo(fechaInicio, fechaFin, tipoAuditoria);
-
-        List<AuditoriaDTO> lista = resultados.stream().map(x -> {
-            AuditoriaDTO dto = new AuditoriaDTO();
-            dto.setIdAuditoria(((Number) x[0]).intValue());
-            dto.setFechaAuditoria((LocalDate) x[1]);
-            dto.setTipoAuditoria((String) x[2]);
-            dto.setDescripcion((String) x[3]);
-            dto.setUsuario(aS.listId(((Number) x[4]).intValue()).getUsuario());
-            return dto;
+    public ResponseEntity<?> buscarLogsPorusuarioyrangofechas(@RequestParam LocalDate fechaInicio, @RequestParam LocalDate fechaFin, @RequestParam  String tipoAuditoria) {
+        List<Auditoria> logAccesos = aS.buscarAuditoriasPorFechaYTipo(fechaInicio, fechaFin, tipoAuditoria);
+        if (logAccesos.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("No se encontraron logs con ese usuario y/o rango de fecha: ");
+        }
+        List<Auditoria> listaDTO = logAccesos.stream().map(x -> {
+            ModelMapper m = new ModelMapper();
+            return m.map(x, Auditoria.class);
         }).collect(Collectors.toList());
 
-        if (lista.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.OK)
-                    .body("No se encontraron auditorías para los parámetros indicados.");
-        }
-
-        return ResponseEntity.ok(lista);
+        return ResponseEntity.ok(listaDTO);
     }
 }

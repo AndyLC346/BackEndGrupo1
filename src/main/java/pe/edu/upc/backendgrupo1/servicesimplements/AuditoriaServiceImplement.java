@@ -41,7 +41,7 @@ public class AuditoriaServiceImplement implements IAuditoriaService {
     }
 
     @Override
-    public List<Object[]> buscarAuditoriasPorFechaYTipo(LocalDate fechaInicio,
+    public List<Auditoria> buscarAuditoriasPorFechaYTipo(LocalDate fechaInicio,
                                                         LocalDate fechaFin,
                                                         String tipoAuditoria) {
         return aR.buscarAuditoriasPorFechaYTipo(fechaInicio, fechaFin, tipoAuditoria);}

@@ -7,17 +7,16 @@ import org.springframework.stereotype.Repository;
 import pe.edu.upc.backendgrupo1.entities.Auditoria;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
 public interface IAuditoriaRepository extends JpaRepository<Auditoria, Integer> {
-    @Query(value = "SELECT id_auditoria, fecha_auditoria, tipo_auditoria, descripcion, id_user " +
-            "FROM auditoria " +
-            "WHERE fecha_auditoria BETWEEN :fechaInicio AND :fechaFin " +
-            "AND (:tipoAuditoria IS NULL OR tipo_auditoria = :tipoAuditoria) " +
+    @Query(value = "SELECT * \n" +
+            "FROM auditoria \n" +
+            "WHERE fecha_auditoria BETWEEN :fechaInicio  AND :fechaFin\n" +
+            "AND :tipoAuditoria IS NULL OR tipo_auditoria = :tipoAuditoria\n" +
             "ORDER BY fecha_auditoria DESC", nativeQuery = true)
-    List<Object[]> buscarAuditoriasPorFechaYTipo(
+    List<Auditoria> buscarAuditoriasPorFechaYTipo(
             @Param("fechaInicio") LocalDate fechaInicio,
             @Param("fechaFin") LocalDate fechaFin,
             @Param("tipoAuditoria") String tipoAuditoria
