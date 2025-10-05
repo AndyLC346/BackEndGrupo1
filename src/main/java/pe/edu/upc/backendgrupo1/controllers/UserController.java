@@ -5,12 +5,17 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.backendgrupo1.dtos.TotalArchivosXUsersDTO;
 import pe.edu.upc.backendgrupo1.dtos.UserDTO;
 import pe.edu.upc.backendgrupo1.dtos.UserDTO2;
+import pe.edu.upc.backendgrupo1.dtos.UserDTO3;
 import pe.edu.upc.backendgrupo1.entities.Users;
 import pe.edu.upc.backendgrupo1.servicesinterfaces.IUserService;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 
@@ -51,7 +56,7 @@ public class UserController {
 
     @PutMapping
     @PreAuthorize("hasAuthority('ADMIN')")
-    public ResponseEntity<String> modificar(@RequestBody UserDTO dto) {
+    public ResponseEntity<String> modificar(@RequestBody UserDTO3 dto) {
         ModelMapper m = new ModelMapper();
         Users user = m.map(dto, Users.class);
         if (uS.listId(user.getId()) == null) {
@@ -77,6 +82,35 @@ public class UserController {
         UserDTO2 dto = m.map(user, UserDTO2.class);
         return ResponseEntity.ok(dto);
     }
+
+    @GetMapping("/TotalArchivosPorUsuario")
+    public ResponseEntity<?> obtenerTotalArchivosPorUsuario() {
+        List<Object[]> resultados = uS.TotalArchivosXUsers();
+
+        // Caso 1: no hay usuarios o la consulta no devolvió resultados
+        if (resultados.isEmpty()) {
+            return ResponseEntity.ok("No hay archivos registrados");
+        }
+
+        List<TotalArchivosXUsersDTO> lista = new ArrayList<>();
+
+        for (Object[] fila : resultados) {
+            TotalArchivosXUsersDTO dto = new TotalArchivosXUsersDTO();
+            dto.setUsername((String) fila[0]);
+            dto.setTotalArchivos(((Number) fila[1]).longValue());
+            lista.add(dto);
+        }
+
+        // Caso 2: hay usuarios, pero todos tienen totalArchivos = 0
+        boolean todosCero = lista.stream().allMatch(dto -> dto.getTotalArchivos() == 0);
+        if (todosCero) {
+            return ResponseEntity.ok("No hay archivos registrados actualmente en el sistema");
+        }
+
+        // Caso 3: hay usuarios con archivos
+        return ResponseEntity.ok(lista);
+    }
+
 
 
 
