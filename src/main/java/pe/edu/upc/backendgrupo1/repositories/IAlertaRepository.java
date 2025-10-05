@@ -14,7 +14,7 @@ public interface IAlertaRepository extends JpaRepository<Alerta, Integer> {
             "FROM alertas\n" +
             "WHERE visto_alerta = FALSE\n" +
             "GROUP BY id_user", nativeQuery = true)
-    public List<String[]> searchByType();
+    public List<String[]> cantidadalertaspendientesxusuario();
 
 
 

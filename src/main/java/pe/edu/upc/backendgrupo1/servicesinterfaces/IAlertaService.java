@@ -10,5 +10,5 @@ public interface IAlertaService {
     public void delete(int id);
     public void update(Alerta alerta);
     public Alerta listId(int id);
-    public List<String[]> searchByType();
+    public List<String[]> cantidadalertaspendientesxusuario();
 }

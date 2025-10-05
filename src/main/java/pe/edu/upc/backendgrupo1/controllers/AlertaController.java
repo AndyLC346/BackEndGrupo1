@@ -75,7 +75,7 @@ public class AlertaController {
     @GetMapping("/cantidadataquessinverporusuario")
     public ResponseEntity<?> cantidadataques() {
         List<AlertaQuery1DTO> listaDto=new ArrayList<AlertaQuery1DTO>();
-        List<String[]>fila=aS.searchByType();
+        List<String[]>fila=aS.cantidadalertaspendientesxusuario();
         if (fila.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
                     .body("No se encontraron ataques");

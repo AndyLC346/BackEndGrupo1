@@ -41,5 +41,5 @@ public class AlertaServiceImplement implements IAlertaService {
     }
 
     @Override
-    public List<String[]> searchByType() {return aR.searchByType();}
+    public List<String[]> cantidadalertaspendientesxusuario() {return aR.searchByType();}
 }
