@@ -34,8 +34,4 @@ public class AuditoriaServiceImplement implements IAuditoriaService {
         aR.save(auditoria);
     }
 
-    @Override
-    public Auditoria listId(int id) {
-        return aR.findById(id).orElse(null);
-    }
 }

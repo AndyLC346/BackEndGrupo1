@@ -9,5 +9,4 @@ public interface IAuditoriaService {
     void insert(Auditoria auditoria);
     void delete(int id);
     void update(Auditoria auditoria);
-    Auditoria listId(int id);
 }

@@ -8,5 +8,4 @@ public interface ILogAccesoService {
     public void insert(LogAcceso logAcceso);
     public void delete(int id);
     public void update(LogAcceso logAcceso);
-    public LogAcceso listId(int id);
 }

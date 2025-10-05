@@ -32,7 +32,5 @@ public class LogAccesoServiceImplement implements ILogAccesoService {
     @Override
     public void update(LogAcceso logAcceso) {loR.save(logAcceso);}
 
-    @Override
-    public LogAcceso listId(int id) {return loR.findById(id).orElse(null);}
 
 }
