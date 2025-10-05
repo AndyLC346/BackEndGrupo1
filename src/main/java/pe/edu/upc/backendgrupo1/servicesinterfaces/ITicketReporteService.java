@@ -1,5 +1,6 @@
 package pe.edu.upc.backendgrupo1.servicesinterfaces;
 
+import pe.edu.upc.backendgrupo1.dtos.TicketReporteDTO;
 import pe.edu.upc.backendgrupo1.entities.TicketReporte;
 import java.util.List;
 
@@ -9,4 +10,8 @@ public interface ITicketReporteService {
     TicketReporte listId(int id);
     void delete(int id);
     void update(TicketReporte t);
+    List<String[]> TotalTicketsPorUsuario();
+    List<String[]> CantidadRespuestaTicket();
+    List<TicketReporte> listEstado(String estadoSoporte);
+    List<TicketReporte> listTipo(String tipoSoporte);
 }

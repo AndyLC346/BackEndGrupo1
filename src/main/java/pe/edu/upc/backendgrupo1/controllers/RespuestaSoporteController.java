@@ -6,7 +6,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.backendgrupo1.dtos.RespuestaSoporteDTO;
+import pe.edu.upc.backendgrupo1.dtos.TicketReporteDTO;
 import pe.edu.upc.backendgrupo1.entities.RespuestaSoporte;
+import pe.edu.upc.backendgrupo1.entities.TicketReporte;
 import pe.edu.upc.backendgrupo1.servicesinterfaces.IRespuestaSoporteService;
 
 import java.util.List;
@@ -50,6 +52,16 @@ public class RespuestaSoporteController {
             rsS.update(rs);
             return ResponseEntity.ok("Se modifico correctamente");
         }
-
-
+        @GetMapping("/{id}")
+        public ResponseEntity<?> listarID(@PathVariable("id") Integer id) {
+            RespuestaSoporte respuestaSoporte = rsS.listId(id);
+            if (respuestaSoporte == null) {
+                return ResponseEntity
+                        .status(HttpStatus.NOT_FOUND)
+                        .body("No existe el registro del usuario con el ID: " + id);
+            }
+            ModelMapper m = new ModelMapper();
+            RespuestaSoporteDTO dto = m.map(respuestaSoporte, RespuestaSoporteDTO.class);
+            return ResponseEntity.ok(dto);
+        }
 }
