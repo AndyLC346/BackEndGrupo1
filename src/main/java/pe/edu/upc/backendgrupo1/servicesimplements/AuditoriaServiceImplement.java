@@ -1,5 +1,6 @@
 package pe.edu.upc.backendgrupo1.servicesimplements;
 
+import jakarta.persistence.Entity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pe.edu.upc.backendgrupo1.entities.Auditoria;
@@ -33,5 +34,10 @@ public class AuditoriaServiceImplement implements IAuditoriaService {
     public void update(Auditoria auditoria) {
         aR.save(auditoria);
     }
+
+    @Override
+    public Auditoria listId(int id) {
+        return aR.findById(id).orElse(null) ;
+    };
 
 }

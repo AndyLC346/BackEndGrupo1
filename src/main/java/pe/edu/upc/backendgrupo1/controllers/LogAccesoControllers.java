@@ -61,18 +61,6 @@ public class LogAccesoControllers {
         return ResponseEntity.ok("Log actualizado correctamente");
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<?> listarID(@PathVariable("id") Integer id) {
-        LogAcceso logAcceso = loS.listId(id);
-        if (logAcceso == null) {
-            return ResponseEntity
-                    .status(HttpStatus.NOT_FOUND)
-                    .body("No existe el registro del Log con el ID: " + id);
-        }
-        ModelMapper m = new ModelMapper();
-        UserDTO dto = m.map(logAcceso, UserDTO.class);
-        return ResponseEntity.ok(dto);
-    }
 
     @GetMapping("/buscarLogsPorusuarioyrangofechas")
     public ResponseEntity<?> buscarLogsPorusuarioyrangofechas(@RequestParam int id, @RequestParam LocalDate fi, @RequestParam LocalDate ff) {
