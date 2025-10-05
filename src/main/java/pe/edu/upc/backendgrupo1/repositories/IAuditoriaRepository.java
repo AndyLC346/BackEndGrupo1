@@ -6,6 +6,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import pe.edu.upc.backendgrupo1.entities.Auditoria;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -17,8 +18,8 @@ public interface IAuditoriaRepository extends JpaRepository<Auditoria, Integer> 
             "AND (:tipoAuditoria IS NULL OR tipo_auditoria = :tipoAuditoria) " +
             "ORDER BY fecha_auditoria DESC", nativeQuery = true)
     List<Object[]> buscarAuditoriasPorFechaYTipo(
-            @Param("fechaInicio") LocalDateTime fechaInicio,
-            @Param("fechaFin") LocalDateTime fechaFin,
+            @Param("fechaInicio") LocalDate fechaInicio,
+            @Param("fechaFin") LocalDate fechaFin,
             @Param("tipoAuditoria") String tipoAuditoria
     );
 }

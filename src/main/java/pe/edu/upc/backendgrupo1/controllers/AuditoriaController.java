@@ -75,8 +75,8 @@ public class AuditoriaController {
     }
     @GetMapping("/filtrar-entreFechas-tipoAuditoria")
     public ResponseEntity<?> filtrarAuditorias(
-            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime fechaInicio,
-            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime fechaFin,
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDate fechaInicio,
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDate fechaFin,
             @RequestParam(required = false) String tipoAuditoria) {
 
         List<Object[]> resultados = aS.buscarAuditoriasPorFechaYTipo(fechaInicio, fechaFin, tipoAuditoria);
@@ -87,7 +87,6 @@ public class AuditoriaController {
             dto.setFechaAuditoria((LocalDate) x[1]);
             dto.setTipoAuditoria((String) x[2]);
             dto.setDescripcion((String) x[3]);
-            // Usuario
             dto.setUsuario(aS.listId(((Number) x[4]).intValue()).getUsuario());
             return dto;
         }).collect(Collectors.toList());

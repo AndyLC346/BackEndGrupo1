@@ -6,7 +6,7 @@ import pe.edu.upc.backendgrupo1.entities.Auditoria;
 import pe.edu.upc.backendgrupo1.repositories.IAuditoriaRepository;
 import pe.edu.upc.backendgrupo1.servicesinterfaces.IAuditoriaService;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -39,9 +39,10 @@ public class AuditoriaServiceImplement implements IAuditoriaService {
     public Auditoria listId(int id) {
         return aR.findById(id).orElse(null);
     }
+
     @Override
-    public List<Object[]> buscarAuditoriasPorFechaYTipo(LocalDateTime fechaInicio,
-                                                        LocalDateTime fechaFin,
+    public List<Object[]> buscarAuditoriasPorFechaYTipo(LocalDate fechaInicio,
+                                                        LocalDate fechaFin,
                                                         String tipoAuditoria) {
         return aR.buscarAuditoriasPorFechaYTipo(fechaInicio, fechaFin, tipoAuditoria);}
 }
