@@ -8,7 +8,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.backendgrupo1.dtos.AlertaQuery1DTO;
 import pe.edu.upc.backendgrupo1.dtos.CuentaDTO;
+import pe.edu.upc.backendgrupo1.dtos.RecursoDTO;
 import pe.edu.upc.backendgrupo1.entities.Cuenta;
+import pe.edu.upc.backendgrupo1.entities.Recurso;
 import pe.edu.upc.backendgrupo1.servicesinterfaces.ICuentaService;
 
 import java.time.LocalDate;
@@ -75,13 +77,18 @@ public class CuentaController {
         return ResponseEntity.ok(dto);
     }
     @GetMapping("/activas-usuario-fecha")
-    public List<CuentaDTO> cuentasActivasPorUsuario(
-            @RequestParam int idUser,
-            @RequestParam LocalDate fecha) {
-        return cS.list().stream().map(x -> {
+    public ResponseEntity<?> cuentasActivasPorUsuario(@RequestParam int id, @RequestParam LocalDate fecha) {
+        List<Cuenta> cuentas = cS.buscarCuentasPorUsuarioYFecha(id,fecha);
+        if (cuentas.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("No se encontraron cuentas de ese id y/o fecha");
+        }
+        List<CuentaDTO> listaDTO = cuentas.stream().map(x -> {
             ModelMapper m = new ModelMapper();
             return m.map(x, CuentaDTO.class);
         }).collect(Collectors.toList());
-
+        return ResponseEntity.ok(listaDTO);
     }
+
+
 }

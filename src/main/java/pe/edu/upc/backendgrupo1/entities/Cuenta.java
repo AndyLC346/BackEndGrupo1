@@ -17,7 +17,7 @@ public class Cuenta {
     @Column(name = "nombreCuenta", length = 20)
     private String nombreCuenta;
 
-    @Column(name = "estadoCuenta", length = 20)
+    @Column(name = "estadoCuenta", nullable = false)
     private boolean estadoCuenta;
 
     @Column(name = "fecharegistroCuenta")
