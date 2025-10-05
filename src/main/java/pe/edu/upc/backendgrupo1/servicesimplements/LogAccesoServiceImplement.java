@@ -6,6 +6,7 @@ import pe.edu.upc.backendgrupo1.entities.LogAcceso;
 import pe.edu.upc.backendgrupo1.repositories.ILogAccesoRepository;
 import pe.edu.upc.backendgrupo1.servicesinterfaces.ILogAccesoService;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -32,5 +33,10 @@ public class LogAccesoServiceImplement implements ILogAccesoService {
     @Override
     public void update(LogAcceso logAcceso) {loR.save(logAcceso);}
 
+
+    @Override
+    public List<LogAcceso> buscarLogsPorusuarioyrangofechas(int idusuario, LocalDate fechainicial, LocalDate fechafinal) {
+        return loR.buscarLogsPorusuarioyrangofechas(idusuario, fechainicial, fechafinal);
+    }
 
 }
