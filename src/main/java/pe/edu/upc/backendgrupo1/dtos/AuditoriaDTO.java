@@ -2,17 +2,15 @@ package pe.edu.upc.backendgrupo1.dtos;
 
 import pe.edu.upc.backendgrupo1.entities.Users;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public class AuditoriaDTO {
 
     private int idAuditoria;
-    private LocalDateTime fechaAuditoria;
+    private LocalDate fechaAuditoria;
     private String tipoAuditoria;
     private String descripcion;
     private Users usuario;
-
-
 
     public int getIdAuditoria() {
         return idAuditoria;
@@ -22,11 +20,11 @@ public class AuditoriaDTO {
         this.idAuditoria = idAuditoria;
     }
 
-    public LocalDateTime getFechaAuditoria() {
+    public LocalDate getFechaAuditoria() {
         return fechaAuditoria;
     }
 
-    public void setFechaAuditoria(LocalDateTime fechaAuditoria) {
+    public void setFechaAuditoria(LocalDate fechaAuditoria) {
         this.fechaAuditoria = fechaAuditoria;
     }
 

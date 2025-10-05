@@ -6,6 +6,7 @@ import pe.edu.upc.backendgrupo1.entities.Cuenta;
 import pe.edu.upc.backendgrupo1.repositories.ICuentaRepository;
 import pe.edu.upc.backendgrupo1.servicesinterfaces.ICuentaService;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -38,4 +39,8 @@ public class CuentaServiceImplement implements ICuentaService {
     public Cuenta listId(int id) {
         return cR.findById(id).orElse(null);
     }
+
+    @Override
+    public List<Object[]> buscarCuentasPorUsuarioYFecha(int idUser, LocalDate fecha) {
+        return cR.buscarCuentasPorUsuarioYFecha(idUser, fecha);}
 }

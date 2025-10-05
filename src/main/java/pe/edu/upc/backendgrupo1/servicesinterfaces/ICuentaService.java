@@ -2,6 +2,7 @@ package pe.edu.upc.backendgrupo1.servicesinterfaces;
 
 import pe.edu.upc.backendgrupo1.entities.Cuenta;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface ICuentaService {
@@ -10,4 +11,6 @@ public interface ICuentaService {
     void delete(int id);
     void update(Cuenta cuenta);
     Cuenta listId(int id);
+    List<Object[]> buscarCuentasPorUsuarioYFecha(int idUser, LocalDate fecha);
+
 }
