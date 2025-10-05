@@ -1,5 +1,7 @@
 package pe.edu.upc.backendgrupo1.dtos;
 
+
+
 public class UserDTO {
 
     private String username;
@@ -15,7 +17,6 @@ public class UserDTO {
     private String emailUser;
 
     private String telefonoUser;
-
 
 
     public String getUsername() {
