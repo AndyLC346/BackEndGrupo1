@@ -34,6 +34,7 @@ public class UserController {
 
 
     @PostMapping
+    @PreAuthorize("hasAuthority('CLIENTE')")
     public ResponseEntity<String> insertar(@RequestBody UserDTO dto) {
         ModelMapper m = new ModelMapper();
         Users u = m.map(dto, Users.class);
@@ -53,7 +54,7 @@ public class UserController {
     }
 
     @PutMapping
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('CLIENTE')")
     public ResponseEntity<String> modificar(@RequestBody UserDTO3 dto) {
         ModelMapper m = new ModelMapper();
         Users user = m.map(dto, Users.class);
@@ -82,6 +83,7 @@ public class UserController {
     }
 
     @GetMapping("/TotalArchivosPorUsuario")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<?> obtenerTotalArchivosPorUsuario() {
         List<Object[]> resultados = uS.TotalArchivosXUsers();
 

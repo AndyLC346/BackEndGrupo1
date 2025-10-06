@@ -3,6 +3,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.backendgrupo1.dtos.AlertaDTO;
 import pe.edu.upc.backendgrupo1.dtos.AlertaQuery1DTO;
@@ -20,6 +21,7 @@ public class AlertaController {
     private IAlertaService aS;
 
     @GetMapping
+    @PreAuthorize("hasAuthority('CLIENTE')")
     public List<AlertaDTO> listar() {
         return aS.list().stream().map(x -> {
             ModelMapper m = new ModelMapper();
@@ -28,6 +30,7 @@ public class AlertaController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAuthority('DEVELOPER')")
     public ResponseEntity<String> insertar(@RequestBody AlertaDTO dto) {
         ModelMapper m = new ModelMapper();
         Alerta a = m.map(dto, Alerta.class);
@@ -36,6 +39,7 @@ public class AlertaController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('DEVELOPER')")
     public ResponseEntity<String> eliminar(@PathVariable("id") Integer id) {
         Alerta alerta = aS.listId(id);
         if(alerta == null) {
@@ -46,6 +50,7 @@ public class AlertaController {
     }
 
     @PutMapping
+    @PreAuthorize("hasAuthority('DEVELOPER')")
     public ResponseEntity<String> modificar(@RequestBody AlertaDTO dto) {
         ModelMapper m = new ModelMapper();
         Alerta alerta = m.map(dto, Alerta.class);
@@ -59,6 +64,7 @@ public class AlertaController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasAuthority('CLIENTE')")
     public ResponseEntity<?> listarID(@PathVariable("id") Integer id) {
         Alerta alerta = aS.listId(id);
         if(alerta == null) {
@@ -73,6 +79,7 @@ public class AlertaController {
 
 
     @GetMapping("/cantidadalertaspendientesporusuario")
+    @PreAuthorize("hasAuthority('DEVELOPER')")
     public ResponseEntity<?> cantidadalertaspendientesxusuario() {
         List<AlertaQuery1DTO> listaDto=new ArrayList<AlertaQuery1DTO>();
         List<String[]>fila=aS.cantidadalertaspendientesxusuario();

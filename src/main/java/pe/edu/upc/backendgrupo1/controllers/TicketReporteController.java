@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.backendgrupo1.dtos.CantidadRespuestaTicketDTO;
 import pe.edu.upc.backendgrupo1.dtos.TicketReporteDTO;
@@ -20,7 +21,9 @@ import java.util.stream.Collectors;
 public class TicketReporteController {
     @Autowired
     private ITicketReporteService trS;
+
     @GetMapping
+    @PreAuthorize("hasAuthority('SOPORTE')")
     public List<TicketReporteDTO> listar(){
         ModelMapper m = new ModelMapper();
         return trS.list().stream()
@@ -28,12 +31,14 @@ public class TicketReporteController {
                 .collect(Collectors.toList());
     }
     @PostMapping
+    @PreAuthorize("hasAuthority('CLIENTE')")
     public void insertar(@RequestBody TicketReporteDTO dto){
         ModelMapper m=new ModelMapper();
         TicketReporte t=m.map(dto,TicketReporte.class);
         trS.insert(t);
     }
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('SOPORTE')")
     public ResponseEntity<String>eliminar(@PathVariable("id")Integer id){
         TicketReporte ticketreporte=trS.listId(id);
         if(ticketreporte==null){
@@ -42,6 +47,7 @@ public class TicketReporteController {
         return ResponseEntity.ok("Se elimino el ticket correctamente");
     }
     @PutMapping
+    @PreAuthorize("hasAuthority('SOPORTE')")
     public ResponseEntity<String>modificar(@RequestBody TicketReporteDTO dto){
         ModelMapper m=new ModelMapper();
         TicketReporte t=m.map(dto,TicketReporte.class);
@@ -53,6 +59,7 @@ public class TicketReporteController {
         return ResponseEntity.ok("Se modifico correctamente");
     }
     @GetMapping("/ContarTicktesPorUsuario")
+    @PreAuthorize("hasAuthority('SOPORTE')")
     public ResponseEntity<?> contarTicketsPorUsuario() {
         List<TotalTicketsUsuarioDTO>dtos=new ArrayList<>();
         List<String[]>resultados=trS.TotalTicketsPorUsuario();
@@ -66,6 +73,7 @@ public class TicketReporteController {
         return ResponseEntity.ok(dtos);
     }
     @GetMapping("/CantidadRespuestas")
+    @PreAuthorize("hasAuthority('SOPORTE')")
     public ResponseEntity<?>cantidadRespuesasPorTicket(){
         List<CantidadRespuestaTicketDTO>dtos=new ArrayList<>();
         List<String[]>resultados=trS.CantidadRespuestaTicket();
@@ -81,6 +89,7 @@ public class TicketReporteController {
         return ResponseEntity.ok(dtos);
     }
     @GetMapping("/id/{id}")
+    @PreAuthorize("hasAuthority('SOPORTE')")
     public ResponseEntity<?> listarID(@PathVariable("id") Integer id) {
         TicketReporte ticketReporte = trS.listId(id);
         if(ticketReporte == null) {
@@ -93,6 +102,7 @@ public class TicketReporteController {
         return ResponseEntity.ok(dto);
     }
     @GetMapping("/estado/{estadoSoporte}")
+    @PreAuthorize("hasAuthority('SOPORTE')")
     public ResponseEntity<?> listarEstados(@PathVariable("estadoSoporte") String estadoSoporte) {
         List<TicketReporte> ticketReporte = trS.listEstado(estadoSoporte);
         if (ticketReporte.isEmpty()) {
@@ -107,6 +117,7 @@ public class TicketReporteController {
         return ResponseEntity.ok(dtos);
     }
     @GetMapping("/tipo/{tipoSoporte}")
+    @PreAuthorize("hasAuthority('SOPORTE')")
     public ResponseEntity<?> listarPorEstado(@PathVariable("tipoSoporte") String tipoSoporte) {
         List<TicketReporte> tickets = trS.listTipo(tipoSoporte);
 

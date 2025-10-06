@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import pe.edu.upc.backendgrupo1.dtos.CuentaDTO;
@@ -26,6 +27,7 @@ public class CuentaController {
     private ICuentaService cS;
 
     @GetMapping
+    @PreAuthorize("hasAuthority('ADMIN')")
     public List<CuentaDTO> listar() {
         return cS.list().stream().map(x -> {
             ModelMapper m = new ModelMapper();
@@ -34,6 +36,7 @@ public class CuentaController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAuthority('CLIENTE')")
     public ResponseEntity<String> insertar(@RequestBody CuentaDTO dto) {
         ModelMapper m = new ModelMapper();
         Cuenta c = m.map(dto, Cuenta.class);
@@ -42,6 +45,7 @@ public class CuentaController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('CLIENTE')")
     public ResponseEntity<String> eliminar(@PathVariable("id") Integer id) {
         Cuenta cuenta = cS.listId(id);
         if (cuenta == null) {
@@ -52,6 +56,7 @@ public class CuentaController {
     }
 
     @PutMapping
+    @PreAuthorize("hasAuthority('CLIENTE')")
     public ResponseEntity<String> modificar(@RequestBody CuentaDTO dto) {
         ModelMapper m = new ModelMapper();
         Cuenta cuenta = m.map(dto, Cuenta.class);
@@ -65,6 +70,7 @@ public class CuentaController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<?> listarID(@PathVariable("id") Integer id) {
         Cuenta cuenta = cS.listId(id);
         if (cuenta == null) {
@@ -77,6 +83,7 @@ public class CuentaController {
         return ResponseEntity.ok(dto);
     }
     @GetMapping("/activas-usuario-fecha")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<?> cuentasActivasPorUsuario(@RequestParam int id, @RequestParam LocalDate fecha) {
         List<Cuenta> cuentas = cS.buscarCuentasPorUsuarioYFecha(id,fecha);
         if (cuentas.isEmpty()) {

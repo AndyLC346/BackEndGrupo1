@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.backendgrupo1.dtos.RecursoDTO;
 import pe.edu.upc.backendgrupo1.dtos.RecursoQuery2DTO;
@@ -21,6 +22,7 @@ public class RecursoController {
     private IRecursoEducativoService rS;
 
     @GetMapping
+    @PreAuthorize("hasAuthority('CLIENTE')")
     public List<RecursoDTO> listar() {
         return rS.list().stream().map(x -> {
             ModelMapper m = new ModelMapper();
@@ -28,6 +30,7 @@ public class RecursoController {
         }).collect(Collectors.toList());
     }
     @PostMapping
+    @PreAuthorize("hasAuthority('DEVELOPER')")
     public ResponseEntity<String> insertar(@RequestBody RecursoDTO dto) {
         ModelMapper m = new ModelMapper();
         Recurso r = m.map(dto, Recurso.class);
@@ -36,6 +39,7 @@ public class RecursoController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('DEVELOPER')")
     public ResponseEntity<String> eliminar(@PathVariable("id") Integer id) {
         Recurso recurso = rS.listId(id);
         if(recurso == null) {
@@ -46,6 +50,7 @@ public class RecursoController {
     }
 
     @PutMapping
+    @PreAuthorize("hasAuthority('DEVELOPER')")
     public ResponseEntity<String> modificar(@RequestBody RecursoDTO dto) {
         ModelMapper m = new ModelMapper();
         Recurso recurso = m.map(dto, Recurso.class);
@@ -59,6 +64,7 @@ public class RecursoController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasAuthority('CLIENTE')")
     public ResponseEntity<?> listarID(@PathVariable("id") Integer id) {
         Recurso recurso = rS.listId(id);
         if(recurso == null) {
@@ -73,6 +79,7 @@ public class RecursoController {
 
 
     @GetMapping("/bsuquedatipoynivel")
+    @PreAuthorize("hasAuthority('CLIENTE')")
     public ResponseEntity<?> buscar(@RequestParam String tipo, @RequestParam String nivel) {
         List<Recurso> recursos = rS.buscarRecursoxTipoynivel(tipo,nivel);
         if (recursos.isEmpty()) {
@@ -87,6 +94,7 @@ public class RecursoController {
     }
 
     @GetMapping("/cantidadrecursoxusername")
+    @PreAuthorize("hasAuthority('DEVELOPER')")
     public ResponseEntity<?> cantidadRecursoxusername(@RequestParam String username) {
         List<String[]> fila = rS.cantidadRecursoxusername(username);
         List<RecursoQuery2DTO> listaDTO = new ArrayList<>();
