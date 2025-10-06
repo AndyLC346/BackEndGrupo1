@@ -60,14 +60,14 @@ public class AuditoriaController {
     }
 
 
-    @GetMapping("/filtrar-entreFechas-tipoAuditoria")
-    public ResponseEntity<?> buscarLogsPorusuarioyrangofechas(@RequestParam LocalDate fechaInicio, @RequestParam LocalDate fechaFin, @RequestParam  String tipoAuditoria) {
-        List<Auditoria> logAccesos = aS.buscarAuditoriasPorFechaYTipo(fechaInicio, fechaFin, tipoAuditoria);
-        if (logAccesos.isEmpty()) {
+    @GetMapping("/filtrarentreFechastipoAuditoria")
+    public ResponseEntity<?> buscarAuditoriaPorusuarioyrangofechas(@RequestParam LocalDate fechaInicio, @RequestParam LocalDate fechaFin, @RequestParam  String tipoAuditoria) {
+        List<Auditoria> auditorias = aS.buscarAuditoriasPorFechaYTipo(fechaInicio, fechaFin, tipoAuditoria);
+        if (auditorias.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body("No se encontraron auditorias en ese ango de fecha y/o tipo: ");
+                    .body("No se encontraron auditorias en ese rango de fecha y/o tipo: ");
         }
-        List<Auditoria> listaDTO = logAccesos.stream().map(x -> {
+        List<Auditoria> listaDTO = auditorias.stream().map(x -> {
             ModelMapper m = new ModelMapper();
             return m.map(x, Auditoria.class);
         }).collect(Collectors.toList());
