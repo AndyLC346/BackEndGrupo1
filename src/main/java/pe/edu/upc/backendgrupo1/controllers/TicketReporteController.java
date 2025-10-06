@@ -83,7 +83,7 @@ public class TicketReporteController {
         }
         return ResponseEntity.ok(dtos);
     }
-    @GetMapping("/{id}")
+    @GetMapping("/id/{id}")
     public ResponseEntity<?> listarID(@PathVariable("id") Integer id) {
         TicketReporte ticketReporte = trS.listId(id);
         if(ticketReporte == null) {
@@ -95,7 +95,7 @@ public class TicketReporteController {
         TicketReporteDTO dto = m.map(ticketReporte, TicketReporteDTO.class);
         return ResponseEntity.ok(dto);
     }
-    @GetMapping("/{estadoSoporte}")
+    @GetMapping("/estado/{estadoSoporte}")
     public ResponseEntity<?> listarEstados(@PathVariable("estadoSoporte") String estadoSoporte) {
         List<TicketReporte> ticketReporte = trS.listEstado(estadoSoporte);
         if (ticketReporte.isEmpty()) {
@@ -109,7 +109,7 @@ public class TicketReporteController {
                 .collect(Collectors.toList());
         return ResponseEntity.ok(dtos);
     }
-    @GetMapping("/{tipoSoporte}")
+    @GetMapping("/tipo/{tipoSoporte}")
     public ResponseEntity<?> listarTipo(@PathVariable("tipoSoporte") String tipoSoporte) {
         List<TicketReporte> ticketReporte = trS.listTipo(tipoSoporte);
         if (ticketReporte.isEmpty()) {
