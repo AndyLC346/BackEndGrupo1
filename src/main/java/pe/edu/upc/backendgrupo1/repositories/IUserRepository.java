@@ -6,7 +6,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import pe.edu.upc.backendgrupo1.dtos.TotalArchivosXUsersDTO;
 import pe.edu.upc.backendgrupo1.dtos.UserDTO2;
 import pe.edu.upc.backendgrupo1.entities.Users;
 
@@ -29,6 +28,4 @@ public interface IUserRepository extends JpaRepository<Users, Long> {
     @Query(value = "insert into roles (rol, user_id) VALUES (:rol, :user_id)", nativeQuery = true)
     public void insRol(@Param("rol") String authority, @Param("user_id") Long user_id);
 
-
-    List<UserDTO2> findByEnabled(boolean enabled);
 }

@@ -13,12 +13,9 @@ import pe.edu.upc.backendgrupo1.entities.Users;
 import pe.edu.upc.backendgrupo1.servicesinterfaces.IUserService;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
-import static org.springframework.security.authorization.AuthorityReactiveAuthorizationManager.hasAuthority;
 
 @RestController
 @RequestMapping("/usuarios")
