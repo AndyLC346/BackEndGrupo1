@@ -24,7 +24,7 @@ public class LogAcceso {
     private String sistemaoperativoAcceso;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "idUser")
     private Users usuario;
 
     public LogAcceso() {

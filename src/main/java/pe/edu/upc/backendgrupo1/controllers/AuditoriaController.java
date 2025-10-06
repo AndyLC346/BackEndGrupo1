@@ -59,8 +59,7 @@ public class AuditoriaController {
         return ResponseEntity.ok("Auditoría actualizada correctamente");
     }
 
-
-    @GetMapping("/filtrarentreFechastipoAuditoria")
+    @GetMapping("/buscarAuditoriaPorusuarioyrangofechas")
     public ResponseEntity<?> buscarAuditoriaPorusuarioyrangofechas(@RequestParam LocalDate fechaInicio, @RequestParam LocalDate fechaFin, @RequestParam  String tipoAuditoria) {
         List<Auditoria> auditorias = aS.buscarAuditoriasPorFechaYTipo(fechaInicio, fechaFin, tipoAuditoria);
         if (auditorias.isEmpty()) {
@@ -71,7 +70,6 @@ public class AuditoriaController {
             ModelMapper m = new ModelMapper();
             return m.map(x, Auditoria.class);
         }).collect(Collectors.toList());
-
         return ResponseEntity.ok(listaDTO);
     }
 }
