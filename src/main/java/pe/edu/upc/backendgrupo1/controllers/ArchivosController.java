@@ -7,9 +7,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.backendgrupo1.dtos.ArchivosDTO;
+import pe.edu.upc.backendgrupo1.dtos.BuscarArchivosXFechaDTO;
 import pe.edu.upc.backendgrupo1.entities.Archivos;
 import pe.edu.upc.backendgrupo1.servicesinterfaces.IArchivosService;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -75,4 +78,30 @@ public class ArchivosController {
         ArchivosDTO dto = m.map(archivo, ArchivosDTO.class);
         return ResponseEntity.ok(dto);
     }
+
+    @GetMapping("/BuscarArchivosXFecha")
+    public ResponseEntity<?> buscarArchivosPorFecha(
+            @RequestParam("fechaInicio") LocalDate fechaInicio,
+            @RequestParam("fechaFin") LocalDate fechaFin) {
+
+        List<String[]> fila = aS.listarArchivosPorFechas(fechaInicio, fechaFin);
+        List<BuscarArchivosXFechaDTO> listaDTO = new ArrayList<>();
+
+        if (fila.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("No se encontraron archivos entre esas fechas");
+        }
+
+        for(String[]columna:fila){
+            BuscarArchivosXFechaDTO dto = new BuscarArchivosXFechaDTO();
+            dto.setNombreArchivo(columna[0]);
+            dto.setTipoArchivo(columna[1]);
+            dto.setFechaArchivo(LocalDate.parse(columna[2]));
+            listaDTO.add(dto);
+        }
+
+        return ResponseEntity.ok(listaDTO);
+    }
+
+
 }
