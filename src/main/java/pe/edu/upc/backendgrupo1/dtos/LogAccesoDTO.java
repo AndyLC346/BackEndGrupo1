@@ -51,12 +51,12 @@ public class LogAccesoDTO {
         this.sistemaoperativoAcceso = sistemaoperativoAcceso;
     }
 
-    public Users getUser() {
+    public Users getUsuario() {
         return usuario;
     }
 
-    public void setUser(Users user) {
-        this.usuario = user;
+    public void setUsuario(Users usuario) {
+        this.usuario = usuario;
     }
 
 }

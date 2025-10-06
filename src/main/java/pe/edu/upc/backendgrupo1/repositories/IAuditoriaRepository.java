@@ -12,9 +12,9 @@ import java.util.List;
 @Repository
 public interface IAuditoriaRepository extends JpaRepository<Auditoria, Integer> {
     @Query(value = "SELECT * From auditoria\n" +
-            "WHERE fecha_auditoria BETWEEN :fechaInicio  AND :fechaFin \n" +
-            "AND :tipoAuditoria\n" +
-            " ORDER BY fecha_auditoria DESC", nativeQuery = true)
+            "            WHERE fecha_auditoria BETWEEN :fechaInicio AND :fechaFin\n" +
+            "            AND tipo_auditoria= :tipoAuditoria\n" +
+            "            ORDER BY fecha_auditoria DESC", nativeQuery = true)
     List<Auditoria> buscarAuditoriasPorFechaYTipo(
             @Param("fechaInicio") LocalDate fechaInicio,
             @Param("fechaFin") LocalDate fechaFin,

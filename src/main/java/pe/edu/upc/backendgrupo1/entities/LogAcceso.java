@@ -20,22 +20,22 @@ public class LogAcceso {
     @Column(name="navegadorAcceso", length = 50, nullable = false)
     private String navegadorAcceso;
 
-    @Column(name="sistemaoperativoAcesso", length = 50, nullable = false)
-    private String sistemaoperativoAcesso;
+    @Column(name="sistemaoperativoAcceso", length = 50, nullable = false)
+    private String sistemaoperativoAcceso;
 
     @ManyToOne
-    @JoinColumn(name = "idUsuario", nullable = false)
+    @JoinColumn(name = "idUser")
     private Users usuario;
 
     public LogAcceso() {
     }
 
-    public LogAcceso(int idLogAcceso, LocalDate fechaAcceso, String ipAcceso, String navegadorAcceso, String sistemaoperativoAcesso, Users usuario) {
+    public LogAcceso(int idLogAcceso, LocalDate fechaAcceso, String ipAcceso, String navegadorAcceso, String sistemaoperativoAcceso, Users usuario) {
         this.idLogAcceso = idLogAcceso;
         this.fechaAcceso = fechaAcceso;
         this.ipAcceso = ipAcceso;
         this.navegadorAcceso = navegadorAcceso;
-        this.sistemaoperativoAcesso = sistemaoperativoAcesso;
+        this.sistemaoperativoAcceso = sistemaoperativoAcceso;
         this.usuario = usuario;
     }
 
@@ -71,12 +71,12 @@ public class LogAcceso {
         this.navegadorAcceso = navegadorAcceso;
     }
 
-    public String getSistemaoperativoAcesso() {
-        return sistemaoperativoAcesso;
+    public String getSistemaoperativoAcceso() {
+        return sistemaoperativoAcceso;
     }
 
-    public void setSistemaoperativoAcesso(String sistemaoperativoAcesso) {
-        this.sistemaoperativoAcesso = sistemaoperativoAcesso;
+    public void setSistemaoperativoAcceso(String sistemaoperativoAcceso) {
+        this.sistemaoperativoAcceso = sistemaoperativoAcceso;
     }
 
     public Users getUsuario() {
