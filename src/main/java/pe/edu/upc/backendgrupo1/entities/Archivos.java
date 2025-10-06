@@ -22,7 +22,7 @@ public class Archivos {
     private LocalDate fechaArchivo;
 
     @ManyToOne
-    @JoinColumn(name="idUser")
+    @JoinColumn(name="user_id")
     private Users usuario;
 
     public Archivos() {

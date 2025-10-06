@@ -42,6 +42,6 @@ public class ArchivosServiceImplement implements IArchivosService {
 
     @Override
     public List<String[]> listarArchivosPorFechas(LocalDate fechaInicio, LocalDate fechaFin) {
-        return List.of();
+        return aR.listarArchivosPorFechas(fechaInicio, fechaFin);
     }
 }

@@ -1,12 +1,13 @@
 package pe.edu.upc.backendgrupo1.dtos;
 
+
 import java.time.LocalDate;
 
 public class BuscarArchivosXFechaDTO {
     private String nombreArchivo;
     private String tipoArchivo;
     private LocalDate fechaArchivo;
-
+    private String username;
 
     public String getNombreArchivo() {
         return nombreArchivo;
@@ -32,4 +33,11 @@ public class BuscarArchivosXFechaDTO {
         this.fechaArchivo = fechaArchivo;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 }

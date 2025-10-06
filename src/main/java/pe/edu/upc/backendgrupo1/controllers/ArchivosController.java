@@ -97,6 +97,9 @@ public class ArchivosController {
             dto.setNombreArchivo(columna[0]);
             dto.setTipoArchivo(columna[1]);
             dto.setFechaArchivo(LocalDate.parse(columna[2]));
+            dto.setUsername(columna[3]);
+
+
             listaDTO.add(dto);
         }
 
