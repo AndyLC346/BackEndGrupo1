@@ -2,7 +2,6 @@ package pe.edu.upc.backendgrupo1.servicesimplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pe.edu.upc.backendgrupo1.dtos.TotalArchivosXUsersDTO;
 import pe.edu.upc.backendgrupo1.entities.Users;
 import pe.edu.upc.backendgrupo1.repositories.IUserRepository;
 import pe.edu.upc.backendgrupo1.servicesinterfaces.IUserService;
@@ -38,6 +37,4 @@ public class UserServiceImplement implements IUserService {
     public List<Object[]> TotalArchivosXUsers() {
         return uR.TotalArchivosXUsers();
     }
-
-
 }
