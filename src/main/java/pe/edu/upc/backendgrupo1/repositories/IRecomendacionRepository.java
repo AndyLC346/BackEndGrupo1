@@ -15,7 +15,7 @@ public interface IRecomendacionRepository extends JpaRepository<Recomendacion, I
             "    r.categoria_recomendacion,\n" +
             "    COUNT(r.id_recomendacion) as cantidad\n" +
             "FROM Recomendaciones r\n" +
-            "INNER JOIN users u ON r.id_usuario = u.id_user\n" +
+            "INNER JOIN users u ON r.id_usuario = u.id\n" +
             "WHERE r.categoria_recomendacion = :categoria \n" +
             "GROUP BY u.username, r.categoria_recomendacion\n" +
             "ORDER BY cantidad DESC;",nativeQuery = true)

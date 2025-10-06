@@ -95,7 +95,7 @@ public class TicketReporteController {
         TicketReporteDTO dto = m.map(ticketReporte, TicketReporteDTO.class);
         return ResponseEntity.ok(dto);
     }
-    @GetMapping("/{estadoSoporte}")
+    @GetMapping("/{estadoSoporte} estado")
     public ResponseEntity<?> listarEstados(@PathVariable("estadoSoporte") String estadoSoporte) {
         List<TicketReporte> ticketReporte = trS.listEstado(estadoSoporte);
         if (ticketReporte.isEmpty()) {

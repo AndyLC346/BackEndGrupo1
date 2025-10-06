@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.backendgrupo1.dtos.RecomendacionDTO;
 import pe.edu.upc.backendgrupo1.dtos.RecomendacionQuery1DTO;
+import pe.edu.upc.backendgrupo1.dtos.TotalTicketsUsuarioDTO;
 import pe.edu.upc.backendgrupo1.entities.Recomendacion;
 import pe.edu.upc.backendgrupo1.servicesinterfaces.IRecomendacionService;
 
@@ -75,8 +76,8 @@ public class RecomendacionController {
 
     @GetMapping("/buscarRecomendacionesporcategoria")
     public ResponseEntity<?> buscarRecomendacionesporcategoria(@RequestParam String categoria) {
-        List<String[]> fila = reS.buscarRecomendacionesporcategoria(categoria);
         List<RecomendacionQuery1DTO> listaDTO = new ArrayList<>();
+        List<String[]> fila = reS.buscarRecomendacionesporcategoria(categoria);
         if (fila.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
                            .body("No se encontraron recomendaciones de esa categoria");
@@ -91,4 +92,21 @@ public class RecomendacionController {
         }
         return ResponseEntity.ok(listaDTO);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

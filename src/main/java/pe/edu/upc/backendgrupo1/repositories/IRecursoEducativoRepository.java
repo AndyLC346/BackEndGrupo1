@@ -17,7 +17,7 @@ public interface IRecursoEducativoRepository extends JpaRepository<Recurso, Inte
     public List<Recurso> buscarRecursoxTipoynivel(@Param("tipo") String tipo, @Param("nivel") String nivel);
 
     @Query(value = "SELECT u.username,Count(r.id_user) as cantidad_recursos FROM recursoseducativos r inner join users u\n" +
-            "   on r.id_user=u.id_user\n" +
+            "   on r.id_user=u.id\n" +
             "   Where username = :username\n" +
             "   group by u.username",nativeQuery = true)
     public List<String[]> cantidadRecursoxusername(@Param("username") String username);

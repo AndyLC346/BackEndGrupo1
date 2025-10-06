@@ -1,5 +1,6 @@
 package pe.edu.upc.backendgrupo1.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -8,6 +9,7 @@ import java.util.List;
 @Entity
 @Table(name="users")
 public class Users implements Serializable {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
