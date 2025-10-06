@@ -5,15 +5,13 @@ import pe.edu.upc.backendgrupo1.entities.Users;
 import java.time.LocalDate;
 
 public class CuentaDTO {
-
+  //
     private int idCuenta;
     private String servicioCuenta;
     private String nombreCuenta;
-    private String estadoCuenta;
+    private boolean estadoCuenta;
     private LocalDate fecharegistroCuenta;
     private Users usuario;
-
-
 
     public int getIdCuenta() {
         return idCuenta;
@@ -39,11 +37,11 @@ public class CuentaDTO {
         this.nombreCuenta = nombreCuenta;
     }
 
-    public String getEstadoCuenta() {
+    public boolean isEstadoCuenta() {
         return estadoCuenta;
     }
 
-    public void setEstadoCuenta(String estadoCuenta) {
+    public void setEstadoCuenta(boolean estadoCuenta) {
         this.estadoCuenta = estadoCuenta;
     }
 

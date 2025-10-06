@@ -10,6 +10,7 @@ import java.util.List;
 @Table(name="users")
 public class Users implements Serializable {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

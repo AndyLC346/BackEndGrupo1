@@ -2,14 +2,17 @@ package pe.edu.upc.backendgrupo1.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.backendgrupo1.dtos.UserDTO;
 import pe.edu.upc.backendgrupo1.entities.LogAcceso;
 import pe.edu.upc.backendgrupo1.dtos.LogAccesoDTO;
+import pe.edu.upc.backendgrupo1.entities.Users;
 import pe.edu.upc.backendgrupo1.servicesinterfaces.ILogAccesoService;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -58,16 +61,19 @@ public class LogAccesoControllers {
         return ResponseEntity.ok("Log actualizado correctamente");
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<?> listarID(@PathVariable("id") Integer id) {
-        LogAcceso logAcceso = loS.listId(id);
-        if (logAcceso == null) {
-            return ResponseEntity
-                    .status(HttpStatus.NOT_FOUND)
-                    .body("No existe el registro del Log con el ID: " + id);
+
+    @GetMapping("/buscarLogsPorusuarioyrangofechas")
+    public ResponseEntity<?> buscarLogsPorusuarioyrangofechas(@RequestParam int id, @RequestParam LocalDate fi, @RequestParam LocalDate ff) {
+        List<LogAcceso> logAccesos = loS.buscarLogsPorusuarioyrangofechas(id, fi, ff);
+        if (logAccesos.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("No se encontraron logs con ese usuario y/o rango de fecha: ");
         }
-        ModelMapper m = new ModelMapper();
-        UserDTO dto = m.map(logAcceso, UserDTO.class);
-        return ResponseEntity.ok(dto);
+        List<LogAccesoDTO> listaDTO = logAccesos.stream().map(x -> {
+            ModelMapper m = new ModelMapper();
+            return m.map(x, LogAccesoDTO.class);
+        }).collect(Collectors.toList());
+
+        return ResponseEntity.ok(listaDTO);
     }
 }

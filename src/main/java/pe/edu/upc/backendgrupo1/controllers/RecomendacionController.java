@@ -6,9 +6,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.backendgrupo1.dtos.RecomendacionDTO;
+import pe.edu.upc.backendgrupo1.dtos.RecomendacionQuery1DTO;
+import pe.edu.upc.backendgrupo1.dtos.TotalTicketsUsuarioDTO;
 import pe.edu.upc.backendgrupo1.entities.Recomendacion;
 import pe.edu.upc.backendgrupo1.servicesinterfaces.IRecomendacionService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -70,4 +73,40 @@ public class RecomendacionController {
         RecomendacionDTO dto = m.map(recomendacion, RecomendacionDTO.class);
         return ResponseEntity.ok(dto);
     }
+
+    @GetMapping("/buscarRecomendacionesporcategoria")
+    public ResponseEntity<?> buscarRecomendacionesporcategoria(@RequestParam String categoria) {
+        List<RecomendacionQuery1DTO> listaDTO = new ArrayList<>();
+        List<String[]> fila = reS.buscarRecomendacionesporcategoria(categoria);
+        if (fila.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                           .body("No se encontraron recomendaciones de esa categoria");
+        }
+
+        for (String[] x : fila) {
+            RecomendacionQuery1DTO dto = new RecomendacionQuery1DTO();
+            dto.setUsername(x[0]);
+            dto.setCategoriaRecomendacion(x[1]);
+            dto.setCantidadRecomendaciones(Integer.parseInt(x[2]));
+            listaDTO.add(dto);
+        }
+        return ResponseEntity.ok(listaDTO);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

@@ -6,9 +6,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.backendgrupo1.dtos.RecursoDTO;
+import pe.edu.upc.backendgrupo1.dtos.RecursoQuery2DTO;
 import pe.edu.upc.backendgrupo1.entities.Recurso;
 import pe.edu.upc.backendgrupo1.servicesinterfaces.IRecursoEducativoService;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -68,6 +72,41 @@ public class RecursoController {
         RecursoDTO dto = m.map(recurso, RecursoDTO.class);
         return ResponseEntity.ok(dto);
     }
+
+
+    @GetMapping("/bsuquedatipoynivel")
+    public ResponseEntity<?> buscar(@RequestParam String tipo, @RequestParam String nivel) {
+        List<Recurso> recursos = rS.buscarRecursoxTipoynivel(tipo,nivel);
+        if (recursos.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("No se encontraron recursos de ese tipo y/o nivel");
+        }
+        List<RecursoDTO> listaDTO = recursos.stream().map(x -> {
+            ModelMapper m = new ModelMapper();
+            return m.map(x, RecursoDTO.class);
+        }).collect(Collectors.toList());
+        return ResponseEntity.ok(listaDTO);
+    }
+
+    @GetMapping("/cantidadrecursoxusername")
+    public ResponseEntity<?> cantidadRecursoxusername(@RequestParam String username) {
+        List<String[]> fila = rS.cantidadRecursoxusername(username);
+        List<RecursoQuery2DTO> listaDTO = new ArrayList<>();
+        if (fila.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("No se encontraron recursos relaciones con ese usurname");
+        }
+
+        for (String[] x : fila) {
+            RecursoQuery2DTO dto = new RecursoQuery2DTO();
+            dto.setUsername(x[0]);
+            dto.setCantidadRecuursos(Integer.parseInt(x[1]));
+            listaDTO.add(dto);
+        }
+        return ResponseEntity.ok(listaDTO);
+    }
+
+
 }
 
 

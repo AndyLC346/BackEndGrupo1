@@ -14,10 +14,6 @@ public class Role implements Serializable {
 
     private String rol;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    private Users user;
-
     public Long getId() {
         return id;
     }
@@ -34,11 +30,4 @@ public class Role implements Serializable {
         this.rol = rol;
     }
 
-    public Users getUser() {
-        return user;
-    }
-
-    public void setUser(Users user) {
-        this.user = user;
-    }
 }

@@ -5,8 +5,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.backendgrupo1.dtos.AlertaDTO;
+import pe.edu.upc.backendgrupo1.dtos.AlertaQuery1DTO;
 import pe.edu.upc.backendgrupo1.entities.Alerta;
 import pe.edu.upc.backendgrupo1.servicesinterfaces.IAlertaService;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -68,4 +71,21 @@ public class AlertaController {
         return ResponseEntity.ok(dto);
     }
 
+
+    @GetMapping("/cantidadalertaspendientesporusuario")
+    public ResponseEntity<?> cantidadalertaspendientesxusuario() {
+        List<AlertaQuery1DTO> listaDto=new ArrayList<AlertaQuery1DTO>();
+        List<String[]>fila=aS.cantidadalertaspendientesxusuario();
+        if (fila.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("No se encontraron alertas ");
+        }
+        for(String[] x:fila) {
+            AlertaQuery1DTO dto=new AlertaQuery1DTO();
+            dto.setIdUsuario(Integer.parseInt(x[0]));
+            dto.setCantidadUusarios(Integer.parseInt(x[1]));
+            listaDto.add(dto);
+        }
+        return ResponseEntity.ok(listaDto);
+    }
 }

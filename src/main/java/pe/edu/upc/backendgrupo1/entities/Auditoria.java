@@ -1,7 +1,8 @@
 package pe.edu.upc.backendgrupo1.entities;
 
 import jakarta.persistence.*;
-import java.time.LocalDateTime;
+
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "auditoria")
@@ -12,7 +13,7 @@ public class Auditoria {
     private int idAuditoria;
 
     @Column(name = "fechaAuditoria")
-    private LocalDateTime fechaAuditoria;
+    private LocalDate fechaAuditoria;
 
     @Column(name = "tipoAuditoria", length = 20)
     private String tipoAuditoria;
@@ -24,12 +25,10 @@ public class Auditoria {
     @JoinColumn(name="idUser")
     private Users usuario;
 
-
-
     public Auditoria() {
     }
 
-    public Auditoria(int idAuditoria, LocalDateTime fechaAuditoria, String tipoAuditoria, String descripcion, Users usuario) {
+    public Auditoria(int idAuditoria, LocalDate fechaAuditoria, String tipoAuditoria, String descripcion, Users usuario) {
         this.idAuditoria = idAuditoria;
         this.fechaAuditoria = fechaAuditoria;
         this.tipoAuditoria = tipoAuditoria;
@@ -45,11 +44,11 @@ public class Auditoria {
         this.idAuditoria = idAuditoria;
     }
 
-    public LocalDateTime getFechaAuditoria() {
+    public LocalDate getFechaAuditoria() {
         return fechaAuditoria;
     }
 
-    public void setFechaAuditoria(LocalDateTime fechaAuditoria) {
+    public void setFechaAuditoria(LocalDate fechaAuditoria) {
         this.fechaAuditoria = fechaAuditoria;
     }
 

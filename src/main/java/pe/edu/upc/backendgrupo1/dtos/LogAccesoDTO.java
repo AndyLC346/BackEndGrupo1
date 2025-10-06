@@ -58,4 +58,5 @@ public class LogAccesoDTO {
     public void setUser(Users user) {
         this.usuario = user;
     }
+
 }

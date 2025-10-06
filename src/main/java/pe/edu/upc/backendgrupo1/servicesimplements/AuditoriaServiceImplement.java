@@ -1,11 +1,13 @@
 package pe.edu.upc.backendgrupo1.servicesimplements;
 
+import jakarta.persistence.Entity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pe.edu.upc.backendgrupo1.entities.Auditoria;
 import pe.edu.upc.backendgrupo1.repositories.IAuditoriaRepository;
 import pe.edu.upc.backendgrupo1.servicesinterfaces.IAuditoriaService;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -36,6 +38,12 @@ public class AuditoriaServiceImplement implements IAuditoriaService {
 
     @Override
     public Auditoria listId(int id) {
-        return aR.findById(id).orElse(null);
+        return aR.findById(id).orElse(null) ;
     }
+
+    @Override
+    public List<Auditoria> buscarAuditoriasPorFechaYTipo(LocalDate fechaInicio, LocalDate fechaFin, String tipoAuditoria) {
+        return buscarAuditoriasPorFechaYTipo(fechaInicio, fechaFin, tipoAuditoria);
+    }
+
 }

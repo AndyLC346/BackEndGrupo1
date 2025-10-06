@@ -37,4 +37,11 @@ public class RecomendacionServiceImplement implements IRecomendacionService {
     public Recomendacion listId(int id) {
         return reR.findById(id).orElse(null);
     }
+
+    @Override
+    public List<String[]> buscarRecomendacionesporcategoria(String categoria) {
+        return reR.buscarRecomendacionesporcategoria( categoria);
+    }
+
+
 }

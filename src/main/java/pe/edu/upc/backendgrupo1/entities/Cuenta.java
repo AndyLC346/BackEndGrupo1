@@ -17,8 +17,8 @@ public class Cuenta {
     @Column(name = "nombreCuenta", length = 20)
     private String nombreCuenta;
 
-    @Column(name = "estadoCuenta", length = 20)
-    private String estadoCuenta;
+    @Column(name = "estadoCuenta", nullable = false)
+    private boolean estadoCuenta;
 
     @Column(name = "fecharegistroCuenta")
     private LocalDate fecharegistroCuenta;
@@ -27,7 +27,17 @@ public class Cuenta {
     @JoinColumn(name="idUser")
     private Users usuario;
 
+    public Cuenta() {
+    }
 
+    public Cuenta(int idCuenta, String servicioCuenta, String nombreCuenta, boolean estadoCuenta, LocalDate fecharegistroCuenta, Users usuario) {
+        this.idCuenta = idCuenta;
+        this.servicioCuenta = servicioCuenta;
+        this.nombreCuenta = nombreCuenta;
+        this.estadoCuenta = estadoCuenta;
+        this.fecharegistroCuenta = fecharegistroCuenta;
+        this.usuario = usuario;
+    }
 
     public int getIdCuenta() {
         return idCuenta;
@@ -53,11 +63,11 @@ public class Cuenta {
         this.nombreCuenta = nombreCuenta;
     }
 
-    public String getEstadoCuenta() {
+    public boolean isEstadoCuenta() {
         return estadoCuenta;
     }
 
-    public void setEstadoCuenta(String estadoCuenta) {
+    public void setEstadoCuenta(boolean estadoCuenta) {
         this.estadoCuenta = estadoCuenta;
     }
 
@@ -74,18 +84,6 @@ public class Cuenta {
     }
 
     public void setUsuario(Users usuario) {
-        this.usuario = usuario;
-    }
-
-    public Cuenta() {
-    }
-
-    public Cuenta(int idCuenta, String servicioCuenta, String nombreCuenta, String estadoCuenta, LocalDate fecharegistroCuenta, Users usuario) {
-        this.idCuenta = idCuenta;
-        this.servicioCuenta = servicioCuenta;
-        this.nombreCuenta = nombreCuenta;
-        this.estadoCuenta = estadoCuenta;
-        this.fecharegistroCuenta = fecharegistroCuenta;
         this.usuario = usuario;
     }
 }
