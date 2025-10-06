@@ -58,7 +58,7 @@ public class TicketReporteController {
         List<String[]>resultados=trS.TotalTicketsPorUsuario();
         for(String[] x:resultados){
             TotalTicketsUsuarioDTO dto=new TotalTicketsUsuarioDTO();
-            dto.setIdUusuario(Integer.parseInt(x[0].toString()));
+            dto.setIdUsuario(Integer.parseInt(x[0].toString()));
             dto.setUsername(x[1]);
             dto.setTotal_Tickets(Integer.parseInt(x[2].toString()));
             dtos.add(dto);

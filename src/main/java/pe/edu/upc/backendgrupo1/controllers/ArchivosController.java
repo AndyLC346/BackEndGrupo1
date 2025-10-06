@@ -23,7 +23,7 @@ public class ArchivosController {
     private IArchivosService aS;
 
     @GetMapping
-    @PreAuthorize("hasAuthority('ClIENT')")
+
     public List<ArchivosDTO> listar() {
         return aS.list().stream().map(x -> {
             ModelMapper m = new ModelMapper();
@@ -32,7 +32,7 @@ public class ArchivosController {
     }
 
     @PostMapping
-    @PreAuthorize("hasAuthority('ClIENT')")
+
     public ResponseEntity<String> insertar(@RequestBody ArchivosDTO dto) {
         ModelMapper m = new ModelMapper();
         Archivos a = m.map(dto, Archivos.class);
@@ -41,7 +41,7 @@ public class ArchivosController {
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAuthority('ClIENT')")
+
     public ResponseEntity<String> eliminar(@PathVariable("id") Integer id) {
         Archivos archivo = aS.listId(id);
         if(archivo == null) {
@@ -52,7 +52,7 @@ public class ArchivosController {
     }
 
     @PutMapping
-    @PreAuthorize("hasAuthority('ClIENT')")
+
     public ResponseEntity<String> modificar(@RequestBody ArchivosDTO dto) {
         ModelMapper m = new ModelMapper();
         Archivos archivo = m.map(dto, Archivos.class);
@@ -66,7 +66,6 @@ public class ArchivosController {
     }
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasAuthority('ClIENT')")
     public ResponseEntity<?> listarID(@PathVariable("id") Integer id) {
         Archivos archivo = aS.listId(id);
         if(archivo == null) {

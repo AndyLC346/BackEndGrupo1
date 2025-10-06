@@ -1,16 +1,16 @@
 package pe.edu.upc.backendgrupo1.dtos;
 
 public class TotalTicketsUsuarioDTO {
-    private int idUusuario;
+    private int idUsuario;
     private String Username;
     private int Total_Tickets;
 
-    public int getIdUusuario() {
-        return idUusuario;
+    public int getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setIdUusuario(int idUusuario) {
-        this.idUusuario = idUusuario;
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     public String getUsername() {
