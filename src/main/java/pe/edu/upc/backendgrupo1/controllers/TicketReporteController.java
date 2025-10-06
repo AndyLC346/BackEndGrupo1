@@ -8,13 +8,10 @@ import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.backendgrupo1.dtos.CantidadRespuestaTicketDTO;
 import pe.edu.upc.backendgrupo1.dtos.TicketReporteDTO;
 import pe.edu.upc.backendgrupo1.dtos.TotalTicketsUsuarioDTO;
-import pe.edu.upc.backendgrupo1.dtos.UserDTO2;
 import pe.edu.upc.backendgrupo1.entities.TicketReporte;
-import pe.edu.upc.backendgrupo1.entities.Users;
 import pe.edu.upc.backendgrupo1.servicesinterfaces.ITicketReporteService;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -42,7 +39,7 @@ public class TicketReporteController {
         if(ticketreporte==null){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No existe");
         }trS.delete(id);
-        return ResponseEntity.ok("Se elimino correctamente");
+        return ResponseEntity.ok("Se elimino el ticket correctamente");
     }
     @PutMapping
     public ResponseEntity<String>modificar(@RequestBody TicketReporteDTO dto){
@@ -50,7 +47,7 @@ public class TicketReporteController {
         TicketReporte t=m.map(dto,TicketReporte.class);
         TicketReporte existe=trS.listId(t.getIdSoporte());
         if(existe==null){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se puede modificar");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("El ticket no se puede modificar");
         }
         trS.update(t);
         return ResponseEntity.ok("Se modifico correctamente");
@@ -110,17 +107,19 @@ public class TicketReporteController {
         return ResponseEntity.ok(dtos);
     }
     @GetMapping("/tipo/{tipoSoporte}")
-    public ResponseEntity<?> listarTipo(@PathVariable("tipoSoporte") String tipoSoporte) {
-        List<TicketReporte> ticketReporte = trS.listTipo(tipoSoporte);
-        if (ticketReporte.isEmpty()) {
-            return ResponseEntity
-                    .status(HttpStatus.NOT_FOUND)
-                    .body("No existe el tipo de reporte registrado");
+    public ResponseEntity<?> listarPorEstado(@PathVariable("tipoSoporte") String tipoSoporte) {
+        List<TicketReporte> tickets = trS.listTipo(tipoSoporte);
+
+        if (tickets.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("No existen tickets con el tipo: " + tipoSoporte);
         }
-        ModelMapper m = new ModelMapper();
-        List<TicketReporteDTO> dtos = ticketReporte.stream()
-                .map(ticket -> m.map(ticket, TicketReporteDTO.class))
+
+        ModelMapper mapper = new ModelMapper();
+        List<TicketReporteDTO> dtos = tickets.stream()
+                .map(ticket -> mapper.map(ticket, TicketReporteDTO.class))
                 .collect(Collectors.toList());
+
         return ResponseEntity.ok(dtos);
     }
 }

@@ -1,7 +1,5 @@
 package pe.edu.upc.backendgrupo1.dtos;
 
-
-
 public class AlertaQuery1DTO {
     private int idUsuario;
     private int cantidadAlertasPendientes;

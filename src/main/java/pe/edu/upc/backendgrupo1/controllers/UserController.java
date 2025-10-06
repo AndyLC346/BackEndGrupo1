@@ -85,9 +85,8 @@ public class UserController {
     public ResponseEntity<?> obtenerTotalArchivosPorUsuario() {
         List<Object[]> resultados = uS.TotalArchivosXUsers();
 
-        // Caso 1: no hay usuarios o la consulta no devolvió resultados
         if (resultados.isEmpty()) {
-            return ResponseEntity.ok("No hay archivos registrados");
+            return ResponseEntity.ok("No hay archivos registrados por parte del Usuario");
         }
 
         List<TotalArchivosXUsersDTO> lista = new ArrayList<>();
@@ -99,13 +98,11 @@ public class UserController {
             lista.add(dto);
         }
 
-        // Caso 2: hay usuarios, pero todos tienen totalArchivos = 0
         boolean todosCero = lista.stream().allMatch(dto -> dto.getTotalArchivos() == 0);
         if (todosCero) {
             return ResponseEntity.ok("No hay archivos registrados actualmente en el sistema");
         }
 
-        // Caso 3: hay usuarios con archivos
         return ResponseEntity.ok(lista);
     }
 
