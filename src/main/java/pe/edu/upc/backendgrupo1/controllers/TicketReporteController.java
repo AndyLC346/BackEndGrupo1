@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.backendgrupo1.dtos.CantidadRespuestaTicketDTO;
 import pe.edu.upc.backendgrupo1.dtos.TicketReporteDTO;
 import pe.edu.upc.backendgrupo1.dtos.TotalTicketsUsuarioDTO;
-import pe.edu.upc.backendgrupo1.dtos.UserDTO2;
+
 import pe.edu.upc.backendgrupo1.entities.TicketReporte;
-import pe.edu.upc.backendgrupo1.entities.Users;
+
 import pe.edu.upc.backendgrupo1.servicesinterfaces.ITicketReporteService;
 
 import java.util.ArrayList;
-import java.util.Collections;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
