@@ -65,7 +65,7 @@ public class AuditoriaController {
         List<Auditoria> logAccesos = aS.buscarAuditoriasPorFechaYTipo(fechaInicio, fechaFin, tipoAuditoria);
         if (logAccesos.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body("No se encontraron auditorias en ese ango de fecha y/o tipo: ");
+                    .body("No se encontraron auditorias en ese rango de fecha y/o tipo: ");
         }
         List<Auditoria> listaDTO = logAccesos.stream().map(x -> {
             ModelMapper m = new ModelMapper();
