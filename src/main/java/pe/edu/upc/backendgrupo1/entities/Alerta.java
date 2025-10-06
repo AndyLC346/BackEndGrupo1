@@ -3,6 +3,7 @@ package pe.edu.upc.backendgrupo1.entities;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Entity
 @Table(name="alertas")
@@ -17,8 +18,11 @@ public class Alerta {
     @Column(name="tipoAlerta", nullable=false, length=10)
     private String tipoAlerta;
 
-    @Column(name="fechayhoraAlerta", nullable=false)
-    private LocalDate fechayhoraAlerta;
+    @Column(name="fechaAlerta", nullable=false)
+    private LocalDate fechaAlerta;
+
+    @Column(name="horaAlerta", nullable=false)
+    private LocalTime horaAlerta;
 
     @Column(name="vistoAlerta", nullable=false)
     private boolean vistoAlerta;
@@ -30,11 +34,12 @@ public class Alerta {
     public Alerta() {
     }
 
-    public Alerta(int idAlerta, String mensajeAlerta, String tipoAlerta, LocalDate fechayhoraAlerta, boolean vistoAlerta, Users usuario) {
+    public Alerta(int idAlerta, String mensajeAlerta, String tipoAlerta, LocalDate fechaAlerta, LocalTime horaAlerta, boolean vistoAlerta, Users usuario) {
         this.idAlerta = idAlerta;
         this.mensajeAlerta = mensajeAlerta;
         this.tipoAlerta = tipoAlerta;
-        this.fechayhoraAlerta = fechayhoraAlerta;
+        this.fechaAlerta = fechaAlerta;
+        this.horaAlerta = horaAlerta;
         this.vistoAlerta = vistoAlerta;
         this.usuario = usuario;
     }
@@ -63,12 +68,20 @@ public class Alerta {
         this.tipoAlerta = tipoAlerta;
     }
 
-    public LocalDate getFechayhoraAlerta() {
-        return fechayhoraAlerta;
+    public LocalDate getFechaAlerta() {
+        return fechaAlerta;
     }
 
-    public void setFechayhoraAlerta(LocalDate fechayhoraAlerta) {
-        this.fechayhoraAlerta = fechayhoraAlerta;
+    public void setFechaAlerta(LocalDate fechaAlerta) {
+        this.fechaAlerta = fechaAlerta;
+    }
+
+    public LocalTime getHoraAlerta() {
+        return horaAlerta;
+    }
+
+    public void setHoraAlerta(LocalTime horaAlerta) {
+        this.horaAlerta = horaAlerta;
     }
 
     public boolean isVistoAlerta() {

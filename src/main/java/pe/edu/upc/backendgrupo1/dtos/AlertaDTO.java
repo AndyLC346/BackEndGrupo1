@@ -1,8 +1,10 @@
 package pe.edu.upc.backendgrupo1.dtos;
 
+
 import pe.edu.upc.backendgrupo1.entities.Users;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class AlertaDTO {
 
@@ -12,12 +14,29 @@ public class AlertaDTO {
 
     private String tipoAlerta;
 
-    private LocalDate fechayhoraAlerta;
+    private LocalDate fechaAlerta;
+
+    private LocalTime horaAlerta;
 
     private boolean vistoAlerta;
 
     private Users usuario;
 
+    public LocalDate getFechaAlerta() {
+        return fechaAlerta;
+    }
+
+    public void setFechaAlerta(LocalDate fechaAlerta) {
+        this.fechaAlerta = fechaAlerta;
+    }
+
+    public LocalTime getHoraAlerta() {
+        return horaAlerta;
+    }
+
+    public void setHoraAlerta(LocalTime horaAlerta) {
+        this.horaAlerta = horaAlerta;
+    }
 
     public int getIdAlerta() {
         return idAlerta;
@@ -43,13 +62,6 @@ public class AlertaDTO {
         this.tipoAlerta = tipoAlerta;
     }
 
-    public LocalDate getFechayhoraAlerta() {
-        return fechayhoraAlerta;
-    }
-
-    public void setFechayhoraAlerta(LocalDate fechayhoraAlerta) {
-        this.fechayhoraAlerta = fechayhoraAlerta;
-    }
 
     public boolean isVistoAlerta() {
         return vistoAlerta;
