@@ -2,19 +2,19 @@ package pe.edu.upc.backendgrupo1.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pe.edu.upc.backendgrupo1.dtos.AlertaQuery1DTO;
+
 import pe.edu.upc.backendgrupo1.dtos.CuentaDTO;
-import pe.edu.upc.backendgrupo1.dtos.RecursoDTO;
+
 import pe.edu.upc.backendgrupo1.entities.Cuenta;
-import pe.edu.upc.backendgrupo1.entities.Recurso;
+
 import pe.edu.upc.backendgrupo1.servicesinterfaces.ICuentaService;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
+
 import java.util.List;
 import java.util.stream.Collectors;
 

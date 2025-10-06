@@ -6,7 +6,7 @@ import pe.edu.upc.backendgrupo1.entities.Alerta;
 import pe.edu.upc.backendgrupo1.repositories.IAlertaRepository;
 import pe.edu.upc.backendgrupo1.servicesinterfaces.IAlertaService;
 
-import javax.swing.text.StyledEditorKit;
+
 import java.util.List;
 
 @Service

@@ -1,14 +1,13 @@
 package pe.edu.upc.backendgrupo1.servicesimplements;
 
-import org.modelmapper.ModelMapper;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pe.edu.upc.backendgrupo1.dtos.TicketReporteDTO;
 import pe.edu.upc.backendgrupo1.entities.TicketReporte;
 import pe.edu.upc.backendgrupo1.repositories.ITicketReporteRepository;
 import pe.edu.upc.backendgrupo1.servicesinterfaces.ITicketReporteService;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 @Service

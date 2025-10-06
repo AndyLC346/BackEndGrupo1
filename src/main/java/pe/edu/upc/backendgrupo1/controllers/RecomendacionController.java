@@ -7,7 +7,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.backendgrupo1.dtos.RecomendacionDTO;
 import pe.edu.upc.backendgrupo1.dtos.RecomendacionQuery1DTO;
-import pe.edu.upc.backendgrupo1.dtos.TotalTicketsUsuarioDTO;
 import pe.edu.upc.backendgrupo1.entities.Recomendacion;
 import pe.edu.upc.backendgrupo1.servicesinterfaces.IRecomendacionService;
 

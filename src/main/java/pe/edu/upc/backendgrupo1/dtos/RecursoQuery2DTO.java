@@ -1,6 +1,5 @@
 package pe.edu.upc.backendgrupo1.dtos;
 
-import java.time.LocalDate;
 
 public class RecursoQuery2DTO {
     private String username;

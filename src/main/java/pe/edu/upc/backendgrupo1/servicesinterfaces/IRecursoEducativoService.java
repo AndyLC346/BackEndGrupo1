@@ -1,6 +1,6 @@
 package pe.edu.upc.backendgrupo1.servicesinterfaces;
 
-import org.springframework.data.repository.query.Param;
+
 import pe.edu.upc.backendgrupo1.entities.Recurso;
 
 import java.util.List;

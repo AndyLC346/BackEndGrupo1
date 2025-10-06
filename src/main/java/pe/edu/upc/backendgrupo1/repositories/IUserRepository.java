@@ -6,7 +6,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import pe.edu.upc.backendgrupo1.dtos.UserDTO2;
 import pe.edu.upc.backendgrupo1.entities.Users;
 
 import java.util.List;

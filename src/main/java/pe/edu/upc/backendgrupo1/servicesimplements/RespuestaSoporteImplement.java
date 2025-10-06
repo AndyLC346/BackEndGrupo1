@@ -2,7 +2,7 @@ package pe.edu.upc.backendgrupo1.servicesimplements;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pe.edu.upc.backendgrupo1.dtos.RespuestaSoporteDTO;
+
 import pe.edu.upc.backendgrupo1.entities.RespuestaSoporte;
 import pe.edu.upc.backendgrupo1.repositories.IRespuestaSoporteRepository;
 import pe.edu.upc.backendgrupo1.servicesinterfaces.IRespuestaSoporteService;

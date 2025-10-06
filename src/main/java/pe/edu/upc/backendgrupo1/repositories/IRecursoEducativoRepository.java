@@ -6,7 +6,6 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import pe.edu.upc.backendgrupo1.entities.Recurso;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Repository
