@@ -1,10 +1,10 @@
 package pe.edu.upc.backendgrupo1.dtos;
 
-import java.time.LocalDate;
+
 
 public class AlertaQuery1DTO {
     private int idUsuario;
-    private int cantidadUusarios;
+    private int cantidadAlertasPendientes;
 
     public int getIdUsuario() {
         return idUsuario;
@@ -14,11 +14,11 @@ public class AlertaQuery1DTO {
         this.idUsuario = idUsuario;
     }
 
-    public int getCantidadUusarios() {
-        return cantidadUusarios;
+    public int getCantidadAlertasPendientes() {
+        return cantidadAlertasPendientes;
     }
 
-    public void setCantidadUusarios(int cantidadUusarios) {
-        this.cantidadUusarios = cantidadUusarios;
+    public void setCantidadAlertasPendientes(int cantidadAlertasPendientes) {
+        this.cantidadAlertasPendientes = cantidadAlertasPendientes;
     }
 }

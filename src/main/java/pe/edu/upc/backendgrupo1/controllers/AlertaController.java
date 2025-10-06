@@ -83,7 +83,7 @@ public class AlertaController {
         for(String[] x:fila) {
             AlertaQuery1DTO dto=new AlertaQuery1DTO();
             dto.setIdUsuario(Integer.parseInt(x[0]));
-            dto.setCantidadUusarios(Integer.parseInt(x[1]));
+            dto.setCantidadAlertasPendientes(Integer.parseInt(x[1]));
             listaDto.add(dto);
         }
         return ResponseEntity.ok(listaDto);
