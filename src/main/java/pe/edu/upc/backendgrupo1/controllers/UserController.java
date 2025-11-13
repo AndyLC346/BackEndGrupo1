@@ -24,7 +24,6 @@ public class UserController {
     private IUserService uS;
 
     @GetMapping
-    @PreAuthorize("hasAuthority('ADMIN')")
     public List<UserDTO2> listar() {
         return uS.list().stream().map(x -> {
             ModelMapper m = new ModelMapper();
@@ -34,7 +33,6 @@ public class UserController {
 
 
     @PostMapping
-    @PreAuthorize("hasAuthority('CLIENTE')")
     public ResponseEntity<String> insertar(@RequestBody UserDTO dto) {
         ModelMapper m = new ModelMapper();
         Users u = m.map(dto, Users.class);
@@ -83,7 +81,6 @@ public class UserController {
     }
 
     @GetMapping("/TotalArchivosPorUsuario")
-    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<?> obtenerTotalArchivosPorUsuario() {
         List<Object[]> resultados = uS.TotalArchivosXUsers();
 

@@ -23,7 +23,6 @@ public class TicketReporteController {
     private ITicketReporteService trS;
 
     @GetMapping
-    @PreAuthorize("hasAuthority('SOPORTE')")
     public List<TicketReporteDTO> listar(){
         ModelMapper m = new ModelMapper();
         return trS.list().stream()
@@ -31,14 +30,12 @@ public class TicketReporteController {
                 .collect(Collectors.toList());
     }
     @PostMapping
-    @PreAuthorize("hasAuthority('CLIENTE')")
     public void insertar(@RequestBody TicketReporteDTO dto){
         ModelMapper m=new ModelMapper();
         TicketReporte t=m.map(dto,TicketReporte.class);
         trS.insert(t);
     }
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAuthority('SOPORTE')")
     public ResponseEntity<String>eliminar(@PathVariable("id")Integer id){
         TicketReporte ticketreporte=trS.listId(id);
         if(ticketreporte==null){
@@ -47,7 +44,6 @@ public class TicketReporteController {
         return ResponseEntity.ok("Se elimino el ticket correctamente");
     }
     @PutMapping
-    @PreAuthorize("hasAuthority('SOPORTE')")
     public ResponseEntity<String>modificar(@RequestBody TicketReporteDTO dto){
         ModelMapper m=new ModelMapper();
         TicketReporte t=m.map(dto,TicketReporte.class);
@@ -59,7 +55,6 @@ public class TicketReporteController {
         return ResponseEntity.ok("Se modifico correctamente");
     }
     @GetMapping("/ContarTicktesPorUsuario")
-    @PreAuthorize("hasAuthority('SOPORTE')")
     public ResponseEntity<?> contarTicketsPorUsuario() {
         List<TotalTicketsUsuarioDTO>dtos=new ArrayList<>();
         List<String[]>resultados=trS.TotalTicketsPorUsuario();
@@ -73,7 +68,6 @@ public class TicketReporteController {
         return ResponseEntity.ok(dtos);
     }
     @GetMapping("/CantidadRespuestas")
-    @PreAuthorize("hasAuthority('SOPORTE')")
     public ResponseEntity<?>cantidadRespuesasPorTicket(){
         List<CantidadRespuestaTicketDTO>dtos=new ArrayList<>();
         List<String[]>resultados=trS.CantidadRespuestaTicket();
