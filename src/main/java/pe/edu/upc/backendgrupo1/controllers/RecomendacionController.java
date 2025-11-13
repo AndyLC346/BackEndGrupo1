@@ -4,7 +4,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.backendgrupo1.dtos.RecomendacionDTO;
 import pe.edu.upc.backendgrupo1.dtos.RecomendacionQuery1DTO;
@@ -23,7 +22,6 @@ public class RecomendacionController {
     private IRecomendacionService reS;
 
     @GetMapping
-    @PreAuthorize("hasAuthority('CLIENTE')")
     public List<RecomendacionDTO> listar() {
         return reS.list().stream().map(x -> {
             ModelMapper m = new ModelMapper();
@@ -32,7 +30,6 @@ public class RecomendacionController {
     }
 
     @PostMapping
-    @PreAuthorize("hasAuthority('DEVELOPER')")
     public ResponseEntity<String> insertar(@RequestBody RecomendacionDTO dto) {
         ModelMapper m = new ModelMapper();
         Recomendacion re = m.map(dto, Recomendacion.class);
@@ -41,7 +38,6 @@ public class RecomendacionController {
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAuthority('DEVELOPER')")
     public ResponseEntity<String> eliminar(@PathVariable("id") Integer id) {
         Recomendacion recomendacion = reS.listId(id);
         if (recomendacion == null) {
@@ -52,7 +48,6 @@ public class RecomendacionController {
     }
 
     @PutMapping
-    @PreAuthorize("hasAuthority('DEVELOPER')")
     public ResponseEntity<String> modificar(@RequestBody RecomendacionDTO dto) {
         ModelMapper m = new ModelMapper();
         Recomendacion recomendacion = m.map(dto, Recomendacion.class);
@@ -66,7 +61,6 @@ public class RecomendacionController {
     }
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasAuthority('CLIENTE')")
     public ResponseEntity<?> listarID(@PathVariable("id") Integer id) {
         Recomendacion recomendacion = reS.listId(id);
         if (recomendacion == null) {
@@ -80,7 +74,6 @@ public class RecomendacionController {
     }
 
     @GetMapping("/buscarRecomendacionesporcategoria")
-    @PreAuthorize("hasAuthority('CLIENTE')")
     public ResponseEntity<?> buscarRecomendacionesporcategoria(@RequestParam String categoria) {
         List<RecomendacionQuery1DTO> listaDTO = new ArrayList<>();
         List<String[]> fila = reS.buscarRecomendacionesporcategoria(categoria);

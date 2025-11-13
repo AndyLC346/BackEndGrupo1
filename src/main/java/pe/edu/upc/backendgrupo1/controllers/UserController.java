@@ -41,7 +41,6 @@ public class UserController {
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<String> eliminar(@PathVariable("id") Long id) {
         Users user = uS.listId(id);
         if(user == null) {
@@ -52,7 +51,6 @@ public class UserController {
     }
 
     @PutMapping
-    @PreAuthorize("hasAuthority('CLIENTE')")
     public ResponseEntity<String> modificar(@RequestBody UserDTO3 dto) {
         ModelMapper m = new ModelMapper();
         Users user = m.map(dto, Users.class);
@@ -67,7 +65,6 @@ public class UserController {
 
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<?> listarID(@PathVariable("id") Long id) {
         Users user = uS.listId(id);
         if(user == null) {

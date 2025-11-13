@@ -4,7 +4,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.backendgrupo1.dtos.CantidadRespuestaTicketDTO;
 import pe.edu.upc.backendgrupo1.dtos.TicketReporteDTO;
@@ -83,7 +82,6 @@ public class TicketReporteController {
         return ResponseEntity.ok(dtos);
     }
     @GetMapping("/id/{id}")
-    @PreAuthorize("hasAuthority('SOPORTE')")
     public ResponseEntity<?> listarID(@PathVariable("id") Integer id) {
         TicketReporte ticketReporte = trS.listId(id);
         if(ticketReporte == null) {
@@ -96,7 +94,6 @@ public class TicketReporteController {
         return ResponseEntity.ok(dto);
     }
     @GetMapping("/estado/{estadoSoporte}")
-    @PreAuthorize("hasAuthority('SOPORTE')")
     public ResponseEntity<?> listarEstados(@PathVariable("estadoSoporte") String estadoSoporte) {
         List<TicketReporte> ticketReporte = trS.listEstado(estadoSoporte);
         if (ticketReporte.isEmpty()) {
@@ -111,7 +108,6 @@ public class TicketReporteController {
         return ResponseEntity.ok(dtos);
     }
     @GetMapping("/tipo/{tipoSoporte}")
-    @PreAuthorize("hasAuthority('SOPORTE')")
     public ResponseEntity<?> listarPorEstado(@PathVariable("tipoSoporte") String tipoSoporte) {
         List<TicketReporte> tickets = trS.listTipo(tipoSoporte);
 

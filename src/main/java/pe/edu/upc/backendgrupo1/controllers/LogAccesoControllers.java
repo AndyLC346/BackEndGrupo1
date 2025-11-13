@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
+
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.backendgrupo1.entities.LogAcceso;
 import pe.edu.upc.backendgrupo1.dtos.LogAccesoDTO;
@@ -23,7 +23,6 @@ public class LogAccesoControllers {
     private ILogAccesoService loS;
 
     @GetMapping
-    @PreAuthorize("hasAuthority('DEVELOPER')")
     public List<LogAccesoDTO> listar() {
         return loS.list().stream().map(x -> {
             ModelMapper m = new ModelMapper();
@@ -32,7 +31,6 @@ public class LogAccesoControllers {
     }
 
     @PostMapping
-    @PreAuthorize("hasAuthority('DEVELOPER')")
     public ResponseEntity<String> insertar(@RequestBody LogAccesoDTO dto) {
         ModelMapper m = new ModelMapper();
         LogAcceso l = m.map(dto, LogAcceso.class);
@@ -41,7 +39,6 @@ public class LogAccesoControllers {
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAuthority('DEVELOPER')")
     public ResponseEntity<String> eliminar(@PathVariable("id") Integer id) {
         LogAcceso logAcceso = loS.listId(id);
         if (logAcceso == null) {
@@ -52,7 +49,6 @@ public class LogAccesoControllers {
     }
 
     @PutMapping
-    @PreAuthorize("hasAuthority('DEVELOPER')")
     public ResponseEntity<String> modificar(@RequestBody LogAccesoDTO dto) {
         ModelMapper m = new ModelMapper();
         LogAcceso logAcceso = m.map(dto, LogAcceso.class);
@@ -67,7 +63,6 @@ public class LogAccesoControllers {
 
 
     @GetMapping("/buscarLogsPorusuarioyrangofechas")
-    @PreAuthorize("hasAuthority('DEVELOPER')")
     public ResponseEntity<?> buscarLogsPorusuarioyrangofechas(@RequestParam int id, @RequestParam LocalDate fi, @RequestParam LocalDate ff) {
         List<LogAcceso> logAccesos = loS.buscarLogsPorusuarioyrangofechas(id, fi, ff);
         if (logAccesos.isEmpty()) {
