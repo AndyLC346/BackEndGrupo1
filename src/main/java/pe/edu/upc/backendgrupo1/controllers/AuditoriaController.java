@@ -4,7 +4,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.backendgrupo1.dtos.AuditoriaDTO;
 import pe.edu.upc.backendgrupo1.entities.Auditoria;
@@ -22,7 +21,6 @@ public class AuditoriaController {
     private IAuditoriaService aS;
 
     @GetMapping
-    @PreAuthorize("hasAuthority('CLIENTE')")
     public List<AuditoriaDTO> listar() {
         return aS.list().stream().map(x -> {
             ModelMapper m = new ModelMapper();
@@ -31,7 +29,6 @@ public class AuditoriaController {
     }
 
     @PostMapping
-    @PreAuthorize("hasAuthority('DEVELOPER')")
     public ResponseEntity<String> insertar(@RequestBody AuditoriaDTO dto) {
         ModelMapper m = new ModelMapper();
         Auditoria a = m.map(dto, Auditoria.class);
@@ -40,7 +37,6 @@ public class AuditoriaController {
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAuthority('DEVELOPER')")
     public ResponseEntity<String> eliminar(@PathVariable("id") Integer id) {
         Auditoria auditoria = aS.listId(id);
         if (auditoria == null) {
@@ -51,7 +47,6 @@ public class AuditoriaController {
     }
 
     @PutMapping
-    @PreAuthorize("hasAuthority('DEVELOPER')")
     public ResponseEntity<String> modificar(@RequestBody AuditoriaDTO dto) {
         ModelMapper m = new ModelMapper();
         Auditoria auditoria = m.map(dto, Auditoria.class);
@@ -65,7 +60,6 @@ public class AuditoriaController {
     }
 
     @GetMapping("/buscarAuditoriaPorusuarioyrangofechas")
-    @PreAuthorize("hasAuthority('DEVELOPER')")
     public ResponseEntity<?> buscarAuditoriaPorusuarioyrangofechas(@RequestParam LocalDate fechaInicio, @RequestParam LocalDate fechaFin, @RequestParam  String tipoAuditoria) {
         List<Auditoria> auditorias = aS.buscarAuditoriasPorFechaYTipo(fechaInicio, fechaFin, tipoAuditoria);
         if (auditorias.isEmpty()) {

@@ -3,7 +3,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.backendgrupo1.dtos.TotalArchivosXUsersDTO;
 import pe.edu.upc.backendgrupo1.dtos.UserDTO;
@@ -24,7 +23,6 @@ public class UserController {
     private IUserService uS;
 
     @GetMapping
-    @PreAuthorize("hasAuthority('ADMIN')")
     public List<UserDTO2> listar() {
         return uS.list().stream().map(x -> {
             ModelMapper m = new ModelMapper();
@@ -34,7 +32,6 @@ public class UserController {
 
 
     @PostMapping
-    @PreAuthorize("hasAuthority('CLIENTE')")
     public ResponseEntity<String> insertar(@RequestBody UserDTO dto) {
         ModelMapper m = new ModelMapper();
         Users u = m.map(dto, Users.class);
@@ -43,7 +40,6 @@ public class UserController {
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<String> eliminar(@PathVariable("id") Long id) {
         Users user = uS.listId(id);
         if(user == null) {
@@ -54,7 +50,6 @@ public class UserController {
     }
 
     @PutMapping
-    @PreAuthorize("hasAuthority('CLIENTE')")
     public ResponseEntity<String> modificar(@RequestBody UserDTO3 dto) {
         ModelMapper m = new ModelMapper();
         Users user = m.map(dto, Users.class);
@@ -69,7 +64,6 @@ public class UserController {
 
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<?> listarID(@PathVariable("id") Long id) {
         Users user = uS.listId(id);
         if(user == null) {
@@ -83,7 +77,6 @@ public class UserController {
     }
 
     @GetMapping("/TotalArchivosPorUsuario")
-    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<?> obtenerTotalArchivosPorUsuario() {
         List<Object[]> resultados = uS.TotalArchivosXUsers();
 
