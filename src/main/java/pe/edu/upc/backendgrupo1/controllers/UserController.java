@@ -30,7 +30,6 @@ public class UserController {
         }).collect(Collectors.toList());
     }
 
-
     @PostMapping
     public ResponseEntity<String> insertar(@RequestBody UserDTO dto) {
         ModelMapper m = new ModelMapper();
