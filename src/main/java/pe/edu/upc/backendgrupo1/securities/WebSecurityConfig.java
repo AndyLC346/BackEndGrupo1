@@ -71,7 +71,7 @@ public class WebSecurityConfig {
                                 antMatcher("/swagger-resources/**"),
                                 antMatcher("/webjars/**")
                         ).permitAll()
-                        .requestMatchers(HttpMethod.POST, "/usuarios").permitAll()
+                        .requestMatchers(HttpMethod.POST,"/usuarios").permitAll()
                         .anyRequest().authenticated()
                 )
                 .httpBasic(Customizer.withDefaults())

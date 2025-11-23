@@ -41,7 +41,8 @@ public class ArchivosServiceImplement implements IArchivosService {
     }
 
     @Override
-    public List<String[]> listarArchivosPorFechas(LocalDate fechaInicio, LocalDate fechaFin) {
-        return aR.listarArchivosPorFechas(fechaInicio, fechaFin);
+    public List<String[]> listarArchivosPorFechas(LocalDate fechaInicio, LocalDate fechaFin, Long user_id) {
+        return aR.listarArchivosPorFechas(fechaInicio, fechaFin, user_id);
     }
+
 }

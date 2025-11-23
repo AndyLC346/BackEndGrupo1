@@ -13,11 +13,11 @@ import java.util.List;
 public interface IArchivosRepository extends JpaRepository<Archivos, Integer> {
 
 
-    @Query(value="SELECT a.nombre_archivo, a.tipo_archivo, a.fecha_archivo, u.username \n" +
+    @Query(value="SELECT a.nombre_archivo, a.tipo_archivo, a.fecha_archivo, u.username, a.user_id \n" +
             "            FROM archivos a \n" +
             "            JOIN users u ON a.user_id = u.id \n" +
-            "            WHERE a.fecha_archivo BETWEEN :fechaInicio AND :fechaFin \n" +
+            "            WHERE a.fecha_archivo BETWEEN :fechaInicio AND :fechaFin\n" +
             "            ORDER BY a.fecha_archivo ASC", nativeQuery = true)
-    List<String[]> listarArchivosPorFechas(@Param("fechaInicio") LocalDate fechaInicio, @Param("fechaFin") LocalDate fechaFin);
+    List<String[]> listarArchivosPorFechas(@Param("fechaInicio") LocalDate fechaInicio, @Param("fechaFin") LocalDate fechaFin, @Param("user_id") Long user_id);
 
 }

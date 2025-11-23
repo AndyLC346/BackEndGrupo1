@@ -78,13 +78,13 @@ public class ArchivosController {
         ArchivosDTO dto = m.map(archivo, ArchivosDTO.class);
         return ResponseEntity.ok(dto);
     }
-    @PreAuthorize("hasAuthority('CLIENTE')")
+
     @GetMapping("/BuscarArchivosXFecha")
     public ResponseEntity<?> buscarArchivosPorFecha(
             @RequestParam("fechaInicio") LocalDate fechaInicio,
-            @RequestParam("fechaFin") LocalDate fechaFin) {
+            @RequestParam("fechaFin") LocalDate fechaFin, @RequestParam("user_id") Long user_id) {
 
-        List<String[]> fila = aS.listarArchivosPorFechas(fechaInicio, fechaFin);
+        List<String[]> fila = aS.listarArchivosPorFechas(fechaInicio, fechaFin, user_id);
         List<BuscarArchivosXFechaDTO> listaDTO = new ArrayList<>();
 
         if (fila.isEmpty()) {

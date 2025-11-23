@@ -32,9 +32,7 @@ public class UserController {
         }).collect(Collectors.toList());
     }
 
-
     @PostMapping
-    @PreAuthorize("hasAuthority('CLIENTE')")
     public ResponseEntity<String> insertar(@RequestBody UserDTO dto) {
         ModelMapper m = new ModelMapper();
         Users u = m.map(dto, Users.class);
