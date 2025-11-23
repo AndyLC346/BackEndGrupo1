@@ -4,7 +4,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.backendgrupo1.dtos.RespuestaSoporteDTO;
 
@@ -21,7 +20,6 @@ public class RespuestaSoporteController {
         private IRespuestaSoporteService rsS;
 
         @GetMapping
-        @PreAuthorize("hasAuthority('CLIENTE')")
         public List<RespuestaSoporteDTO> listar(){
             return rsS.list().stream().map(x->{
             ModelMapper m=new ModelMapper();
@@ -29,7 +27,6 @@ public class RespuestaSoporteController {
             }).collect(Collectors.toList());
         }
         @PostMapping
-        @PreAuthorize("hasAuthority('SOPORTE')")
         public ResponseEntity<String>insertar(@RequestBody RespuestaSoporteDTO dto){
             ModelMapper m=new ModelMapper();
             RespuestaSoporte a=m.map(dto, RespuestaSoporte.class);
@@ -37,7 +34,6 @@ public class RespuestaSoporteController {
             return ResponseEntity.status(HttpStatus.CREATED).body("Respuesta del Soporte registrado correctamente");
         }
         @DeleteMapping("/{id}")
-        @PreAuthorize("hasAuthority('SOPORTE')")
         public ResponseEntity<String> eliminar(@PathVariable("id")Integer id){
             RespuestaSoporte respuestasoporte=rsS.listId(id);
             if(respuestasoporte==null){
@@ -46,7 +42,6 @@ public class RespuestaSoporteController {
             return ResponseEntity.ok("Se elimino correctamente");
         }
         @PutMapping
-        @PreAuthorize("hasAuthority('SOPORTE')")
         public ResponseEntity<String>modificar(@RequestBody RespuestaSoporteDTO dto) {
             ModelMapper m = new ModelMapper();
             RespuestaSoporte rs = m.map(dto, RespuestaSoporte.class);
@@ -58,7 +53,6 @@ public class RespuestaSoporteController {
             return ResponseEntity.ok("Se modifico correctamente");
         }
         @GetMapping("/{id}")
-        @PreAuthorize("hasAuthority('SOPORTE')")
         public ResponseEntity<?> listarID(@PathVariable("id") Integer id) {
             RespuestaSoporte respuestaSoporte = rsS.listId(id);
             if (respuestaSoporte == null) {
