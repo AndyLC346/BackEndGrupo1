@@ -12,5 +12,7 @@ public interface IArchivosService {
     public void delete(int id);
     public void update(Archivos archivo);
     public Archivos listId(int id);
+
+    //xd
     List<String[]> listarArchivosPorFechas(@Param("fechaInicio") LocalDate fechaInicio, @Param("fechaFin") LocalDate fechaFin);
 }
