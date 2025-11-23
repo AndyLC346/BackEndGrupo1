@@ -18,6 +18,6 @@ public interface IArchivosRepository extends JpaRepository<Archivos, Integer> {
             "            JOIN users u ON a.user_id = u.id \n" +
             "            WHERE a.fecha_archivo BETWEEN :fechaInicio AND :fechaFin\n" +
             "            ORDER BY a.fecha_archivo ASC", nativeQuery = true)
-    List<String[]> listarArchivosPorFechas(@Param("fechaInicio") LocalDate fechaInicio, @Param("fechaFin") LocalDate fechaFin, @Param("user_id") Long user_id);
+    List<String[]> listarArchivosPorFechas(@Param("fechaInicio") LocalDate fechaInicio, @Param("fechaFin") LocalDate fechaFin);
 
 }
