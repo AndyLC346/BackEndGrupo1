@@ -8,7 +8,7 @@ import pe.edu.upc.backendgrupo1.servicesinterfaces.IAlertaService;
 
 
 import java.util.List;
-
+//add security
 @Service
 public class AlertaServiceImplement implements IAlertaService {
 
