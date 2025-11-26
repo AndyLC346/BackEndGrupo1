@@ -43,7 +43,6 @@ public class Users implements Serializable {
     @Column(name="telefonoUser", nullable=false, length=9)
     private String telefonoUser;
 
-    @JsonIgnore
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private List<Role> roles;
