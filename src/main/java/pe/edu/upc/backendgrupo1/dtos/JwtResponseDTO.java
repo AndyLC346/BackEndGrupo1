@@ -1,7 +1,7 @@
 package pe.edu.upc.backendgrupo1.dtos;
 
 import java.io.Serializable;
-
+//security
 public class JwtResponseDTO implements Serializable {
 
     private static final long serialVersionUID = -8091879091924046844L;

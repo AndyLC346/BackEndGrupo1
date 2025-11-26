@@ -12,7 +12,7 @@ import pe.edu.upc.backendgrupo1.repositories.IUserRepository;
 import java.util.ArrayList;
 import java.util.List;
 
-
+//security
 //Clase 2
 @Service
 public class JwtUserDetailsService implements UserDetailsService {

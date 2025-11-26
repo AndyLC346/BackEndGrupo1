@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
-
+//security
 //Clase 1
 @Component
 public class JwtTokenUtil implements Serializable {

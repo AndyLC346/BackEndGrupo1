@@ -17,7 +17,7 @@ import pe.edu.upc.backendgrupo1.servicesimplements.JwtUserDetailsService;
 
 
 import java.io.IOException;
-
+//security
 //Clase 6
 @Component
 public class JwtRequestFilter extends OncePerRequestFilter {
