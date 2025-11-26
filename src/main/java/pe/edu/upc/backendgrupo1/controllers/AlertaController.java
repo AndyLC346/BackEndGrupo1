@@ -12,7 +12,7 @@ import pe.edu.upc.backendgrupo1.servicesinterfaces.IAlertaService;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
+//security
 @RestController
 @RequestMapping("/alertas")
 public class AlertaController {

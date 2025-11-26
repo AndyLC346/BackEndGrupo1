@@ -12,7 +12,7 @@ import pe.edu.upc.backendgrupo1.servicesinterfaces.IAuditoriaService;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
-
+//security
 @RestController
 @RequestMapping("/auditorias")
 public class AuditoriaController {

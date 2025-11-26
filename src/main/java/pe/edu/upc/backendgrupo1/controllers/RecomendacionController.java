@@ -13,7 +13,7 @@ import pe.edu.upc.backendgrupo1.servicesinterfaces.IRecomendacionService;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
+//security
 @RestController
 @RequestMapping("/recomendaciones")
 public class RecomendacionController {

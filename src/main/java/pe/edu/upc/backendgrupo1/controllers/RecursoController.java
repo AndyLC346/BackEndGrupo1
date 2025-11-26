@@ -13,7 +13,7 @@ import pe.edu.upc.backendgrupo1.servicesinterfaces.IRecursoEducativoService;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
+//security
 @RestController
 @RequestMapping("/recursosducativos")
 public class RecursoController {

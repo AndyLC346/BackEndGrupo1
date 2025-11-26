@@ -14,7 +14,7 @@ import pe.edu.upc.backendgrupo1.servicesinterfaces.ITicketReporteService;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
+//security
 @RestController
 @RequestMapping("/ticketreportes")
 public class TicketReporteController {

@@ -14,7 +14,7 @@ import pe.edu.upc.backendgrupo1.servicesinterfaces.ILogAccesoService;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
-
+//security
 @RestController
 @RequestMapping("/logacceso")
 public class LogAccesoControllers {
