@@ -15,7 +15,7 @@ public class Users implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @JsonIgnore
+
     @Column(name="username", nullable=false, length=30, unique = true)
     private String username;
 
@@ -23,27 +23,24 @@ public class Users implements Serializable {
     @Column(name="password", nullable=false, length=100)
     private String password;
 
-    @JsonIgnore
+
     @Column(name="enabled", nullable=false)
     private Boolean enabled;
 
-    @JsonIgnore
+
     @Column(name="nombres", nullable=false, length=50)
     private String nombres;
 
-    @JsonIgnore
+
     @Column(name="apellidos", nullable=false, length=50)
     private String apellidos;
 
-    @JsonIgnore
     @Column(name="emailUser", nullable=false, length=50)
     private String emailUser;
 
-    @JsonIgnore
     @Column(name="telefonoUser", nullable=false, length=9)
     private String telefonoUser;
 
-    @JsonIgnore
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private List<Role> roles;
