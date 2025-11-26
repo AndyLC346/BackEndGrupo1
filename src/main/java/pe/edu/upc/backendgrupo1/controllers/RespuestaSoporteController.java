@@ -13,7 +13,7 @@ import pe.edu.upc.backendgrupo1.servicesinterfaces.IRespuestaSoporteService;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
+//security
 @RestController
 @RequestMapping("/RespuestaSoporte")
 public class RespuestaSoporteController {

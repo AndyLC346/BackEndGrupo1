@@ -17,7 +17,7 @@ import pe.edu.upc.backendgrupo1.securities.JwtTokenUtil;
 import pe.edu.upc.backendgrupo1.servicesimplements.JwtUserDetailsService;
 
 
-
+//security
 //Clase 3
 @RestController
 @CrossOrigin
