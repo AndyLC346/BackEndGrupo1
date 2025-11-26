@@ -9,10 +9,12 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import pe.edu.upc.backendgrupo1.entities.Users;
 import pe.edu.upc.backendgrupo1.repositories.IUserRepository;
+
+
 import java.util.ArrayList;
 import java.util.List;
 
-//security
+
 //Clase 2
 @Service
 public class JwtUserDetailsService implements UserDetailsService {

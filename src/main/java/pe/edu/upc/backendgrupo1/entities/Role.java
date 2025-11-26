@@ -11,8 +11,19 @@ public class Role implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String rol;
+    @ManyToOne
+    @JoinColumn(name="idUser")
+    private Users user;
+
+    public Role() {
+    }
+
+    public Role(Long id, String rol, Users user) {
+        this.id = id;
+        this.rol = rol;
+        this.user = user;
+    }
 
     public Long getId() {
         return id;
@@ -30,4 +41,11 @@ public class Role implements Serializable {
         this.rol = rol;
     }
 
+    public Users getUser() {
+        return user;
+    }
+
+    public void setUser(Users user) {
+        this.user = user;
+    }
 }

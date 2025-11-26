@@ -15,7 +15,7 @@ public class Alerta {
     @Column(name="mensajeAlerta", nullable=false, length=50)
     private String mensajeAlerta;
 
-    @Column(name="tipoAlerta", nullable=false, length=10)
+    @Column(name="tipoAlerta", nullable=false, length=50)
     private String tipoAlerta;
 
     @Column(name="fechaAlerta", nullable=false)
