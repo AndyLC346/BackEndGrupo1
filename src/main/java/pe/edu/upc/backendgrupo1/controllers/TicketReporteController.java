@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.backendgrupo1.dtos.CantidadRespuestaTicketDTO;
 import pe.edu.upc.backendgrupo1.dtos.TicketReporteDTO;
@@ -21,6 +22,7 @@ public class TicketReporteController {
     @Autowired
     private ITicketReporteService trS;
 
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('TESTER')")
     @GetMapping
     public List<TicketReporteDTO> listar(){
         ModelMapper m = new ModelMapper();

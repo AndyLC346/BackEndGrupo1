@@ -24,7 +24,7 @@ public class UserController {
     private IUserService uS;
 
     @GetMapping
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('TESTER')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public List<UserDTO2> listar() {
         return uS.list().stream().map(x -> {
             ModelMapper m = new ModelMapper();

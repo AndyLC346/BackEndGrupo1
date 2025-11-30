@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.backendgrupo1.dtos.RecursoDTO;
 import pe.edu.upc.backendgrupo1.dtos.RecursoQuery2DTO;
@@ -21,6 +22,7 @@ public class RecursoController {
     private IRecursoEducativoService rS;
 
     @GetMapping
+
     public List<RecursoDTO> listar() {
         return rS.list().stream().map(x -> {
             ModelMapper m = new ModelMapper();
