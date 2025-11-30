@@ -3,6 +3,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.backendgrupo1.dtos.AlertaDTO;
 import pe.edu.upc.backendgrupo1.dtos.AlertaQuery1DTO;
@@ -20,6 +21,7 @@ public class AlertaController {
     private IAlertaService aS;
 
     @GetMapping
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('TESTER')")
     public List<AlertaDTO> listar() {
         return aS.list().stream().map(x -> {
             ModelMapper m = new ModelMapper();

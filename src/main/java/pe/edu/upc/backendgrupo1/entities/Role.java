@@ -1,5 +1,6 @@
 package pe.edu.upc.backendgrupo1.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -14,6 +15,7 @@ public class Role implements Serializable {
     private String rol;
     @ManyToOne
     @JoinColumn(name="user_id")
+    @JsonBackReference
     private Users usuario;
 
     public Role() {
